@@ -27,12 +27,22 @@ body {
 .color-orange {
     color: orangered;
 }
-.tiny-card-body{
+
+.tiny-card-body {
     padding: 0.5rem;
 }
 
-.portfolio-item {
-    margin-bottom: 30px;
+.font-s {
+    font-size: 12px;
+}
+
+.clear-a {
+    color: black;
+    text-decoration: none;
+}
+
+.product-container {
+    margin-bottom: 20px;
 }
 
 .products-container .product-container .item-name {
@@ -41,6 +51,10 @@ body {
 
 .products-container .product-container .items {
     text-align: right;
+}
+
+.products-container .product-container .items p {
+    margin-bottom: 0;
 }
 
 .products-container .product-container .item-value {
