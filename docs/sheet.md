@@ -1,0 +1,1 @@
+D:\software\phpStudy\php\php-7.2.6-nts\php.exe
