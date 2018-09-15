@@ -1,22 +1,17 @@
-{{--<div class="products-container">--}}
-{{--@foreach(array_chunk($products->toArray(),4) as  $productChunk)--}}
+<h1 class="my-4">Welcome to Modern Business</h1>
 
-{{--<div class="mdl-grid">--}}
-{{--@foreach($productChunk as $product)--}}
-{{--<div class="mdl-cell mdl-cell--4-col">--}}
-{{--                    @include('components.cols.product')--}}
-{{--</div>--}}
-{{--@endforeach--}}
-{{--</div>--}}
+@foreach($products->chunk(4) as $chunk)
 
-{{--@endforeach--}}
-{{--</div>--}}
+    <div class="row">
+        @foreach($chunk as $product)
+            @include('components.rows.cols.product')
+        @endforeach
+    </div>
+@endforeach
 
-<div class="mdl-grid">
-    <div class="mdl-cell mdl-cell--3-col"  style="background: darkgrey;">3</div>
-    <div class="mdl-cell mdl-cell--3-col"  style="background: darkgrey;">3</div>
-    <div class="mdl-cell mdl-cell--3-col"  style="background: darkgrey;">3</div>
-    <div class="mdl-cell mdl-cell--3-col"  style="background: darkgrey;">3</div>
+<div class="justify-content-center">
+    {{ $products->links() }}
 </div>
+
 
 

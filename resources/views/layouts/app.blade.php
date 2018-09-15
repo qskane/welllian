@@ -2,32 +2,36 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Laravel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{config('app.name')}}</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-    <link rel="stylesheet" href="/css/web.css">
+    <link rel="stylesheet" href="/vendor/fonts-material-icons.css">
+    <link rel="stylesheet" href="/vendor/bootstrap-material-design.min.css"
+          integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link href="/css/modern-business.css" rel="stylesheet">
     @yield('styles')
 </head>
 <body>
-<div class="mdl-layout mdl-js-layout">
-    @include('layouts.nav')
-    @yield('header')
-    <main class="mdl-layout__content">
-        <div class="page-content main">
-            @yield("content")
-        </div>
+@include('layouts.nav')
+@yield('header')
+<div id="root">
+    <main class="container mt-2 mb-2">
+        @yield("content")
     </main>
-    @yield('footer')
-    @include('layouts.footer')
 </div>
 
-{{--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"--}}
-{{--integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"--}}
-{{--crossorigin="anonymous"></script>--}}
+@yield('footer')
+@include('layouts.footer')
 
-<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+<script src="/vendor/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="/vendor/popper.js"
+        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+<script src="/vendor/bootstrap-material-design.js"
+        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
 
 @yield('scripts')
 
