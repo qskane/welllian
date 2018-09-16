@@ -21,19 +21,19 @@
                     <span class="ml-auto text-muted">{{$product->origin_price}}</span>
                 </div>
                 <div class="d-flex">
-                    <span class="text-muted">立减</span>
+                    <span class="text-muted">返现</span>
                     <span class="ml-auto text-danger"><b>-{{$product->bonus}}</b></span>
                 </div>
                 <div class="d-flex">
                     <span class="text-muted">现价</span>
-                    <span class="ml-auto text-danger">{{$product->price}}</span>
+                    <span class="ml-auto font-weight-bold">{{$product->price}}</span>
                 </div>
             </div>
         </div>
         <div class="pl-2 pr-2">
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-block btn-raised btn-sm ml-auto">前往jd.com</button>
+                    <a class="btn btn-block btn-raised btn-sm ml-auto" href="https://www.jd.com" role="button">前往jd.com</a>
                 </div>
             </div>
         </div>

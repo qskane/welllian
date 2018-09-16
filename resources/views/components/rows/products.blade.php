@@ -1,17 +1,20 @@
-<h1 class="my-4">Welcome to Modern Business</h1>
+<div>
+    @if(isset($title) && $title)
+        <h2>{{$title}}</h2>
+    @endif
 
-@foreach($products->chunk(4) as $chunk)
+    @if(isset($header) && $header)
+        {{$header}}
+    @endif
 
-    <div class="row">
-        @foreach($chunk as $product)
-            @include('components.rows.cols.product')
-        @endforeach
-    </div>
-@endforeach
+    @foreach($products->chunk(4) as $chunk)
+        <div class="row">
+            @each('components.rows.cols.product', $chunk, 'product')
+        </div>
+    @endforeach
 
-<div class="justify-content-center">
-    {{ $products->links() }}
+    @if(isset($footer) && $footer)
+        {{$footer}}
+    @endif
 </div>
-
-
 

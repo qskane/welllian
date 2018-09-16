@@ -1,7 +1,0 @@
-third part website
-server(web id,log)
-browser (cookie,30 days)
-mall (media id)
-
-20 = 18 + 1 + 1
-

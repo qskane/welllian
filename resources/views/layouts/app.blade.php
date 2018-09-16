@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="zh-CN">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="/vendor/fonts-material-icons.css">
     <link rel="stylesheet" href="/vendor/bootstrap-material-design.min.css"
           integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-    <link href="/css/modern-business.css" rel="stylesheet">
-    @yield('styles')
+    <link href="/css/malllian.css" rel="stylesheet">
+    @stack('styles')
 </head>
 <body>
 @include('layouts.nav')
 @yield('header')
-<div id="root">
-    <main class="container mt-2 mb-2">
+<div id="root" >
+    <main class="container mt-2 mb-2 p-2">
         @yield("content")
     </main>
 </div>
@@ -33,7 +33,7 @@
         integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
         crossorigin="anonymous"></script>
 
-@yield('scripts')
+@stack('scripts')
 
 </body>
 </html>

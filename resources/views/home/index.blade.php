@@ -1,9 +1,19 @@
 @extends("layouts.app")
 @section('header')
-    @include('home._slider')
+    @include('home._carousel')
 @endsection
+
 @section('content')
-    @include('components.rows.products')
+    @component('components.rows.products',compact('products'))
+        @slot('title')
+            手机数码
+        @endslot
+        @slot('footer')
+            <div class="text-center">
+                <a class="btn btn-raised btn-sm" href="{{route('p.index')}}" role="button">更多手机数码</a>
+            </div>
+        @endslot
+    @endcomponent
 @endsection
 
 

@@ -1,0 +1,16 @@
+#root {
+    min-height: 100px;
+}
+
+body {
+    padding-top: 54px;
+}
+
+.carousel-item {
+    max-height: 65vh;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
