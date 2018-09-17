@@ -2,8 +2,8 @@
 
 
 Route::get('/', "HomeController@index")->name('home');
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::resource('p', 'ProductController');
+Route::resource('product', 'ProductController');
 
 

@@ -1,0 +1,17 @@
+{
+  "Login": "登录",
+  "Register": "注册",
+  "Logout": "退出",
+  "Password": "密码",
+  "E-Mail Address": "邮件地址",
+  "Remember Me": "记住我",
+  "Forgot Your Password?": "忘记密码？",
+  "Nickname": "昵称",
+  "Confirm Password": "确认密码",
+  "Reset Password": "重置密码",
+  "Send Password Reset Link": "发送重置密码链接",
+  "Verify Your Email Address": "验证你的邮件地址",
+  "Before proceeding, please check your email for a verification link.": "在继续之前，请确认您的电子邮件（<b>:email</b>）用于获取验证链接。",
+  "click here to request one": "点击这里申请发送",
+  "A fresh verification link has been sent to your email address, please pay attention to check spam.": "一个新的重置密码链接已经发送到<b>:email</b>，请留意查看收件箱和垃圾邮件。"
+}

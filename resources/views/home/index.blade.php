@@ -10,7 +10,7 @@
         @endslot
         @slot('footer')
             <div class="text-center">
-                <a class="btn btn-raised btn-sm" href="{{route('p.index')}}" role="button">更多手机数码</a>
+                <a class="btn btn-raised btn-sm" href="{{route('product.index')}}" role="button">更多手机数码</a>
             </div>
         @endslot
     @endcomponent
