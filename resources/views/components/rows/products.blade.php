@@ -1,11 +1,9 @@
 <div>
-    @if(isset($title) && $title)
+    @if($title??false)
         <h2>{{$title}}</h2>
     @endif
 
-    @if(isset($header) && $header)
-        {{$header}}
-    @endif
+    {{$header ?? ''}}
 
     @foreach($products->chunk(4) as $chunk)
         <div class="row">
@@ -13,8 +11,6 @@
         </div>
     @endforeach
 
-    @if(isset($footer) && $footer)
-        {{$footer}}
-    @endif
+    {{$footer ?? ''}}
 </div>
 
