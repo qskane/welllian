@@ -3,7 +3,7 @@
 @endphp
 
 <div class="form-group row">
-    <label for="telephone"
+    <label for="{{$name}}"
            class="col-sm-4 col-form-label text-md-right"
     >{{$label??''}}
         @if(!$required)

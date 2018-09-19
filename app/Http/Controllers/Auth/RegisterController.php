@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -43,30 +45,48 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
     {
+
+        $verificationCode = $data['mobile_verification_code'] ?? 0;
+        $mobile = $data['mobile'] ?? 0;
+
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'mobile' => 'required|string|size:11|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'mobile_verification_code' => [
+                'required',
+                'string',
+                'size:6',
+                Rule::exists('verification_codes', 'code')->where(function ($query) use ($mobile, $verificationCode) {
+                    $query->where([
+                        'verification' => $mobile,
+                        'code' => $verificationCode,
+                    ])->where('created_at', '>', Carbon::make('-30 minutes'));
+                }),
+            ],
+
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array $data
      * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+        dd(222, $data);
+        //        return User::create([
+        //            'name' => $data['name'],
+        //            'email' => $data['email'],
+        //            'password' => Hash::make($data['password']),
+        //        ]);
     }
 }

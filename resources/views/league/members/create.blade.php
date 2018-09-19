@@ -1,10 +1,17 @@
 @extends('layouts.app')
 @section('content')
 
-    @component('components.containers.card')
 
-        @include('league.members._form')
-
-    @endcomponent
-
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                @component('components.containers.card')
+                    @slot('header')
+                        申请成为联盟成员
+                    @endslot
+                    @include('league.members._form')
+                @endcomponent
+            </div>
+        </div>
+    </div>
 @endsection

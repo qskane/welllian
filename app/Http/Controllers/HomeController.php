@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Product;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -18,9 +19,8 @@ class HomeController extends Controller
     public function test()
     {
 
-        $a = null;
 
-        dd($a ?? 'none');
+        dd(Carbon::make('-30 minutes'));
 
         return view('test');
         //        $url = 'https://oauth.jd.com/oauth/authorize?response_type=code&client_id=CLIENT_ID&redirect_uri=REDIRECT_URI&state=STATE_CODE';

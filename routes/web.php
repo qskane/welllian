@@ -11,7 +11,7 @@ Route::resource('member', 'League\\MemberController');
 Route::get('/test', "HomeController@test")->name('test');
 
 Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
-    Route::post('/telephone-verification-code', "SupportController@telephoneVerificationCode")->name('telephone_verification_code');
+    Route::post('/mobile-verification-code', "SupportController@mobileVerificationCode")->name('mobile_verification_code');
 });
 
 

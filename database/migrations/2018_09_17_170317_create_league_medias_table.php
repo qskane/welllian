@@ -15,7 +15,7 @@ class CreateLeagueMediasTable extends Migration
     {
         Schema::create('league_medias', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('league_member_id')->index();
+            $table->unsignedInteger('user_id')->index();
             $table->string('name');
             $table->string('domain');
             $table->string('promotion_url');

@@ -1,30 +1,29 @@
 <div class="form-group row">
     <label for="password"
-           class="col-md-4 col-form-label text-md-right">{{ __('form.telephone_verification_code') }}</label>
-
-    <div class="col-md-2">
-        <input id="telephone_verification_code"
-               class="form-control {{ $errors->has('telephone_verification_code') ? ' is-invalid' : '' }}"
-               name="telephone_verification_code"
-               required
-        />
-    </div>
-
+           class="col-md-4 col-form-label text-md-right">{{ __('form.mobile_verification_code') }}</label>
 
     <div class="col-md-4">
-        <button id="telephone-verification-code" type="button" class="btn btn-raised">{{__('send')}}</button>
+        <input id="mobile_verification_code"
+               class="form-control {{ $errors->has('mobile_verification_code') ? ' is-invalid' : '' }}"
+               name="mobile_verification_code"
+               value="{{ old('mobile_verification_code') ?? '' }}"
+               required
+        />
+        <span class="invalid-feedback" role="alert">
+        <strong>{{ $errors->has('mobile_verification_code') ? $errors->first('mobile_verification_code') : __('form.mobile_verification_code') . __('form.invalid_input') }}</strong>
+        </span>
     </div>
 
-    <span class="invalid-feedback" role="alert">
-        <strong>{{ $errors->has('telephone_verification_code') ? $errors->first('telephone_verification_code') : __('form.telephone_verification_code') . __('form.invalid_input') }}</strong>
-    </span>
+    <div class="col-md-2">
+        <button id="mobile-verification-code" type="button" class="btn btn-raised">{{__('send')}}</button>
+    </div>
 </div>
 
 @push('scripts')
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var $btn = $('#telephone-verification-code');
+            var $btn = $('#mobile-verification-code');
             var loading = false;
             var seconds = 3;
 
@@ -48,15 +47,17 @@
                 if (loading) {
                     return;
                 }
+                var that = this;
 
                 $.ajax({
-                    url: '{{route('support.telephone_verification_code')}}',
+                    url: '{{route('support.mobile_verification_code')}}',
                     type: 'GET',
                     success: function () {
                         $.notify(
                             {message: "{}"},
                             {type: 'success'}
                         );
+                        timer($(that))
                     },
                     error: function (error) {
                         $.notify(
@@ -66,8 +67,6 @@
                     }
                 });
 
-
-                timer($(this))
             })
         })
     </script>
