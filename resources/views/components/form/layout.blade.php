@@ -18,7 +18,7 @@
     {{$slot ?? null}}
 
     @if($submit ?? true)
-        @include('components.form.submit')
+        @include('components.form.submit',['text'=>$submitText??null])
     @endif
 </form>
 

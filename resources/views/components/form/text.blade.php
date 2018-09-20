@@ -20,6 +20,7 @@
                type="{{$type??'text'}}"
                @if($required) required @endif
                @if($autofocus ?? false) autofocus @endif
+               @if($disabled ?? false) disabled @endif
         >
 
         @if($help ?? false)

@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{config('app.name')}}</title>
+    <title>{{$title ?? config('app.name')}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-    {{--<link rel="stylesheet" href="/vendor/fonts-material-icons.css">--}}
     <link rel="stylesheet" href="/vendor/bootstrap-material-design.min.css"
           integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
     <link href="/css/malllian.css" rel="stylesheet">
@@ -38,8 +37,5 @@
 
 @stack('scripts')
 
-
-
 </body>
 </html>
-

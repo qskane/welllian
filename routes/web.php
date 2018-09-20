@@ -20,7 +20,13 @@ Route::post('password/mobile-reset', 'Auth\ResetPasswordController@mobileReset')
 Route::resource('product', 'ProductController');
 
 Route::group(['prefix' => 'user', 'as' => 'user.'], function () {
-    Route::get('/{id}', "UserController@show")->name('show');
+    Route::get('/{user}', "UserController@show")->name('edit');
+    Route::post('/{user}', "UserController@update");
+
+    Route::get('/{user}/wallet', "WalletController@show")->name('wallet.show');
+
+    Route::get('/{user}/media', "MediaController@index")->name('media.index');
+
 });
 
 

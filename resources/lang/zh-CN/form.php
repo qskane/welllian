@@ -9,4 +9,6 @@ return [
     'new_password_confirm' => '确认新密码',
     'mobile_verification_code' => '手机验证码',
     'remember_me' => '记住我',
+    'nickname' => '昵称',
+    'save' => '保存',
 ];
