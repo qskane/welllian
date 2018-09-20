@@ -15,7 +15,7 @@
     </div>
 
     <div class="col-md-2">
-        <button id="mobile-verification-code" type="button" class="btn btn-raised">{{__('send')}}</button>
+        <button id="btn-mobile-verification-code" type="button" class="btn btn-raised">{{__('send')}}</button>
     </div>
 </div>
 
@@ -23,9 +23,10 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var $btn = $('#mobile-verification-code');
+            var $btn = $('#btn-mobile-verification-code');
             var loading = false;
-            var seconds = 3;
+            var seconds = 10;
+            var $verification = $('input[name="mobile"]').first();
 
             var timer = function ($this) {
                 $this.attr('disabled', true);
@@ -43,6 +44,7 @@
                 }, 1000)
             };
 
+
             $btn.click(function () {
                 if (loading) {
                     return;
@@ -50,18 +52,19 @@
                 var that = this;
 
                 $.ajax({
-                    url: '{{route('support.mobile_verification_code')}}',
-                    type: 'GET',
+                    url: '{{route('support.verification')}}',
+                    data: {verification: $verification.val()},
+                    type: 'POST',
                     success: function () {
                         $.notify(
-                            {message: "{}"},
+                            {message: "{{__('sent')}}"},
                             {type: 'success'}
                         );
                         timer($(that))
                     },
                     error: function (error) {
                         $.notify(
-                            {message: error.status === 403 ? "{{__('Request too frequently')}}" : "{{__('failed')}}"},
+                            {message: error.status === 403 ? "{{__('Request too frequently')}}" : "{{__('fail')}}"},
                             {type: 'danger'}
                         );
                     }

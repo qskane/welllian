@@ -1,21 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\League;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class MemberController extends Controller
+class UserController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
-    public function create()
-    {
-        return view('league.members.create');
-    }
 
     public function store(Request $request)
     {

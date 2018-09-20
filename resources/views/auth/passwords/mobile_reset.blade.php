@@ -4,39 +4,35 @@
 
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @component('components.cards.layout',['header'=>__('Reset Password')])
 
-            @component('components.cards.layout')
-                @slot('header')
-                    {{ __('Register') }}
-                @endslot
 
-                @component('components.form.layout',['action'=>route('register'),'submit'=>false])
+                @component('components.form.layout',['action'=>route('password.mobile_reset')])
 
                     @include('components.form.text',[
                         'label'=>__('form.mobile'),
                         'name'=>'mobile',
+                        'default'=>$mobile??''
                     ])
 
                     @include('components.form.mobile_verification_code')
 
                     @include('components.form.text',[
-                        'label'=>__('Password'),
+                        'label'=>__('form.new_password'),
                         'name'=>'password',
                         'type'=>'password'
                     ])
 
                     @include('components.form.text',[
-                        'label'=> __('Confirm Password'),
+                        'label'=> __('form.new_password_confirm'),
                         'name'=>'password_confirmation',
                         'type'=>'password'
                     ])
 
-                    @include('components.form.submit',['text'=> __('Register')])
-
                 @endcomponent
 
             @endcomponent
-
         </div>
     </div>
+
 @endsection

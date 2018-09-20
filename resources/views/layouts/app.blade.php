@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{{config('app.name')}}</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
     {{--<link rel="stylesheet" href="/vendor/fonts-material-icons.css">--}}
     <link rel="stylesheet" href="/vendor/bootstrap-material-design.min.css"
@@ -33,8 +34,11 @@
 <script src="/vendor/bootstrap-notify.min.js"></script>
 <script src="/js/global.js"></script>
 
+@include('components.alerts.global')
 
 @stack('scripts')
+
+
 
 </body>
 </html>
