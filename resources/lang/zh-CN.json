@@ -1,12 +1,12 @@
 {
+  "empty": "无内容",
+
   "Login": "登录",
   "Register": "注册",
   "Logout": "退出",
   "Password": "密码",
   "E-Mail Address": "邮件地址",
   "Forgot Your Password?": "忘记密码？",
-
-
   "Confirm Password": "确认密码",
   "Reset Password": "重置密码",
   "send": "发送",

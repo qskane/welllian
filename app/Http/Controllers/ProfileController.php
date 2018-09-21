@@ -6,9 +6,8 @@ use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
-
 
     public function store(Request $request)
     {
@@ -24,7 +23,7 @@ class UserController extends Controller
     {
         $this->authorize('view', $user);
 
-        return view('user.show', compact('user'));
+        return view('user.profile.show', compact('user'));
     }
 
     public function edit($id)

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMediaRequest;
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 class MediaController extends Controller
@@ -13,7 +15,9 @@ class MediaController extends Controller
      */
     public function index()
     {
-        return view('user.media.index');
+        $medias = Media::where('user_id', auth()->id())->paginate(10);
+
+        return view('user.media.index', compact('medias'));
     }
 
     /**
@@ -23,7 +27,7 @@ class MediaController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.media.create');
     }
 
     /**
@@ -32,9 +36,10 @@ class MediaController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMediaRequest $request)
     {
-        //
+
+
     }
 
     /**

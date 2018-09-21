@@ -1,7 +1,7 @@
 <ul class="list-group bmd-list-group-sm">
     @php
         $items = [
-             ['link'=>route('user.edit',Auth::id()),'name'=>__('user.base_info'),'key'=>'base'],
+             ['link'=>route('user.profile.edit',Auth::id()),'name'=>__('user.profile_info'),'key'=>'profile'],
              ['link'=>route('user.wallet.show',Auth::id()),'name'=>__('user.wallet_info'),'key'=>'wallet'],
              ['link'=>route('user.media.index',Auth::id()),'name'=>__('user.media_info'),'key'=>'media'],
         ];

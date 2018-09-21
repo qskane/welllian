@@ -4,13 +4,13 @@
 
 <div class="form-group row">
     <label for="{{$name}}"
-           class="col-sm-4 col-form-label text-md-right"
+           class="col-sm-12 col-md-4 col-lg-3 col-form-label text-md-right"
     >{{$label??''}}
         @if(!$required)
             <span class="ml-1">({{__('form.optional')}})</span>
         @endif
     </label>
-    <div class="col-md-6">
+    <div class="col-sm-12 col-md-6 col-lg-7">
 
         <input id="{{$name}}"
                class="form-control {{ $errors->has($name) ? ' is-invalid' : '' }}"

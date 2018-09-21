@@ -6,11 +6,19 @@
         </div>
         <div class="col-sm-12 col-md-10">
             @component('components.cards.layout')
-                @slot('header')
-                    {{$header}}
-                @endslot
+                @if($header??false)
+                    @slot('header')
+                        {{$header}}
+                    @endslot
+                @endif
 
                 {{$slot}}
+
+                @if($footer??false)
+                    @slot('footer')
+                        {{$footer}}
+                    @endslot
+                @endif
 
             @endcomponent
         </div>

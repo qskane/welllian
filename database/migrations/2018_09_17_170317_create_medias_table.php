@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLeagueMediasTable extends Migration
+class CreateMediasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLeagueMediasTable extends Migration
      */
     public function up()
     {
-        Schema::create('league_medias', function (Blueprint $table) {
+        Schema::create('medias', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->index();
             $table->string('name');
@@ -40,6 +40,6 @@ class CreateLeagueMediasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('league_medias');
+        Schema::dropIfExists('medias');
     }
 }
