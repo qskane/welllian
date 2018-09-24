@@ -1,6 +1,13 @@
 {
   "empty": "无内容",
-
+  "operation": "操作",
+  "edit": "编辑",
+  "show": "查看",
+  "created_at": "创建于",
+  "delete": "删除",
+  "operation_need_confirm": "是否继续执行？",
+  "start": "开始",
+  "verification": "验证",
   "Login": "登录",
   "Register": "注册",
   "Logout": "退出",

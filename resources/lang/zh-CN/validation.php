@@ -171,5 +171,8 @@ return [
         'time' => '时间',
         'available' => '可用的',
         'size' => '大小',
+        'domain' => '域名',
+        'promotion_url' => '推广链接',
+        'logo' => 'LOGO图标',
     ],
 ];

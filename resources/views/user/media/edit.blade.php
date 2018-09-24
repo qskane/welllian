@@ -1,5 +1,31 @@
 @component('user._layout',['active'=>'media','header'=>__('user.media_info')])
 
-    @include('user.media._form',['action'=>route('user.media.edit',Auth::id())])
+
+    @component('user.media._form',['action'=>route('user.media.edit',[Auth::id(),$media->id]),'media'=>$media])
+
+        @slot('extra')
+
+            @include('components.form.radio_determine',[
+                'label'=>__('media.providing'),
+                'name'=>'providing',
+                'selected'=>$media->providing
+            ])
+
+            @include('components.form.radio_determine',[
+               'label'=>__('media.consuming'),
+               'name'=>'consuming',
+               'selected'=>$media->consuming
+            ])
+
+            @include('components.form.text',[
+               'label'=>__('media.consume_bid'),
+               'name'=>'consume_bid',
+               'default'=>$media->consume_bid
+            ])
+
+        @endslot
+
+    @endcomponent
+
 
 @endcomponent

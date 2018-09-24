@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreMediaRequest;
+use App\Http\Requests\SaveMediaRequest;
 use App\Models\Media;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MediaController extends Controller
 {
@@ -33,13 +34,18 @@ class MediaController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param SaveMediaRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMediaRequest $request)
+    public function store(SaveMediaRequest $request)
     {
 
+        $media = new Media($request->getInputs());
+        $media->setUserId();
+        $media->setGenerateValues();
+        $media->save();
 
+        return redirect()->route('user.media.index', Auth::id())->with('status', true);
     }
 
     /**
@@ -50,18 +56,22 @@ class MediaController extends Controller
      */
     public function show($id)
     {
-        //
+        $media = Media::findOrFail($id);
+
+        return view('user.media.show', compact('media'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param $media
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $media = Media::findOrFail($id);
+
+        return view('user.media.edit', compact('media'));
     }
 
     /**
@@ -84,6 +94,29 @@ class MediaController extends Controller
      */
     public function destroy($id)
     {
+
+        // FIXME delete
+
+        dd(1111);
         //
     }
+
+    public function showVerificationForm($id)
+    {
+        $media = Media::findOrFail($id);
+
+        return view('user.media.verification', compact('media'));
+    }
+
+    public function verification($id)
+    {
+        $media = Media::findOrFail($id);
+
+        // FIXME 验证domain key
+        $media->verified = true;
+        $media->save();
+
+        return redirect()->route('user.media.show', [Auth::id(), $media->id])->with('status', true);
+    }
+
 }

@@ -40,4 +40,9 @@
         'required'=>false
     ])
 
+    @if($extra ?? false)
+        {{$extra}}
+    @endif
+
+
 @endcomponent

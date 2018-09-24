@@ -11,4 +11,6 @@ return [
     'remember_me' => '记住我',
     'nickname' => '昵称',
     'save' => '保存',
+    'yes' => '是',
+    'no' => '否',
 ];

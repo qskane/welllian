@@ -6,9 +6,10 @@
     <title>{{$title ?? config('app.name')}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
 
-    <link rel="stylesheet" href="/vendor/bootstrap-material-design.min.css"
-          integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">
     <link href="/css/malllian.css" rel="stylesheet">
+    <link rel="stylesheet" href="/vendor/fontawesome-free-5.3.1-web/css/all.min.css">
+
     @stack('styles')
 </head>
 <body>
@@ -23,14 +24,11 @@
 @yield('footer')
 @include('layouts.footer')
 
-<script src="/vendor/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-<script src="/vendor/popper.js"
-        integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
-        crossorigin="anonymous"></script>
-<script src="/vendor/bootstrap-material-design.js"
-        integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
-        crossorigin="anonymous"></script>
-<script src="/vendor/bootstrap-notify.min.js"></script>
+<script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
+<script src="/vendor/bootstrap/popper.min.js"></script>
+<script src="/vendor/bootstrap/bootstrap.min.js" ></script>
+<script src="/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
+
 <script src="/js/global.js"></script>
 
 @include('components.alerts.global')
