@@ -1,7 +1,7 @@
 @component('user._layout',['active'=>'media','header'=>__('user.media_info')])
 
 
-    @component('user.media._form',['action'=>route('user.media.edit',[Auth::id(),$media->id]),'media'=>$media])
+    @component('user.media._form',['action'=>route('user.media.update',[Auth::id(),$media->id]),'media'=>$media,'method'=>'PATCH'])
 
         @slot('extra')
 

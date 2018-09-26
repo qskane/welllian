@@ -25,7 +25,6 @@ class RegisterController extends Controller
 
     protected function validator(array $data)
     {
-
         $verificationCode = $data['mobile_verification_code'] ?? 0;
         $mobile = $data['mobile'] ?? 0;
 

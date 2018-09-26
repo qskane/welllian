@@ -10,8 +10,9 @@
             @endif
         </p>
         <p><span class="mr-1">{{__("media.description")}}:</span>{{$media->description}}</p>
-        <p><span class="mr-1">{{__("media.verification_code")}}
-                :</span><code>{{'<meta name="malllian-verification" content="'.$media->verification_key.'" />' }}</code>
+        <p>
+            <span class="mr-1">{{__("media.verification_code")}}:</span>
+            @include('components.contents.code',['code'=>'<meta name="malllian-verification" content="'.$media->verification_key.'" />'])
         </p>
         <p><span class="mr-1">{{__("media.verified")}}:</span>
             @include('components.contents.status',['status'=>$media->verified])
@@ -26,11 +27,9 @@
         <p><span class="mr-1">{{__("media.consume_bid")}}:</span>{{$media->consume_bid}}</p>
         <p><span class="mr-1">{{__("created_at")}}:</span>{{$media->created_at}}</p>
         <p>
-            <a href="{{route('user.media.edit',[Auth::id(),$media->id])}}">{{__('edit')}}</a>
-            @include('components.buttons.delete',[
-             'name'=>__('delete'),
-             'action'=>route('user.media.show',[Auth::id(),$media->id])
-             ])
+
+            @include('user.media._operations',['delete'=>true])
+
         </p>
 
     </div>

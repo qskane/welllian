@@ -2,7 +2,7 @@
     $media = $media ?? new \App\Models\Media();
 @endphp
 
-@component('components.form.layout',['action'=>$action])
+@component('components.form.layout',['action'=>$action,'method'=>$method??'POST'])
 
     @include('components.form.text',[
         'label'=>__('media.name'),

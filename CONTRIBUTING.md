@@ -7,3 +7,5 @@
 - delete media
 - 添加 breadcrumb
 - 主色调
+- 验证media
+

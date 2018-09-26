@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SaveMediaRequest;
+use App\Http\Requests\StoreMediaRequest;
+use App\Http\Requests\UpdateMediaRequest;
 use App\Models\Media;
-use Illuminate\Http\Request;
+use Exception;
+use GuzzleHttp\Client;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class MediaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+
     public function index()
     {
         $medias = Media::where('user_id', auth()->id())->paginate(10);
@@ -21,25 +22,13 @@ class MediaController extends Controller
         return view('user.media.index', compact('medias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('user.media.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param SaveMediaRequest $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(SaveMediaRequest $request)
+    public function store(StoreMediaRequest $request)
     {
-
         $media = new Media($request->getInputs());
         $media->setUserId();
         $media->setGenerateValues();
@@ -48,12 +37,6 @@ class MediaController extends Controller
         return redirect()->route('user.media.index', Auth::id())->with('status', true);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $media = Media::findOrFail($id);
@@ -61,12 +44,6 @@ class MediaController extends Controller
         return view('user.media.show', compact('media'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param $media
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $media = Media::findOrFail($id);
@@ -74,24 +51,19 @@ class MediaController extends Controller
         return view('user.media.edit', compact('media'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(UpdateMediaRequest $request, $id)
     {
-        //
+        $media = Media::findOrFail($id);
+
+        $media->update($request->getInputs());
+
+        $status = $media->save();
+
+        $route = $status ? 'user.media.show' : 'user.media.edit';
+
+        return redirect()->route($route, [Auth::id(), $media->id])->with('status', $status);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
 
@@ -112,11 +84,38 @@ class MediaController extends Controller
     {
         $media = Media::findOrFail($id);
 
-        // FIXME 验证domain key
-        $media->verified = true;
-        $media->save();
+        $base = "http://{$media->domain}";
+        $client = new Client([
+            'base_uri' => $base,
+            'timeout' => 5.0,
+        ]);
 
-        return redirect()->route('user.media.show', [Auth::id(), $media->id])->with('status', true);
+        $status = $requested = false;
+
+        try {
+            $response = $client->get('/');
+            $requested = true;
+        } catch (Exception $e) {
+            Log::info($e->getMessage(), ['url' => $base]);
+        }
+
+        if ($requested && $response->getStatusCode() === Response::HTTP_OK) {
+            if (strpos($response->getBody()->getContents(), $media->verification_key) !== false) {
+                $media->verified = true;
+                $media->save();
+                $status = true;
+            }
+        }
+
+        if ($status) {
+            $route = 'user.media.show';
+            $this->alertSuccess();
+        } else {
+            $route = 'user.media.verification';
+            $this->alertFail(__('media.verification_fail'));
+        }
+
+        return redirect()->route($route, [Auth::id(), $media->id]);
     }
 
 }

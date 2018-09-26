@@ -24,7 +24,6 @@ Route::group(['prefix' => 'user/{user}', 'as' => 'user.', 'middleware' => ['auth
 
     Route::get('/wallet', "WalletController@show")->name('wallet.show');
 
-
     Route::resource('media', 'MediaController');
     Route::get('/media/verification/{id}', 'MediaController@showVerificationForm')->name('media.verification');
     Route::post('/media/verification/{id}', 'MediaController@verification');

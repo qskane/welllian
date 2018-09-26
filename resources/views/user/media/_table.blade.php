@@ -26,11 +26,13 @@
             </td>
             <td>{{$media->consume_bid}}</td>
             <td>
-                <a href="{{route('user.media.show',[Auth::id(),$media->id])}}">{{__('show')}}</a>
-                <a href="{{route('user.media.edit',[Auth::id(),$media->id])}}">{{__('edit')}}</a>
-                @if(!$media->verified)
-                    <a href="{{route('user.media.verification',[Auth::id(),$media->id])}}">{{__('verification')}}</a>
-                @endif
+                {{--<a href="{{route('user.media.show',[Auth::id(),$media->id])}}">{{__('show')}}</a>--}}
+                {{--<a href="{{route('user.media.edit',[Auth::id(),$media->id])}}">{{__('edit')}}</a>--}}
+                {{--@if(!$media->verified)--}}
+                {{--<a href="{{route('user.media.verification',[Auth::id(),$media->id])}}">{{__('verification')}}</a>--}}
+                {{--@endif--}}
+
+                @include('user.media._operations')
             </td>
         </tr>
     @endforeach

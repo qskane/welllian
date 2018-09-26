@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
-class SaveMediaRequest extends FormRequest
+class StoreMediaRequest extends FormRequest
 {
     public function authorize()
     {
@@ -21,11 +21,21 @@ class SaveMediaRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'domain' => ['required', 'string', 'regex:/^(([a-zA-Z]{1})|([a-zA-Z]{1}[a-zA-Z]{1})|([a-zA-Z]{1}[0-9]{1})|([0-9]{1}[a-zA-Z]{1})|([a-zA-Z0-9][a-zA-Z0-9-_]{1,61}[a-zA-Z0-9]))\.([a-zA-Z]{2,6}|[a-zA-Z0-9-]{2,30}\.[a-zA-Z]{2,3})$/', 'unique:medias'],
+            'domain' => [
+                'required',
+                'string',
+                'regex:/^(([a-zA-Z]{1})|([a-zA-Z]{1}[a-zA-Z]{1})|([a-zA-Z]{1}[0-9]{1})|([0-9]{1}[a-zA-Z]{1})|([a-zA-Z0-9][a-zA-Z0-9-_]{1,61}[a-zA-Z0-9]))\.([a-zA-Z]{2,6}|[a-zA-Z0-9-]{2,30}\.[a-zA-Z]{2,3})$/',
+                Rule::unique('medias')->ignore($this->id()),
+            ],
             'promotion_url' => 'required|string|url',
             'logo' => 'nullable',
             'description' => 'nullable',
         ];
+    }
+
+    public function id()
+    {
+        return request()->route('medium', 0);
     }
 
 

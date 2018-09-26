@@ -3,7 +3,7 @@
 @endphp
 
 <form novalidate
-      method="{{$method}}"
+      method="POST"
       action="{{$action}}"
       @if($needsValidation ?? true) class="needs-validation" @endif
       @if($withFile ?? false) enctype="multipart/form-data" @endif
