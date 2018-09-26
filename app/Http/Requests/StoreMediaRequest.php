@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\BelongsToDomain;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -27,7 +28,12 @@ class StoreMediaRequest extends FormRequest
                 'regex:/^(([a-zA-Z]{1})|([a-zA-Z]{1}[a-zA-Z]{1})|([a-zA-Z]{1}[0-9]{1})|([0-9]{1}[a-zA-Z]{1})|([a-zA-Z0-9][a-zA-Z0-9-_]{1,61}[a-zA-Z0-9]))\.([a-zA-Z]{2,6}|[a-zA-Z0-9-]{2,30}\.[a-zA-Z]{2,3})$/',
                 Rule::unique('medias')->ignore($this->id()),
             ],
-            'promotion_url' => 'required|string|url',
+            'promotion_url' => [
+                'required',
+                'string',
+                'url',
+                new BelongsToDomain($this->get('domain')),
+            ],
             'logo' => 'nullable',
             'description' => 'nullable',
         ];

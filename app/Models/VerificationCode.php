@@ -12,9 +12,11 @@ class VerificationCode extends Model
 
     protected $fillable = ['verification', 'code'];
 
-    protected function overloaded($verification)
+    public function overloaded($verification)
     {
-        return (boolean)VerificationCode::where(compact('verification'))->where('created_at', '>', Carbon::make('-1 minute'))->count();
+        return (boolean)VerificationCode::where(compact('verification'))
+            ->where('created_at', '>', Carbon::make('-1 minute'))
+            ->count();
     }
 
 }

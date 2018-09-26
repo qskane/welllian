@@ -11,7 +11,7 @@ class VerificationCodeRequest extends FormRequest
 
     public function authorize()
     {
-        if (VerificationCode::overloaded($this->get('verification'))) {
+        if ((new VerificationCode)->overloaded($this->get('verification'))) {
             return false;
         }
 

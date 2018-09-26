@@ -27,9 +27,7 @@
         <p><span class="mr-1">{{__("media.consume_bid")}}:</span>{{$media->consume_bid}}</p>
         <p><span class="mr-1">{{__("created_at")}}:</span>{{$media->created_at}}</p>
         <p>
-
             @include('user.media._operations',['delete'=>true])
-
         </p>
 
     </div>

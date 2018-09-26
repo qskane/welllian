@@ -14,7 +14,6 @@ use Illuminate\Support\Facades\Log;
 class MediaController extends Controller
 {
 
-
     public function index()
     {
         $medias = Media::where('user_id', auth()->id())->paginate(10);
@@ -37,26 +36,53 @@ class MediaController extends Controller
         return redirect()->route('user.media.index', Auth::id())->with('status', true);
     }
 
-    public function show($id)
+    /**
+     * @param $user
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function show($user, $id)
     {
         $media = Media::findOrFail($id);
+
+        $this->authorize('view', $media);
 
         return view('user.media.show', compact('media'));
     }
 
-    public function edit($id)
+    /**
+     * @param $user
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function edit($user, $id)
     {
         $media = Media::findOrFail($id);
+
+        $this->authorize('update', $media);
 
         return view('user.media.edit', compact('media'));
     }
 
-    public function update(UpdateMediaRequest $request, $id)
+    /**
+     * @param UpdateMediaRequest $request
+     * @param $user
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function update(UpdateMediaRequest $request, $user, $id)
     {
         $media = Media::findOrFail($id);
 
-        $media->update($request->getInputs());
+        $this->authorize('restore', $media);
 
+        $originDomain = $media->domain;
+
+        $media->update($request->getInputs());
+        $media->verified = $request->get('domain') === $originDomain;
         $status = $media->save();
 
         $route = $status ? 'user.media.show' : 'user.media.edit';
@@ -64,25 +90,49 @@ class MediaController extends Controller
         return redirect()->route($route, [Auth::id(), $media->id])->with('status', $status);
     }
 
-    public function destroy($id)
-    {
-
-        // FIXME delete
-
-        dd(1111);
-        //
-    }
-
-    public function showVerificationForm($id)
+    /**
+     * @param $user
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy($user, $id)
     {
         $media = Media::findOrFail($id);
+
+        $this->authorize('restore', $media);
+
+        $status = $media->delete();
+
+        return redirect()->route('user.media.index', [Auth::id()])->with('status', $status);
+    }
+
+    /**
+     * @param $user
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function showVerificationForm($user, $id)
+    {
+        $media = Media::findOrFail($id);
+
+        $this->authorize('verification', $media);
 
         return view('user.media.verification', compact('media'));
     }
 
-    public function verification($id)
+    /**
+     * @param $user
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function verification($user, $id)
     {
         $media = Media::findOrFail($id);
+
+        $this->authorize('verification', $media);
 
         $base = "http://{$media->domain}";
         $client = new Client([

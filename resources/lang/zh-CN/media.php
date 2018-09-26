@@ -9,7 +9,7 @@ return [
     'logo' => 'LOGO图标',
     'description' => '描述',
     'verification_code' => '验证代码',
-    'same_domain_required' => '必须属于域名栏填写域名的链接',
+    'same_domain_required' => '必须属于域名栏填写域名的下属链接',
     'no_schema_and_path' => '请勿包含协议及路径',
     'verified' => '已验证',
     'providing' => '生产中',

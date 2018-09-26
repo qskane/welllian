@@ -13,7 +13,7 @@ class Media extends Model
 
     protected $table = 'medias';
 
-    protected $fillable = ['name', 'domain', 'promotion_url', 'logo', 'description', 'user_id', 'key', 'secret', 'verification_key'];
+    protected $guarded = [];
 
     public function setDomainAttribute($value)
     {
