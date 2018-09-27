@@ -10,6 +10,8 @@ class Wallet extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = ['user_id'];
+
     public function findOrFailByUser($id)
     {
         $wallet = Wallet::where('user_id', $id)->first();

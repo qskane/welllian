@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Models\Media;
 use App\Models\User;
+use App\Models\Wallet;
 use App\Policies\MediaPolicy;
 use App\Policies\UserPolicy;
+use App\Policies\WalletPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -18,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         User::class => UserPolicy::class,
         Media::class => MediaPolicy::class,
+        Wallet::class => WalletPolicy::class,
     ];
 
     /**

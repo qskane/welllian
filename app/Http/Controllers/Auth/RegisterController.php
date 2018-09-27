@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\Wallet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -60,6 +61,8 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
+        Wallet::create(['user_id' => $user->id]);
+
         $this->alertSuccess();
 
         return redirect($this->redirectTo);

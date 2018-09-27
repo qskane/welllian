@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+var mix = require('laravel-mix');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +11,11 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+// mix.js('resources/js/app.js', 'public/js')
+//     .sass('resources/sass/app.scss', 'public/css');
+
+mix.js('resources/js/league/league.js', 'public/js');
+
+if (process.env.NODE_ENV === 'production') {
+    mix.version();
+}
