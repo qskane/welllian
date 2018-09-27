@@ -15,11 +15,13 @@ class CreateSchemesTable extends Migration
     {
         Schema::create('schemes', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('media_id');
+            $table->unsignedInteger('user_id');
             $table->string('name');
             $table->string('container');
             $table->unsignedInteger('quantity')->default(0);
             $table->unsignedInteger('style_id');
-            $table->unsignedInteger('media_id');
+            $table->text('style');
             $table->unsignedInteger('effect_id');
             $table->timestamps();
             $table->softDeletes();

@@ -13,10 +13,13 @@ class CreateEffectsTable extends Migration
      */
     public function up()
     {
+        //  carousel (interval time, direction) / modal (delay)
+
         Schema::create('effects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            //  carousel (interval time, direction) / modal (delay)
+            $table->enum('type', ['modal', 'carousel']);
+            $table->unsignedInteger('delay');
             $table->timestamps();
         });
     }

@@ -19,13 +19,18 @@ Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
 
 
 Route::group(['prefix' => 'user/{user}', 'as' => 'user.', 'middleware' => ['auth']], function () {
-    Route::get('/', "ProfileController@show")->name('profile.edit');
-    Route::post('/', "ProfileController@update");
+    Route::get('/', "ProfileController@show");
+
+    Route::get('/profile', "ProfileController@show")->name('profile.edit');
+    Route::post('/profile', "ProfileController@update");
 
     Route::get('/wallet', "WalletController@show")->name('wallet.show');
 
     Route::resource('media', 'MediaController');
     Route::get('/media/verification/{id}', 'MediaController@showVerificationForm')->name('media.verification');
     Route::post('/media/verification/{id}', 'MediaController@verification');
-
+    Route::resource('schema', 'SchemaController');
+    Route::resource('style', 'StyleController');
+    Route::resource('effect', 'EffectController');
 });
+

@@ -13,10 +13,10 @@ class CreateStylesTable extends Migration
      */
     public function up()
     {
-        // styles
         Schema::create('styles', function (Blueprint $table) {
             $table->increments('id');
-
+            $table->string('name');
+            $table->text('css');
             $table->timestamps();
             $table->softDeletes();
         });
