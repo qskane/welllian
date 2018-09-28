@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Style extends Model
+class Template extends Model
 {
     use SoftDeletes;
+
+    protected $fillable = ['name', 'style', 'html', 'script'];
+
+
+
 }

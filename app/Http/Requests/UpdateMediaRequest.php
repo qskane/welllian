@@ -19,7 +19,7 @@ class UpdateMediaRequest extends StoreMediaRequest
     }
 
 
-    public function getInputs()
+    public function inputs()
     {
         return array_merge(
             parent::getInputs(),

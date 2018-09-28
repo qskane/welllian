@@ -24,7 +24,7 @@
         >
 
         @if($help ?? false)
-            <small id="{{$name}}}-help" class="form-text text-muted">{{$help}}</small>
+            <small id="{{$name}}}-help" class="form-text text-muted">{!! $help !!}</small>
         @endif
 
         <span class="invalid-feedback" role="alert">

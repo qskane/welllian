@@ -1,8 +1,8 @@
 <fieldset class="form-group">
     <div class="row">
-        <label class="col-form-label col-sm-12 col-md-4 pt-0 text-md-right">{{$label}}</label>
+        <label class="col-form-label col-sm-12 col-md-3 pt-0 text-md-right">{{$label}}</label>
 
-        <div class="col-sm-12 col-md-6">
+        <div class="col-sm-12 col-md-8">
             @foreach($options as $option)
                 <div class="form-check {{$inline ?? 'form-check-inline'}}">
                     <input type="radio"

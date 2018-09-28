@@ -10,9 +10,8 @@
 @php
     $leagues = [
         ['link'=>route('user.media.index',Auth::id()),'name'=>__('user.media_info'),'key'=>'media'],
-        ['link'=>route('user.schema.index',Auth::id()),'name'=>__('user.schema_info'),'key'=>'schema'],
-        ['link'=>route('user.style.index',Auth::id()),'name'=>__('user.style_info'),'key'=>'style'],
-        ['link'=>route('user.effect.index',Auth::id()),'name'=>__('user.effect_info'),'key'=>'effect'],
+        ['link'=>route('user.scheme.index',Auth::id()),'name'=>__('user.scheme_info'),'key'=>'scheme'],
+        ['link'=>route('user.template.index',Auth::id()),'name'=>__('user.template_info'),'key'=>'template'],
     ];
 @endphp
 @include('components.lists.list-link',['items'=>$leagues,'class'=>'mt-2','active'=>$active])

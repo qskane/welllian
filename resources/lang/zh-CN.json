@@ -6,7 +6,8 @@
   "show": "查看",
   "create": "创建",
   "delete": "删除",
-
+  "name": "名称",
+  "preview":"预览",
   "created_at": "创建于",
   "operation_need_confirm": "是否继续执行？",
   "start": "开始",

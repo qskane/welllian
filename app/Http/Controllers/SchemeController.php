@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Scheme;
 use Illuminate\Http\Request;
 
-class SchemaController extends Controller
+class SchemeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class SchemaController extends Controller
      */
     public function index()
     {
-        //
+        $schemes = Scheme::with('template')->paginate(10);
+
+        return view('user.scheme.index', compact('schemes'));
     }
 
     /**
@@ -23,13 +26,13 @@ class SchemaController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.scheme.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -40,7 +43,7 @@ class SchemaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -51,7 +54,7 @@ class SchemaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -62,8 +65,8 @@ class SchemaController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -74,7 +77,7 @@ class SchemaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

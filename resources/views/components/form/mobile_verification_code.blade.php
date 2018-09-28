@@ -1,8 +1,8 @@
 <div class="form-group row">
     <label for="password"
-           class="col-md-4 col-form-label text-md-right">{{ __('form.mobile_verification_code') }}</label>
+           class="col-md-3 col-form-label text-md-right">{{ __('form.mobile_verification_code') }}</label>
 
-    <div class="col-md-4">
+    <div class="col-md-5">
         <input id="mobile_verification_code"
                class="form-control {{ $errors->has('mobile_verification_code') ? ' is-invalid' : '' }}"
                name="mobile_verification_code"
@@ -14,7 +14,7 @@
         </span>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-md-3">
         <button id="btn-mobile-verification-code" type="button" class="btn btn-raised">{{__('send')}}</button>
     </div>
 </div>

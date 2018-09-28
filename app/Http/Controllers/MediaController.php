@@ -28,7 +28,7 @@ class MediaController extends Controller
 
     public function store(StoreMediaRequest $request)
     {
-        $media = new Media($request->getInputs());
+        $media = new Media($request->inputs());
         $media->setUserId();
         $media->setGenerateValues();
         $media->save();
@@ -81,7 +81,7 @@ class MediaController extends Controller
 
         $originDomain = $media->domain;
 
-        $media->update($request->getInputs());
+        $media->update($request->inputs());
         $media->verified = $request->get('domain') === $originDomain;
         $status = $media->save();
 

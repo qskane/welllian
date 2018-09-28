@@ -32,4 +32,5 @@ class Media extends Model
         $this->attributes['verification_key'] = str_random(32);
     }
 
+
 }

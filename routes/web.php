@@ -29,8 +29,7 @@ Route::group(['prefix' => 'user/{user}', 'as' => 'user.', 'middleware' => ['auth
     Route::resource('media', 'MediaController');
     Route::get('/media/verification/{id}', 'MediaController@showVerificationForm')->name('media.verification');
     Route::post('/media/verification/{id}', 'MediaController@verification');
-    Route::resource('schema', 'SchemaController');
-    Route::resource('style', 'StyleController');
-    Route::resource('effect', 'EffectController');
+    Route::resource('scheme', 'SchemeController');
+    Route::resource('template', 'TemplateController');
 });
 

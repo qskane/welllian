@@ -29,4 +29,10 @@ class User extends Authenticatable
     ];
 
 
+    public function medias()
+    {
+        return $this->hasMany(Media::class);
+    }
+
+
 }

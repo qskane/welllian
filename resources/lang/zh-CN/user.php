@@ -6,10 +6,7 @@ return [
     'profile_info' => '个人信息',
     'wallet_info' => '钱包信息',
     'media_info' => '媒体信息',
-    'schema_info' => '方案信息',
-    'style_info' => '样式信息',
-    'effect_info' => '效果信息',
-
+    'scheme_info' => '方案信息',
+    'template_info' => '模板信息',
     'media_create' => '新建媒体',
-
 ];

@@ -45,7 +45,7 @@ class StoreMediaRequest extends FormRequest
     }
 
 
-    public function getInputs()
+    public function inputs()
     {
         return [
             'name' => $this->get('name'),
