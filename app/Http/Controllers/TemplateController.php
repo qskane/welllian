@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Template;
+use App\Services\Views\BladeCompiler;
 
 class TemplateController extends Controller
 {

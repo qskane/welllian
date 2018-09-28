@@ -21,6 +21,7 @@ class CreateSchemesTable extends Migration
             $table->string('container');
             $table->unsignedInteger('quantity')->default(0);
             $table->unsignedInteger('template_id');
+            $table->boolean('running')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

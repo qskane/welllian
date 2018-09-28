@@ -15,7 +15,7 @@
     </div>
 
     <div class="col-md-3">
-        <button id="btn-mobile-verification-code" type="button" class="btn btn-raised">{{__('send')}}</button>
+        <button id="btn-mobile-verification-code" type="button" class="btn btn-secondary">{{__('send')}}</button>
     </div>
 </div>
 

@@ -1,4 +1,4 @@
-@component('user._layout',['active'=>'template','header'=>__('user.scheme_info')])
+@component('user._layout',['active'=>'scheme','header'=>__('user.scheme_info')])
 
     @if($schemes->count())
         <div style="overflow-x: scroll">

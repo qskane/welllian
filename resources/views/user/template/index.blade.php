@@ -1,8 +1,8 @@
-@component('user._layout',['active'=>'schema','header'=>__('user.template_info')])
+@component('user._layout',['active'=>'template','header'=>__('user.template_info')])
 
     @if($templates->count())
         <div style="overflow-x: scroll">
-            @include('user.schema._table')
+            @include('user.template._preview')
         </div>
     @else
         @include('components.contents.empty')
