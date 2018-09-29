@@ -4,7 +4,7 @@
         [__('name'), $media->name],
         [__('media.domain'), $media->domain],
         [__('media.promotion_url'), $media->promotion_url],
-        [__('media.logo'), $media->logo ? "<img src='{$media->logo}' width='50' height='50'/>" : ''],
+        [__('media.logo'), $media->logo ? "<img src='{$media->logo}' style='max-width:100px;'/>" : ''],
         [__('media.description'), $media->description],
         [__('media.verification_code'), $media->verification_key, 'CODE'],
         [__('media.verified'), $media->verified, 'STATUS'],

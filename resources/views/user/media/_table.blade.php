@@ -1,7 +1,7 @@
 <table class="table" style="min-width: 700px">
     <thead>
     <tr>
-        <th>{{__('media.name')}}</th>
+        <th>{{__('name')}}</th>
         <th>{{__('media.domain')}}</th>
         <th>{{__('media.verified')}}</th>
         <th>{{__('media.providing')}}</th>
