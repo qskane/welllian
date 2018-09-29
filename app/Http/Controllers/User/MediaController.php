@@ -34,7 +34,7 @@ class MediaController extends Controller
         $media->setGenerateValues();
         $media->save();
 
-        return redirect()->route('user.media.index', Auth::id())->with('status', true);
+        return redirect()->route('user.media.index')->with('status', true);
     }
 
     /**
@@ -75,7 +75,7 @@ class MediaController extends Controller
     {
         $media = Media::findOrFail($id);
 
-        $this->authorize('restore', $media);
+        $this->authorize('update', $media);
 
         $originDomain = $media->domain;
 
@@ -85,7 +85,7 @@ class MediaController extends Controller
 
         $route = $status ? 'user.media.show' : 'user.media.edit';
 
-        return redirect()->route($route, [Auth::id(), $media->id])->with('status', $status);
+        return redirect()->route($route, $media->id)->with('status', $status);
     }
 
     /**
@@ -97,11 +97,11 @@ class MediaController extends Controller
     {
         $media = Media::findOrFail($id);
 
-        $this->authorize('restore', $media);
+        $this->authorize('delete', $media);
 
         $status = $media->delete();
 
-        return redirect()->route('user.media.index', [Auth::id()])->with('status', $status);
+        return redirect()->route('user.media.index')->with('status', $status);
     }
 
     /**
@@ -160,7 +160,7 @@ class MediaController extends Controller
             $this->alertFail(__('media.verification_fail'));
         }
 
-        return redirect()->route($route, [Auth::id(), $media->id]);
+        return redirect()->route($route, $media->id);
     }
 
 }

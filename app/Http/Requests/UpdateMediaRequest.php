@@ -22,7 +22,7 @@ class UpdateMediaRequest extends StoreMediaRequest
     public function inputs()
     {
         return array_merge(
-            parent::getInputs(),
+            parent::inputs(),
             [
                 'providing' => (boolean)$this->get('providing'),
                 'consuming' => (boolean)$this->get('consuming'),

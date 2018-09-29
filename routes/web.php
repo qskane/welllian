@@ -28,6 +28,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
     Route::resource('media', 'MediaController');
     Route::get('/media/verification/{id}', 'MediaController@showVerificationForm')->name('media.verification');
     Route::post('/media/verification/{id}', 'MediaController@verification');
+
     Route::resource('scheme', 'SchemeController');
     Route::resource('template', 'TemplateController');
 });

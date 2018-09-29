@@ -5,11 +5,11 @@
     'options'=>[
         [
             'name'=>__('form.yes'),
-            'value'=>1
+            'value'=> 1
         ],
         [
             'name'=>__('form.no'),
-            'value'=>0
+            'value'=> 0
         ],
     ]
 ])

@@ -23,11 +23,27 @@
             $quantities[] = ['name'=>$i,'value'=>$i];
         }
     @endphp
-    @include('components.form.select',['label'=>__('scheme.quantity'),'name'=>'quantity','options'=>$quantities,'help'=>__('scheme.quantity_explain')])
+    @include('components.form.select',[
+        'label'=>__('scheme.quantity'),
+        'name'=>'quantity',
+        'options'=>$quantities,
+        'help'=>__('scheme.quantity_explain'),
+        'selected'=>$scheme->quantity
+    ])
 
-    @include('components.form.select',['label'=>__('media.name'),'name'=>'media_id','options'=>auth()->user()->verifiedMedias()])
+    @include('components.form.select',[
+        'label'=>__('media.name'),
+        'name'=>'media_id',
+        'options'=>auth()->user()->verifiedMedias(),
+        'selected'=>$scheme->media_id
+    ])
 
-    @include('components.form.select',['label'=>__('template.name'),'name'=>'template_id','options'=>\App\Models\Template::all()])
+    @include('components.form.select',[
+        'label'=>__('template.name'),
+        'name'=>'template_id',
+        'options'=>\App\Models\Template::all(),
+        'selected'=>$scheme->template_id
+    ])
 
     @include('components.form.radio_determine',[
         'label'=>__('scheme.running'),

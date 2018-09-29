@@ -9,4 +9,8 @@
         [__('scheme.running'),$scheme->running,'STATUS'],
     ]])
 
+    <div class="text-center">
+        @include('user.scheme._operations',['show'=>false])
+    </div>
+
 @endcomponent

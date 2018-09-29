@@ -4,7 +4,7 @@
 
 <div class="form-group row">
     <label for="{{$name}}"
-           class="col-sm-12 col-md-3 col-form-label text-md-right"
+           class="col-sm-12 col-md-3 col-form-label text-md-right {{!$required?'text-secondary':''}}"
     >{{$label??''}}
         @if(!$required)
             <span class="ml-1">({{__('form.optional')}})</span>

@@ -23,7 +23,7 @@ class StoreSchemeRequest extends FormRequest
             'quantity' => ['required', 'integer', "between:1,$quantityMax"],
             'media_id' => 'required|integer|exists:medias,id',
             'template_id' => 'required|integer|exists:templates,id',
-            'running'=>'required|boolean'
+            'running' => 'required|boolean',
         ];
     }
 
@@ -36,6 +36,7 @@ class StoreSchemeRequest extends FormRequest
             'quantity' => (int)$this->get('quantity'),
             'media_id' => (int)$this->get('media_id'),
             'template_id' => (int)$this->get('template_id'),
+            'running' => (boolean)$this->get('running'),
         ];
     }
 

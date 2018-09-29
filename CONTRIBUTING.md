@@ -7,6 +7,7 @@
 - 添加 breadcrumb
 - 主色调
 - sync template from github webhook
+- scheme unique container name
 
 ## CONFIG
 

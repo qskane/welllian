@@ -1,6 +1,6 @@
 @component('user.layout',['active'=>'media','header'=>__('user.media_info')])
 
-    <ol>
+    <ol >
         <li>
             <p>
                 请复制以下代码添加到网页<b class="ml-1 mr-1">https://{{$media->domain}}/</b>
@@ -10,7 +10,9 @@
                 标签之间
             </p>
 
-            @include('components.contents.code',['code'=>'<meta name="malllian-verification" content="'.$media->verification_key.'" />'])
+            <p>
+                @include('components.contents.code',['code'=>'<meta name="malllian-verification" content="'.$media->verification_key.'" />'])
+            </p>
         </li>
         <li>
             @include('components.buttons.post',[
