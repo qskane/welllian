@@ -1,17 +1,21 @@
-<a href="{{route('user.media.show',[Auth::id(),$media->id])}}">{{__('show')}}</a>
-<a href="{{route('user.media.edit',[Auth::id(),$media->id])}}">{{__('edit')}}</a>
+<div class="btn-group">
+    @if($show??true)
+        <a class="btn btn-outline-primary btn-sm" href="{{route('user.media.show',[$media->id])}}">{{__('show')}}</a>
+    @endif
 
-@if(!$media->verified)
-    <a href="{{route('user.media.verification',[Auth::id(),$media->id])}}">{{__('verification')}}</a>
-@endif
+    <a class="btn btn-outline-primary btn-sm" href="{{route('user.media.edit',[$media->id])}}">{{__('edit')}}</a>
 
-@if($delete??false)
+    @if(!$media->verified)
+        <a class="btn btn-outline-primary btn-sm"
+           href="{{route('user.media.verification',[$media->id])}}">{{__('verification')}}</a>
+    @endif
+
     @include('components.buttons.delete',[
     'name'=>__('delete'),
-    'action'=>route('user.media.show',[Auth::id(),$media->id])
+    'action'=>route('user.media.show',[$media->id])
     ])
-@endif
 
+</div>
 
 
 

@@ -1,7 +1,8 @@
 <div class="form-group row">
     <label class="col-sm-12 col-md-3 col-form-label text-md-right" for="select-{{$name}}">{{$label}}</label>
     <div class=" col-sm-12 col-md-8">
-        <select class="form-control" name="{{$name}}" id="select-{{$name}}">
+        <select class="form-control {{ $errors->has($name) ? ' is-invalid' : '' }}" name="{{$name}}"
+                id="select-{{$name}}">
             @if($slot ?? false)
                 {{$slot}}
             @else
@@ -20,7 +21,6 @@
                 @endforeach
             @endif
         </select>
-
         @if($help ?? false)
             <small id="{{$name}}}-help" class="form-text text-muted">{!! $help !!}</small>
         @endif

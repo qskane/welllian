@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\OwnerScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +15,13 @@ class Media extends Model
     protected $table = 'medias';
 
     protected $guarded = [];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new OwnerScope);
+    }
 
     public function setDomainAttribute($value)
     {
@@ -32,5 +40,9 @@ class Media extends Model
         $this->attributes['verification_key'] = str_random(32);
     }
 
+    public function scopeVerified($query)
+    {
+        return $query->where('verified', true);
+    }
 
 }

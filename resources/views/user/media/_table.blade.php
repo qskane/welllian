@@ -26,7 +26,6 @@
             </td>
             <td>{{$media->consume_bid}}</td>
             <td>
-
                 @include('user.media._operations')
             </td>
         </tr>

@@ -1,4 +1,4 @@
-@component('user._layout',['active'=>'media','header'=>__('user.media_info')])
+@component('user.layout',['active'=>'media','header'=>__('user.media_info')])
 
     <ol>
         <li>
@@ -15,7 +15,7 @@
         <li>
             @include('components.buttons.post',[
                 'name'=>__('media.start_verification'),
-                'action'=>route('user.media.verification',[Auth::id(),$media->id])
+                'action'=>route('user.media.verification',[$media->id])
             ])
         </li>
     </ol>

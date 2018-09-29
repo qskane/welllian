@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMediaRequest;
 use App\Http\Requests\UpdateMediaRequest;
 use App\Models\Media;
@@ -16,7 +17,7 @@ class MediaController extends Controller
 
     public function index()
     {
-        $medias = Media::where('user_id', auth()->id())->paginate(10);
+        $medias = Media::paginate(10);
 
         return view('user.media.index', compact('medias'));
     }
@@ -37,12 +38,11 @@ class MediaController extends Controller
     }
 
     /**
-     * @param $user
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function show($user, $id)
+    public function show($id)
     {
         $media = Media::findOrFail($id);
 
@@ -52,12 +52,11 @@ class MediaController extends Controller
     }
 
     /**
-     * @param $user
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function edit($user, $id)
+    public function edit($id)
     {
         $media = Media::findOrFail($id);
 
@@ -68,12 +67,11 @@ class MediaController extends Controller
 
     /**
      * @param UpdateMediaRequest $request
-     * @param $user
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(UpdateMediaRequest $request, $user, $id)
+    public function update(UpdateMediaRequest $request, $id)
     {
         $media = Media::findOrFail($id);
 
@@ -91,12 +89,11 @@ class MediaController extends Controller
     }
 
     /**
-     * @param $user
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function destroy($user, $id)
+    public function destroy($id)
     {
         $media = Media::findOrFail($id);
 
@@ -108,12 +105,11 @@ class MediaController extends Controller
     }
 
     /**
-     * @param $user
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function showVerificationForm($user, $id)
+    public function showVerificationForm($id)
     {
         $media = Media::findOrFail($id);
 
@@ -123,12 +119,11 @@ class MediaController extends Controller
     }
 
     /**
-     * @param $user
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function verification($user, $id)
+    public function verification($id)
     {
         $media = Media::findOrFail($id);
 

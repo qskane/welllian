@@ -1,4 +1,4 @@
-@component('user._layout',['active'=>'media','header'=>__('user.media_info')])
+@component('user.layout',['active'=>'media','header'=>__('user.media_info')])
 
     @if($medias->count())
         <div style="overflow-x: scroll">
@@ -9,9 +9,7 @@
     @endif
 
     @slot('footer')
-        <a class="btn btn-primary" href="{{route('user.media.create',Auth()->id())}}">
-            {{__('user.media_create')}}
-        </a>
+        @include('components.buttons.create',['link'=>route('user.media.create')])
     @endslot
 
 @endcomponent

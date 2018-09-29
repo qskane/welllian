@@ -1,4 +1,4 @@
-@component('user._layout',['active'=>'scheme','header'=>__('user.scheme_info')])
+@component('user.layout',['active'=>'scheme','header'=>__('user.scheme_info')])
 
     @if($schemes->count())
         <div style="overflow-x: scroll">
@@ -9,9 +9,7 @@
     @endif
 
     @slot('footer')
-        <a class="btn btn-primary" href="{{route('user.scheme.create',Auth()->id())}}">
-            {{__('scheme.create')}}
-        </a>
+        @include('components.buttons.create',['link'=>route('user.scheme.create')])
     @endslot
 
 @endcomponent

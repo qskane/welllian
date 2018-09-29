@@ -34,5 +34,9 @@ class User extends Authenticatable
         return $this->hasMany(Media::class);
     }
 
+    public function verifiedMedias()
+    {
+        return Media::verified()->get();
+    }
 
 }

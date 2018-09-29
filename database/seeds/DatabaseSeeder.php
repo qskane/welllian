@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             MallsTableSeeder::class,
             StoresTableSeeder::class,
             ProductsTableSeeder::class,
+            TemplateSeeder::class,
         ]);
 
     }

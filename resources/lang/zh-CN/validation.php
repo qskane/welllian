@@ -174,5 +174,9 @@ return [
         'domain' => '域名',
         'promotion_url' => '推广链接',
         'logo' => 'LOGO图标',
+        'container' => '容器',
+        'quantity' => '数量',
+        'media_id' => '媒体',
+        'template_id' => '模版',
     ],
 ];

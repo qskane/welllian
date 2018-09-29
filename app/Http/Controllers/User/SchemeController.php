@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSchemeRequest;
 use App\Models\Scheme;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SchemeController extends Controller
 {
@@ -32,12 +35,16 @@ class SchemeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param StoreSchemeRequest $request
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StoreSchemeRequest $request)
     {
-        //
+        $scheme = new Scheme($request->inputs());
+        $scheme->user_id = Auth::id();
+        $status = $scheme->save();
+
+        return redirect()->route('user.scheme.show', $scheme->id)->with(compact('status'));
     }
 
     /**
@@ -48,7 +55,9 @@ class SchemeController extends Controller
      */
     public function show($id)
     {
-        //
+        $scheme = Scheme::findOrFail($id);
+
+        return view('user.scheme.show', compact('scheme'));
     }
 
     /**

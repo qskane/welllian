@@ -1,6 +1,14 @@
 @extends('layouts.app')
 @section('content')
 
+    <style>
+        #10{
+            color:red;
+        }
+    </style>
+
+    <p id="10">name111</p>
+
 
     {{--<style type="text/css">--}}
     {{--.league-container {--}}
@@ -47,54 +55,54 @@
     {{--}--}}
 
     {{--</style>--}}
-    <style>
-        .league-container {
-            margin: 0 auto;
-            width: 100%;
-            list-style: none;
-        }
+    {{--<style>--}}
+        {{--.league-container {--}}
+            {{--margin: 0 auto;--}}
+            {{--width: 100%;--}}
+            {{--list-style: none;--}}
+        {{--}--}}
 
-        .league-item-container {
-            float: left;
-            padding: 0 15px;
-            width: 30%;
-            height: 200px;
-            box-sizing: border-box;
-        }
-        .league-item-container img{
+        {{--.league-item-container {--}}
+            {{--float: left;--}}
+            {{--padding: 0 15px;--}}
+            {{--width: 30%;--}}
+            {{--height: 200px;--}}
+            {{--box-sizing: border-box;--}}
+        {{--}--}}
+        {{--.league-item-container img{--}}
 
-            width: 80px;
+            {{--width: 80px;--}}
 
-        }
+        {{--}--}}
 
-        .league-item-description {
-            word-wrap: break-word;
-            word-break: break-all;
-        }
-    </style>
+        {{--.league-item-description {--}}
+            {{--word-wrap: break-word;--}}
+            {{--word-break: break-all;--}}
+        {{--}--}}
+    {{--</style>--}}
 
 
 
-    <ul class="league-container">
-        @foreach([1,2,3,4,5,1,1,1,1,1,1,1] as $i)
-            @php
-                $item = [
-                    'name'=>'fake name 1',
-                    'promotion_url'=>'http://mallian-dev.com',
-                    'logo'=>'/img/googlelogo_color_272x92dp.png',
-                    'description'=>'Unsatisfied glasses can be exchanged or refunded within 30 days of receiving. '
-                ];
-            @endphp
+    {{--<ul class="league-container">--}}
+        {{--@foreach([1,2,3,4,5,1,1,1,1,1,1,1] as $i)--}}
+            {{--@php--}}
+                {{--$item = [--}}
+                    {{--'name'=>'fake name 1',--}}
+                    {{--'promotion_url'=>'http://mallian-dev.com',--}}
+                    {{--'logo'=>'/img/googlelogo_color_272x92dp.png',--}}
+                    {{--'description'=>'Unsatisfied glasses can be exchanged or refunded within 30 days of receiving. '--}}
+                {{--];--}}
+            {{--@endphp--}}
 
-            <a href="{{$item['promotion_url']}}">
-                <li class="league-item-container">
-                    <img src="{{$item['logo']}}" class="league-item-logo"/>
-                    <p class="league-item-name">Google</p>
-                    <small class="league-item-description">{{str_random(mt_rand(10,50))}}</small>
-                </li>
-            </a>
-        @endforeach
-    </ul>
+            {{--<a href="{{$item['promotion_url']}}">--}}
+                {{--<li class="league-item-container">--}}
+                    {{--<img src="{{$item['logo']}}" class="league-item-logo"/>--}}
+                    {{--<p class="league-item-name">Google</p>--}}
+                    {{--<small class="league-item-description">{{str_random(mt_rand(10,50))}}</small>--}}
+                {{--</li>--}}
+            {{--</a>--}}
+        {{--@endforeach--}}
+    {{--</ul>--}}
 
 
     {{--@push('scripts')--}}

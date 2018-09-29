@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Models\Wallet;
+use Illuminate\Support\Facades\Auth;
 
 class WalletController extends Controller
 {
@@ -12,9 +14,9 @@ class WalletController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function show($id)
+    public function show()
     {
-        $wallet = (new Wallet)->findOrFailByUser($id);
+        $wallet = (new Wallet)->findOrFailByUser(Auth::id());
 
         $this->authorize('view', $wallet);
 

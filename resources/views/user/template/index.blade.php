@@ -1,4 +1,4 @@
-@component('user._layout',['active'=>'template','header'=>__('user.template_info')])
+@component('user.layout',['active'=>'template','header'=>__('user.template_info')])
 
     @if($templates->count())
         <div style="overflow-x: scroll">

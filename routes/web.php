@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', "HomeController@index")->name('home');
-Route::get('/test', "HomeController@test")->name('test');
+Route::get('/test', "TestController@index")->name('test');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -18,9 +18,8 @@ Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
 });
 
 
-Route::group(['prefix' => 'user/{user}', 'as' => 'user.', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
     Route::get('/', "ProfileController@show");
-
     Route::get('/profile', "ProfileController@show")->name('profile.edit');
     Route::post('/profile', "ProfileController@update");
 

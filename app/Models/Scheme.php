@@ -9,6 +9,8 @@ class Scheme extends Model
 {
     use SoftDeletes;
 
+    protected $fillable = ['user_id', 'name', 'container', 'quantity', 'media_id', 'template_id','running'];
+
     public function user()
     {
         return $this->hasOne(User::class);
@@ -16,12 +18,18 @@ class Scheme extends Model
 
     public function template()
     {
-        return $this->hasOne(Template::class);
+        return $this->belongsTo(Template::class);
     }
 
     public function media()
     {
-        return $this->hasOne(Media::class);
+        return $this->belongsTo(Media::class);
     }
+
+    public function getRunning($value)
+    {
+        return (boolean)$value;
+    }
+
 
 }
