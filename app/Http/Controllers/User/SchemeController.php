@@ -44,7 +44,6 @@ class SchemeController extends Controller
         $scheme->user_id = Auth::id();
         $status = $scheme->save();
 
-
         return redirect()->route('user.scheme.show', $scheme->id)->with(compact('status'));
     }
 

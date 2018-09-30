@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Scopes\OwnerScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 
 class Wallet extends Model
 {
@@ -12,14 +12,11 @@ class Wallet extends Model
 
     protected $fillable = ['user_id'];
 
-    public function findOrFailByUser($id)
+    protected static function boot()
     {
-        $wallet = Wallet::where('user_id', $id)->first();
-        if (!$wallet) {
-            abort(404);
-        }
+        parent::boot();
 
-        return $wallet;
+        static::addGlobalScope(new OwnerScope);
     }
 
 }

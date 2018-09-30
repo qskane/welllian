@@ -9,7 +9,6 @@ use App\Models\Media;
 use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class MediaController extends Controller
