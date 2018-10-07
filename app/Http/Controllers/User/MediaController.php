@@ -16,7 +16,7 @@ class MediaController extends Controller
 
     public function index()
     {
-        $medias = Media::paginate(10);
+        $medias = Media::owner()->paginate(10);
 
         return view('user.media.index', compact('medias'));
     }
@@ -43,7 +43,7 @@ class MediaController extends Controller
      */
     public function show($id)
     {
-        $media = Media::findOrFail($id);
+        $media = Media::owner()->findOrFail($id);
 
         $this->authorize('view', $media);
 
@@ -57,7 +57,7 @@ class MediaController extends Controller
      */
     public function edit($id)
     {
-        $media = Media::findOrFail($id);
+        $media = Media::owner()->findOrFail($id);
 
         $this->authorize('update', $media);
 
@@ -72,7 +72,7 @@ class MediaController extends Controller
      */
     public function update(UpdateMediaRequest $request, $id)
     {
-        $media = Media::findOrFail($id);
+        $media = Media::owner()->findOrFail($id);
 
         $this->authorize('update', $media);
 
@@ -94,7 +94,7 @@ class MediaController extends Controller
      */
     public function destroy($id)
     {
-        $media = Media::findOrFail($id);
+        $media = Media::owner()->findOrFail($id);
 
         $this->authorize('delete', $media);
 
@@ -110,7 +110,7 @@ class MediaController extends Controller
      */
     public function showVerificationForm($id)
     {
-        $media = Media::findOrFail($id);
+        $media = Media::owner()->findOrFail($id);
 
         $this->authorize('verification', $media);
 
@@ -124,7 +124,7 @@ class MediaController extends Controller
      */
     public function verification($id)
     {
-        $media = Media::findOrFail($id);
+        $media = Media::owner()->findOrFail($id);
 
         $this->authorize('verification', $media);
 

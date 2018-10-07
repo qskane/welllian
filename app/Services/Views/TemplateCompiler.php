@@ -12,11 +12,11 @@ class TemplateCompiler
     /**
      * @param $template
      * @param array $data
-     * @param null $container
+     * @param $container
      * @return mixed
      * @throws Exception
      */
-    public function make($template, $data = [], $container = null)
+    public function make($template, $container, $data = [])
     {
         if ($template instanceof Template) {
             $stub = $template->toString();
@@ -26,7 +26,6 @@ class TemplateCompiler
             throw new Exception('not support type of template');
         }
 
-        $container = $container ?? str_random(6);
         $vars = array_merge(compact('container'), $data);
 
         return app(BladeCompiler::class)->make($stub, $vars);

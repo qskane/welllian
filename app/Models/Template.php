@@ -12,14 +12,27 @@ class Template extends Model
 
     protected $fillable = ['name', 'style', 'html', 'script'];
 
+    protected $container;
+
     public function toString()
     {
         return $this->style . $this->html . $this->script;
     }
 
-    public function toCompiled($data = [], $container = null)
+    public function toCompiled($container, $data = [])
     {
-        return app(TemplateCompiler::class)->make($this, $data, $container);
+        return app(TemplateCompiler::class)->make($this, $container, $data);
+    }
+
+    public function setContainer($container = null, $type = 'id')
+    {
+        if (is_null($container)) {
+            $container = str_random(5);
+        }
+        $types = ['id' => '#', 'class' => '.'];
+        $this->container = $types[$type] . $container;
+
+        return $this;
     }
 
 }

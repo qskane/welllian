@@ -3,37 +3,39 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Resources\SchemeResource;
+use App\Models\Media;
+use App\Models\Scheme;
+use App\Models\Template;
+use App\Services\Views\TemplateCompiler;
+use Illuminate\Contracts\View\Factory;
+
 class TestController extends Controller
 {
 
     public function index()
     {
-        $this->regex();
+        $template = Template::find(4);
+
+        $container = 'fake';
+        $medias = Media::all();
+        $data = ['items' => $medias->toArray()];
+
+        $r = app(TemplateCompiler::class)->make($template, $container, $data);
+
+
+        //        $key = '867r5upedpd0cylx';
+        //
+        //        $media = Media::select('id')->key($key)->firstOrFail();
+        //
+        //        $schemes = Scheme::with(['template'])->mediaId($media->id)->get();
+        //
+        //        return SchemeResource::collection($schemes);
     }
 
-    public function regex()
+    public function view()
     {
-
-        $a = [
-            [__('name'), $media->name],
-            [__('media.domain'), $media->domain],
-            [__('media.promotion_url'), $media->promotion_url],
-            [__('media.logo'), $media->logo ? "<img src='{$media->logo}' width='50' height='50'/>" : ''],
-            [__('media.description'), $media->description],
-            [__('media.verification_code'), $media->verification_key, 'CODE'],
-            [__('media.verified'), $media->verified, 'STATUS'],
-            [__('media.providing'), $media->providing, 'STATUS'],
-            [__('media.consuming'), $media->consuming, 'STATUS'],
-            [__('media.consume_bid'), $media->consume_bid],
-            [__('created_at'), $media->created_at],
-
-        ];
-        $regex = '/^[#\.]{1}[a-zA-Z0-9]{1}[a-zA-Z0-9_-]*[a-zA-Z0-9]{1}$/';
-        $str = '##abcd';
-
-        $r = preg_match($regex, $str);
-        dd($r);
-
-        return view('test');
+        return view('test.index');
     }
+
 }

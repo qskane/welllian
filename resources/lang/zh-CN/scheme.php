@@ -7,4 +7,5 @@ return [
     'quantity' => '数量',
     'quantity_explain' => '每次显示内容的数量',
     'running' => '运行中',
+    'install_code'=>'安装代码'
 ];

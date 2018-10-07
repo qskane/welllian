@@ -78,14 +78,27 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 (function () {
   console.log('thrid pard js loaded');
-  console.log(window.league.q);
 
   var http = __webpack_require__(2);
 
+  var config = {
+    root: 'http://malllian-dev.com'
+  };
+
   var routes = {
     create: function create(value) {
-      http.get('https://service.firmooinc.com/stateless/visitor/scheme', function (response) {
-        console.log(response, JSON.parse(response));
+      http.get(config.root + '/api/media/' + value, function (response) {
+        var schemes = JSON.parse(response).data;
+        if (schemes.length === 0) {
+          return;
+        }
+
+        schemes.map(function (scheme) {
+          var container = document.getElementById(scheme.container);
+          if (container !== null) {
+            container.innerHTML = scheme.template;
+          }
+        });
       });
     }
   };

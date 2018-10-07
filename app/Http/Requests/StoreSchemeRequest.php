@@ -19,7 +19,7 @@ class StoreSchemeRequest extends FormRequest
 
         return [
             'name' => 'required|string',
-            'container' => ['required', 'string', 'regex:/^[#\.]{1}[a-zA-Z]{1}[a-zA-Z0-9_-]*$/'],
+            'container' => ['required', 'string', 'regex:/^[a-zA-Z]{1}[a-zA-Z0-9_-]*$/'],
             'quantity' => ['required', 'integer', "between:1,$quantityMax"],
             'media_id' => 'required|integer|exists:medias,id',
             'template_id' => 'required|integer|exists:templates,id',

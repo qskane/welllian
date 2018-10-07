@@ -9,7 +9,7 @@ class Scheme extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['user_id', 'name', 'container', 'quantity', 'media_id', 'template_id','running'];
+    protected $fillable = ['user_id', 'name', 'container', 'quantity', 'media_id', 'template_id', 'running'];
 
     public function user()
     {
@@ -29,6 +29,11 @@ class Scheme extends Model
     public function getRunning($value)
     {
         return (boolean)$value;
+    }
+
+    public function scopeMediaId($query, $mediaId)
+    {
+        return $query->where('media_id', $mediaId);
     }
 
 

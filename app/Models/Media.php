@@ -16,11 +16,9 @@ class Media extends Model
 
     protected $guarded = [];
 
-    protected static function boot()
+    public function scopeOwner($query)
     {
-        parent::boot();
-
-        static::addGlobalScope(new OwnerScope);
+        return $query->where('user_id', Auth::id());
     }
 
     public function setDomainAttribute($value)
@@ -43,6 +41,11 @@ class Media extends Model
     public function scopeVerified($query)
     {
         return $query->where('verified', true);
+    }
+
+    public function scopeKey($query, $key)
+    {
+        return $query->where('key', $key);
     }
 
 }

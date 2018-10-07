@@ -14,4 +14,11 @@ class TemplateController extends Controller
         return view('user.template.index', compact('templates'));
     }
 
+    public function show($id)
+    {
+        $template = Template::findOrFail($id);
+
+        return view('user.template.show', compact('template'));
+    }
+
 }

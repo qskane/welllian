@@ -3,6 +3,7 @@
 namespace App\Services\Views;
 
 
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Blade;
 
 class BladeCompiler
@@ -19,7 +20,7 @@ class BladeCompiler
     {
         $generated = Blade::compileString($str);
 
-        ob_start() and extract($args, EXTR_SKIP);
+        ob_start() and extract(array_merge(['__env' => app(Factory::class)], $args), EXTR_SKIP);
 
         // We'll include the view contents for parsing within a catcher
         // so we can avoid any WSOD errors. If an exception occurs we

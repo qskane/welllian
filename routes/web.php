@@ -1,7 +1,9 @@
 <?php
 
 Route::get('/', "HomeController@index")->name('home');
+
 Route::get('/test', "TestController@index")->name('test');
+Route::get('/test/view', "TestController@view")->name('test.view');
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
@@ -30,6 +32,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
     Route::post('/media/verification/{id}', 'MediaController@verification');
 
     Route::resource('scheme', 'SchemeController');
-    Route::resource('template', 'TemplateController');
-});
+    Route::get('template', 'TemplateController@index')->name('template.index');
+    Route::get('template/{id}', 'TemplateController@show')->name('template.show');
 
+});

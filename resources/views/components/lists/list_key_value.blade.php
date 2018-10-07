@@ -14,6 +14,9 @@
                         @case('STATUS')
                         @include('components.contents.status',['status'=>(boolean)$item[1]])
                         @break
+                        @case('TEXTAREA')
+                        <textarea class="form-control" style="resize:both;" rows="6" cols="60">{{$item[1]}}</textarea>
+                        @break
                     @endswitch
                 @else
                     {!! $item[1] !!}

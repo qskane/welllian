@@ -17,5 +17,7 @@ return [
     'consuming' => '消费中',
     'consume_bid' => '消费出价',
     'verification_fail' => '验证失败',
-    'start_verification'=>'开始验证'
+    'start_verification' => '开始验证',
+    'key' => 'key',
+    'install_code'=>'安装代码'
 ];
