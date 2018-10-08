@@ -14,3 +14,8 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+
+
+.scroll-x{
+    overflow-x: scroll;
+}

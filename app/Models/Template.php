@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Helper\HasOwner;
 use App\Services\View\TemplateCompiler;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Template extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasOwner;
 
-    protected $fillable = ['name', 'html','user_id'];
+    protected $fillable = ['name', 'html', 'description', 'user_id'];
 
     protected $container;
 
@@ -24,15 +25,9 @@ class Template extends Model
         return app(TemplateCompiler::class)->make($this, $container, $data);
     }
 
-    public function setContainer($container = null, $type = 'id')
+    public function user()
     {
-        if (is_null($container)) {
-            $container = str_random(5);
-        }
-        $types = ['id' => '#', 'class' => '.'];
-        $this->container = $types[$type] . $container;
-
-        return $this;
+        return $this->belongsTo(User::class);
     }
 
 }

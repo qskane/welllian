@@ -12,7 +12,7 @@ class TemplateController extends Controller
 {
     public function index()
     {
-        $templates = Template::paginate(10);
+        $templates = Template::whereIn('user_id', [config('web.official_user_id'), Auth::id()])->paginate(10);
 
         return view('user.template.index', compact('templates'));
     }
@@ -49,7 +49,7 @@ class TemplateController extends Controller
         return view('user.template.edit', compact('template'));
     }
 
-    public function update(UpdateTemplateRequest $request, $id)
+    public function update($id, UpdateTemplateRequest $request)
     {
         $template = Template::findOrFail($id);
 
@@ -66,6 +66,15 @@ class TemplateController extends Controller
         $this->authorize('delete', $template);
 
         // FIXME how to handle related data ?
+    }
+
+    public function preview($id)
+    {
+        $template = Template::findOrFail($id);
+
+        $this->authorize('view', $template);
+
+        return view('user.template.preview', compact('template'));
     }
 
 

@@ -10,6 +10,7 @@ class StoreTemplateRequest extends StoreMediaRequest
         return [
             'name' => 'required|string',
             'html' => 'required|string',
+            'description' => 'nullable',
         ];
     }
 
@@ -18,6 +19,7 @@ class StoreTemplateRequest extends StoreMediaRequest
         return [
             'name' => $this->get('name'),
             'html' => $this->get('html'),
+            'description' => $this->get('description') ?? '',
         ];
     }
 

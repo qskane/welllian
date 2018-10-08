@@ -8,6 +8,8 @@
 - 主色调
 - sync template from github webhook
 - scheme unique container name
+- change create button to header right
+- fix jump url 
 
 ## CONFIG
 

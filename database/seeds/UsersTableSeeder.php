@@ -21,6 +21,11 @@ class UsersTableSeeder extends Seeder
                 'mobile' => '15888888888',
                 'password' => \Illuminate\Support\Facades\Hash::make('123456'),
             ],
+            [
+                'name' => 'official user',
+                'mobile' => '15811111111',
+                'password' => \Illuminate\Support\Facades\Hash::make('123456'),
+            ],
         ]);
     }
 }

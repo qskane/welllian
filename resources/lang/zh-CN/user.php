@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'name' => '用户',
     'home' => '主页',
     'click_to_update_mobile' => '点击更换电话',
     'profile_info' => '个人信息',

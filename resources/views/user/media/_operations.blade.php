@@ -12,7 +12,7 @@
 
     @include('components.buttons.delete',[
     'name'=>__('delete'),
-    'action'=>route('user.media.show',[$media->id])
+    'action'=>route('user.media.destroy',[$media->id])
     ])
 
 </div>

@@ -17,6 +17,7 @@ class CreateTemplatesTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('html');
+            $table->text('description');
             $table->unsignedInteger('user_id');
             $table->timestamps();
             $table->softDeletes();

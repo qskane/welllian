@@ -1,7 +1,7 @@
 @component('user.layout',['active'=>'media','header'=>__('user.media_info')])
 
     @if($medias->count())
-        <div style="overflow-x: scroll">
+        <div class="scroll-x">
             @include('user.media._table')
         </div>
     @else

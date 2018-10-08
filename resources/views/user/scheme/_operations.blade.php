@@ -7,7 +7,6 @@
 
     @include('components.buttons.delete',[
     'name'=>__('delete'),
-    'action'=>route('user.scheme.show',[$scheme->id])
+    'action'=>route('user.scheme.destroy',[$scheme->id])
     ])
-
 </div>
