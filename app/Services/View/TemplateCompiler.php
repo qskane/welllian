@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Services\Views;
-
+namespace App\Services\View;
 
 use App\Models\Template;
 use Exception;

@@ -11,8 +11,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\User::class, 50)->create()->each(function ($u) {
+        factory(App\Models\User::class, 10)->create()->each(function ($u) {
             $u->save();
         });
+
+        \App\Models\User::insert([
+            [
+                'name' => 'qskane',
+                'mobile' => '15888888888',
+                'password' => \Illuminate\Support\Facades\Hash::make('123456'),
+            ],
+        ]);
     }
 }

@@ -11,7 +11,7 @@ class StoresTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Store::class, 50)->create()->each(function ($p) {
+        factory(\App\Models\Store::class, 10)->create()->each(function ($p) {
             $p->save();
         });
     }

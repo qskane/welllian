@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
-use App\Http\Resources\SchemeResource;
 use App\Models\Media;
-use App\Models\Scheme;
 use App\Models\Template;
-use App\Services\Views\TemplateCompiler;
-use Illuminate\Contracts\View\Factory;
+use App\Services\View\TemplateCompiler;
 
 class TestController extends Controller
 {
@@ -36,6 +32,19 @@ class TestController extends Controller
     public function view()
     {
         return view('test.index');
+    }
+
+    public function media()
+    {
+        $fromKey = '867r5upedpd0cylx';
+
+        $medias = Media::select(['name', 'key', 'logo', 'description'])->all();
+
+        foreach ($medias as $media) {
+            $medias->jump_url = "http://malllian-dev.com/jump?from={$fromKey}&to={$media->key}";
+        }
+
+        return $medias;
     }
 
 }

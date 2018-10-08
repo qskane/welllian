@@ -9,11 +9,11 @@ class MediaSeeder extends Seeder
     {
         \App\Models\Media::insert([
             [
-                'user_id' => 51,
+                'user_id' => 11,
                 'name' => 'http://malllian-dev.com',
                 'domain' => 'malllian-dev.com',
-                'promotion_url ' => 'http://malllian-dev.com/',
-                'logo' => '	/img/google.png',
+                'promotion_url' => 'http://malllian-dev.com/',
+                'logo' => 'https://img.alicdn.com/tfs/TB1EGNRRVXXXXazXVXXXXXXXXXX-271-123.png',
                 'description' => 'fake description',
                 'key' => '8wz0u8ekgoiszwut',
                 'secret' => '9qckzt4ameubsapf',
@@ -24,11 +24,11 @@ class MediaSeeder extends Seeder
                 'consume_bid' => 1,
             ],
             [
-                'user_id' => 51,
+                'user_id' => 11,
                 'name' => 'http://baidu.com',
                 'domain' => 'baidu.com',
-                'promotion_url ' => 'http://baidu.com/',
-                'logo' => '	/img/google.png',
+                'promotion_url' => 'http://baidu.com/',
+                'logo' => 'http://img4.imgtn.bdimg.com/it/u=1494157840,1431419928&fm=200&gp=0.jpg',
                 'description' => 'fake baidu description',
                 'key' => '8wz0u8ekgoiszwut',
                 'secret' => '9qckzt4ameubsapf',
@@ -38,7 +38,6 @@ class MediaSeeder extends Seeder
                 'consuming' => 1,
                 'consume_bid' => 2,
             ],
-
         ]);
 
     }

@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Services\Views;
-
+namespace App\Services\View;
 
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Blade;

@@ -32,7 +32,6 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
     Route::post('/media/verification/{id}', 'MediaController@verification');
 
     Route::resource('scheme', 'SchemeController');
-    Route::get('template', 'TemplateController@index')->name('template.index');
-    Route::get('template/{id}', 'TemplateController@show')->name('template.show');
+    Route::resource('template', 'TemplateController');
 
 });

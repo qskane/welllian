@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Strings;
+namespace App\Services\String;
 
 
 class StrHelper
@@ -36,7 +36,6 @@ class StrHelper
         }
 
         return $letters;
-
     }
 
 }

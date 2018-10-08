@@ -1,56 +1,5 @@
-<?php
-
-use Illuminate\Database\Seeder;
-
-class TemplateSeeder extends Seeder
-{
-
-    public function run()
-    {
-        \App\Models\Template::insert([
-            [
-                'name' => 'fake',
-                'html' => '
-<style>#{{$container}}-container{
-color:red;
-}</style>
-@for($i=0;$i<5;$i++)
-    <p id=\'{{$container}}-container\'>example {{$i}}</p>
-@endfor
-<script>
-  (function(){
-    var container = document.getElementById(\'{{$container}}-container\');
-    console.log(container);
-    console.log(111);
-  })();
-</script>
-',
-                'user_id' => 11,
-            ],
-            [
-                'name' => 'fake 222',
-                'html' => '
-<style>#{{$container}}-container{
-color:blue;
-}</style>
-@for($i=0;$i<5;$i++)
-    <p id=\'{{$container}}-container\'>example {{$i}}</p>
-@endfor
-<script>
-  (function(){
-    var container = document.getElementById(\'{{$container}}-container\');
-    console.log(container);
-    console.log(222);
-  })();
-</script>
-',
-                'user_id' => 11,
-            ],
-            [
-                'name' => 'items',
-                'html' => '
 @php
-    $container = \'#\'.$container;
+    $container = '#'.$container;
 @endphp
 <style>
     {{$container}} .league-container {
@@ -126,10 +75,3 @@ color:blue;
         </li>
     @endforeach
 </ul>
-',
-                'user_id' => 0,
-            ],
-        ]);
-
-    }
-}

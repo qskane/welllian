@@ -11,7 +11,7 @@ class StoresTagsSeeder extends Seeder
      */
     public function run()
     {
-        factory(\App\Models\Tag::class, 50)->create()->each(function ($p) {
+        factory(\App\Models\Tag::class, 10)->create()->each(function ($p) {
             $p->save();
         });
     }

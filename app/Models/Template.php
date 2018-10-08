@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Services\Views\TemplateCompiler;
+use App\Services\View\TemplateCompiler;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -10,13 +10,13 @@ class Template extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'style', 'html', 'script'];
+    protected $fillable = ['name', 'html','user_id'];
 
     protected $container;
 
     public function toString()
     {
-        return $this->style . $this->html . $this->script;
+        return $this->html;
     }
 
     public function toCompiled($container, $data = [])

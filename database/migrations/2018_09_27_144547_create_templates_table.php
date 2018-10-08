@@ -16,9 +16,8 @@ class CreateTemplatesTable extends Migration
         Schema::create('templates', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('style');
             $table->text('html');
-            $table->text('script');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Scopes\OwnerScope;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +13,22 @@ class Media extends Model
 
     protected $table = 'medias';
 
+    /*
+
+$table->unsignedInteger('user_id')->index();
+$table->string('name');
+$table->string('domain');
+$table->string('promotion_url');
+$table->string('logo')->default('');
+$table->string('description')->default('');
+$table->string('key', 16);
+$table->string('secret', 16);
+$table->string('verification_key', 32);
+$table->boolean('verified')->default(false);
+$table->boolean('providing')->default(true);
+$table->boolean('consuming')->default(true);
+$table->unsignedInteger('consume_bid')->default(1);
+ */
     protected $guarded = [];
 
     public function scopeOwner($query)

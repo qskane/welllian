@@ -13,7 +13,7 @@
     @endif
 
     @slot('footer')
-        <a href="{{config('league.template.repository')}}" target="_blank">{{__('template.custom_template')}}</a>
+        @include('components.buttons.create',['link'=>route('user.template.create')])
     @endslot
 
 @endcomponent

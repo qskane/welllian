@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             StoresTableSeeder::class,
             ProductsTableSeeder::class,
             TemplateSeeder::class,
+            MediaSeeder::class
         ]);
 
     }
