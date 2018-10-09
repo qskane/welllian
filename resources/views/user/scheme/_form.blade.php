@@ -19,7 +19,7 @@
 
     @php
         $quantities = [];
-        for($i=1;$i<=config('league.scheme.max_quantity');$i++){
+        for($i=1;$i<=config('web.scheme.max_quantity');$i++){
             $quantities[] = ['name'=>$i,'value'=>$i];
         }
     @endphp

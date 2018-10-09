@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -9,16 +10,11 @@ use Illuminate\Support\Str;
 
 class Media extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasOwner;
 
     protected $table = 'medias';
 
     protected $guarded = [];
-
-    public function scopeOwner($query)
-    {
-        return $query->where('user_id', Auth::id());
-    }
 
     public function setDomainAttribute($value)
     {
@@ -37,9 +33,9 @@ class Media extends Model
         $this->attributes['verification_key'] = str_random(32);
     }
 
-    public function scopeVerified($query)
+    public function scopeVerified($query, $status = true)
     {
-        return $query->where('verified', true);
+        return $query->where('verified', $status);
     }
 
     public function scopeKey($query, $key)
@@ -57,9 +53,17 @@ class Media extends Model
         return $this->hasOne(Wallet::class, 'user_id', 'user_id');
     }
 
-    public function scopeAvailable($query, $status = true)
+    public function scopeConsumable($query, $status = true)
     {
-        return $query->where('available', $status);
+        /*
+         * verified = true && consuming = true && consume_bid >= wallets.coin
+         */
+        return $query->where('consumable', $status);
+    }
+
+    public function scopeConsuming($query, $status = true)
+    {
+        return $query->where('consuming', $status);
     }
 
 }

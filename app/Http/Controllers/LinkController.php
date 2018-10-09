@@ -13,9 +13,11 @@ class LinkController extends Controller
         $consume = $request->get('consume');
         $redirect = $request->get('redirect');
 
-        dispatch(new LeagueConsumeJob($produce, $consume));
+        dispatch_now(new LeagueConsumeJob($produce, $consume));
 
-        return redirect($redirect);
+
+        dd('done');
+//        return redirect($redirect);
     }
 
 }

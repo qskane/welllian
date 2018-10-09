@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Helper\HasOwner;
+use App\Models\Concerns\HasOwner;
 use App\Services\View\TemplateCompiler;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

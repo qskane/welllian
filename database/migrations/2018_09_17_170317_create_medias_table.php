@@ -19,7 +19,7 @@ class CreateMediasTable extends Migration
             $table->string('name');
             $table->string('domain');
             $table->string('consume_url');
-            $table->string('logo')->default('');
+            $table->text('logo');
             $table->string('description')->default('');
             $table->string('key', 16)->index();
             $table->string('secret', 16);
@@ -27,7 +27,7 @@ class CreateMediasTable extends Migration
             $table->boolean('verified')->default(false);
             $table->boolean('providing')->default(true);
             $table->boolean('consuming')->default(true);
-            $table->boolean('available')->default(true);
+            $table->boolean('consumable')->default(true);
             $table->unsignedInteger('consume_bid')->default(1);
             $table->timestamps();
             $table->softDeletes();

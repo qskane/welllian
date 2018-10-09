@@ -5,32 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Media;
 use App\Models\Template;
 use App\Services\View\TemplateCompiler;
+use Illuminate\Support\Facades\DB;
 
 class TestController extends Controller
 {
 
     public function index()
     {
+        $quantity = 10;
 
-        dd(request());
-        $this->service();
+        $medias = Media::leftJoin('wallets', 'wallets.user_id', '=', 'medias.user_id')
+            ->where('wallets.coin', '>=', DB::raw('medias.consume_bid'))
+            ->where('medias.consumable', true)
+            ->orderBy('medias.consume_bid', 'desc')
+            ->limit($quantity)
+            ->get();
 
-        //        $template = Template::find(4);
-        //
-        //        $container = 'fake';
-        //        $medias = Media::all();
-        //        $data = ['items' => $medias->toArray()];
-        //
-        //        $r = app(TemplateCompiler::class)->make($template, $container, $data);
-
-
-        //        $key = '867r5upedpd0cylx';
-        //
-        //        $media = Media::select('id')->key($key)->firstOrFail();
-        //
-        //        $schemes = Scheme::with(['template'])->mediaId($media->id)->get();
-        //
-        //        return SchemeResource::collection($schemes);
+        dd($medias);
     }
 
     public function view()

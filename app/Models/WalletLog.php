@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class WalletLog extends Model
 {
     use SoftDeletes;
+    protected $fillable = ['from', 'to', 'coin', 'remark', 'unpaid'];
 }

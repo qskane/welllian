@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Models\LeagueLog;
 use App\Models\Media;
 use App\Models\Wallet;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -20,14 +21,6 @@ class LeagueConsumeJob implements ShouldQueue
     protected $userAgent;
     protected $ip;
 
-    /**
-     * @var Media
-     */
-    protected $produceMedia;
-    /**
-     * @var Media
-     */
-    protected $consumeMedia;
 
     public function __construct($produce, $consume)
     {
@@ -39,30 +32,30 @@ class LeagueConsumeJob implements ShouldQueue
 
     public function handle()
     {
-        $this->produceMedia = Media::with('wallet')->key($this->produce)->first();
-        $this->consumeMedia = Media::with('wallet')->key($this->consume)->first();
-
-        $produceWalletId = $this->consumeMedia->wallet->id;
-        $consumeWalletId = $this->produceMedia->wallet->id;
-        if (!$this->produceMedia || !$this->consumeMedia || !$produceWalletId || !$consumeWalletId) {
+        $produceMedia = Media::with('wallet')->key($this->produce)->first();
+        $consumeMedia = Media::with('wallet')->key($this->consume)->first();
+        if (!$produceMedia || !$consumeMedia) {
             return;
         }
 
-        $transferred = (new Wallet)->transfer($consumeWalletId, $produceWalletId, $this->consumeMedia->consume_bid, true);
-        if (!$transferred) {
-            $this->consumeMedia->available = false;
-            $this->consumeMedia->save();
+        $produceWalletId = $produceMedia->wallet->id;
+        $consumeWalletId = $consumeMedia->wallet->id;
+        if (!$produceWalletId || !$consumeWalletId) {
+            return;
         }
 
+        (new Wallet)->transfer($consumeWalletId, $produceWalletId, $consumeMedia->consume_bid, true);
+
         LeagueLog::create([
-            'produce_media_id' => $this->produceMedia->id,
-            'consume_media_id' => $this->consumeMedia->id,
-            'produce_domain' => $this->produceMedia->domain,
-            'consume_domain' => $this->consumeMedia->domain,
-            'consume_url' => $this->consumeMedia->consume_url,
-            'consume_bid' => $this->consumeMedia->consume_bid,
+            'produce_media_id' => $produceMedia->id,
+            'consume_media_id' => $consumeMedia->id,
+            'produce_domain' => $produceMedia->domain,
+            'consume_domain' => $consumeMedia->domain,
+            'consume_url' => $consumeMedia->consume_url,
+            'consume_bid' => $consumeMedia->consume_bid,
             'ip' => $this->ip,
             'user_agent' => $this->userAgent,
+            'created_at' => Carbon::now(),
         ]);
     }
 }

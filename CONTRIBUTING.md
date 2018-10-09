@@ -10,6 +10,8 @@
 - scheme unique container name
 - change create button to header right
 - fix jump url 
+- self media can show self bug
+- 白色文字logo无法显示
 
 ## CONFIG
 

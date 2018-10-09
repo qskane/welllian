@@ -18,14 +18,13 @@ class CreateLeagueLogsTable extends Migration
     {
         Schema::create($this->table, function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('produce_media_id')->index();
-            $table->unsignedInteger('consume_media_id')->index();
+            $table->unsignedInteger('produce_media_id');
+            $table->unsignedInteger('consume_media_id');
             $table->string('produce_domain', 64);
             $table->string('consume_domain', 64);
             $table->string('consume_url');
             $table->unsignedInteger('consume_bid');
-            $table->boolean('');
-            $table->ipAddress('ip')->index();
+            $table->ipAddress('ip');
             $table->string('user_agent');
             $table->dateTime('created_at')->useCurrent();
         });
