@@ -29,7 +29,7 @@ class StoreMediaRequest extends FormRequest
                 'regex:/^(([a-zA-Z]{1})|([a-zA-Z]{1}[a-zA-Z]{1})|([a-zA-Z]{1}[0-9]{1})|([0-9]{1}[a-zA-Z]{1})|([a-zA-Z0-9][a-zA-Z0-9-_]{1,61}[a-zA-Z0-9]))\.([a-zA-Z]{2,6}|[a-zA-Z0-9-]{2,30}\.[a-zA-Z]{2,3})$/',
                 Rule::unique('medias')->ignore($this->id()),
             ],
-            'promotion_url' => [
+            'consume_url' => [
                 'required',
                 'string',
                 'url',
@@ -51,7 +51,7 @@ class StoreMediaRequest extends FormRequest
         return [
             'name' => $this->get('name'),
             'domain' => $this->get('domain'),
-            'promotion_url' => $this->get('promotion_url'),
+            'consume_url' => $this->get('consume_url'),
             'logo' => $this->get('logo') ?? '',
             'description' => $this->get('description') ?? '',
         ];

@@ -34,5 +34,6 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
     Route::resource('scheme', 'SchemeController');
     Route::resource('template', 'TemplateController');
     Route::get('template/preview/{id}', 'TemplateController@preview')->name('template.preview');
-
 });
+
+Route::get('/link/league', "LinkController@league")->name('link.league');

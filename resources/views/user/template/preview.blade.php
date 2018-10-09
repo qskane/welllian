@@ -6,13 +6,7 @@
 </head>
 <body>
 
-@php
-    $container = \App\Services\String\StrHelper::randomAlphabet();
-    $medias = \App\Models\Media::all();
-@endphp
-<div id="{{$container}}">
-    {!! $template->toCompiled($container,compact('container','medias')) !!}
-</div>
+{!! app('services.template')->preview($template) !!}
 
 </body>
 </html>

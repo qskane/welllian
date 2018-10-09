@@ -20,7 +20,7 @@ class Template extends Model
         return $this->html;
     }
 
-    public function toCompiled($container, $data = [])
+    public function toCompiled($container, array $data = [])
     {
         return app(TemplateCompiler::class)->make($this, $container, $data);
     }

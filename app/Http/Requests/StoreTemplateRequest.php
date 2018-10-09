@@ -11,6 +11,7 @@ class StoreTemplateRequest extends StoreMediaRequest
             'name' => 'required|string',
             'html' => 'required|string',
             'description' => 'nullable',
+            'quantity' => 'required|integer|min:1',
         ];
     }
 
@@ -20,6 +21,7 @@ class StoreTemplateRequest extends StoreMediaRequest
             'name' => $this->get('name'),
             'html' => $this->get('html'),
             'description' => $this->get('description') ?? '',
+            'quantity' => (int)$this->get('quantity'),
         ];
     }
 

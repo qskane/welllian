@@ -28,6 +28,7 @@ color:red;
 ',
                 'user_id' => $userId,
                 'description' => '',
+                'quantity' => 0,
             ],
             [
                 'name' => 'fake 222',
@@ -48,6 +49,7 @@ color:blue;
 ',
                 'user_id' => $userId,
                 'description' => 'Fancy larger or smaller buttons?Fancy larger or smaller buttons? Add .btn-lg or .btn-sm for additional sizes.',
+                'quantity' => 0,
             ],
             [
                 'name' => 'items',
@@ -120,7 +122,7 @@ color:blue;
             <ul class="league-container">
                 @foreach($medias as $media)
                     <li class="league-item-container">
-                        <a href="{{$media->promotion_url}}">
+                        <a href="{{$media->url}}">
                             <div class="league-item-warp">
                                 <img src="{{$media->logo}}" class="league-item-logo"/>
                             </div>
@@ -132,6 +134,7 @@ color:blue;
             ',
                 'user_id' => $userId,
                 'description' => 'Fancy larger or smaller buttons? Add .btn-lg or .btn-sm for additional sizes.',
+                'quantity' => 10,
             ],
         ]);
 

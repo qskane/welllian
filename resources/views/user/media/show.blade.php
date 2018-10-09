@@ -4,7 +4,7 @@
         [__('name'), $media->name],
         [__('media.domain'), $media->domain],
         [__('media.key'), $media->key],
-        [__('media.promotion_url'), $media->promotion_url],
+        [__('media.consume_url'), $media->consume_url],
         [__('media.logo'), $media->logo ? "<img src='{$media->logo}' style='max-width:100px;'/>" : ''],
         [__('media.description'), $media->description],
         [__('media.verification_code'), '<meta name="malllian-verification" content="'.$media->verification_key.'" />', 'CODE'],

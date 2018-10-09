@@ -2,20 +2,32 @@
 
 namespace App\Services\Media;
 
+use App\Models\Media;
+
 class MediaService
 {
 
-    public function auto()
+    public function auto($quantity = 12)
     {
-        // FIXME auto get medias
+        $medias = Media::with([
+            'wallet' => function ($query) {
+                $query->where('coin', '>', config('league.wallet.lowest_coin'));
+            },
+        ])->consumeAble()
+            ->orderBy('consume_bid', 'desc')
+            ->limit($quantity)
+            ->get();
 
-        /*
-         * 1 get all medias these c
-         *
-         *
-         */
+        return $this->mixRedirect($medias, config('web.official_media_key'));
+    }
 
+    protected function mixRedirect($medias, $produce)
+    {
+        foreach ($medias as $media) {
+            $media->url = route('link.league', ['produce' => $produce, 'consume' => $media->key, 'redirect' => $media->promotion_url]);
+        }
 
+        return $medias;
     }
 
 }

@@ -11,13 +11,17 @@ class TestController extends Controller
 
     public function index()
     {
-        $template = Template::find(4);
 
-        $container = 'fake';
-        $medias = Media::all();
-        $data = ['items' => $medias->toArray()];
+        dd(request());
+        $this->service();
 
-        $r = app(TemplateCompiler::class)->make($template, $container, $data);
+        //        $template = Template::find(4);
+        //
+        //        $container = 'fake';
+        //        $medias = Media::all();
+        //        $data = ['items' => $medias->toArray()];
+        //
+        //        $r = app(TemplateCompiler::class)->make($template, $container, $data);
 
 
         //        $key = '867r5upedpd0cylx';
@@ -45,6 +49,14 @@ class TestController extends Controller
         }
 
         return $medias;
+    }
+
+    public function service()
+    {
+        $auto = app('services.template')->preview(3);
+
+        echo $auto;
+
     }
 
 }

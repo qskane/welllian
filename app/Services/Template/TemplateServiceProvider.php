@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Media;
+namespace App\Services\Template;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,7 +23,7 @@ class TemplateServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('services.template', function ($app) {
-            return $app->make(MediaService::class);
+            return $app->make(TemplateService::class);
         });
     }
 }

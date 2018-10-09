@@ -13,22 +13,6 @@ class Media extends Model
 
     protected $table = 'medias';
 
-    /*
-
-$table->unsignedInteger('user_id')->index();
-$table->string('name');
-$table->string('domain');
-$table->string('promotion_url');
-$table->string('logo')->default('');
-$table->string('description')->default('');
-$table->string('key', 16);
-$table->string('secret', 16);
-$table->string('verification_key', 32);
-$table->boolean('verified')->default(false);
-$table->boolean('providing')->default(true);
-$table->boolean('consuming')->default(true);
-$table->unsignedInteger('consume_bid')->default(1);
- */
     protected $guarded = [];
 
     public function scopeOwner($query)
@@ -61,6 +45,21 @@ $table->unsignedInteger('consume_bid')->default(1);
     public function scopeKey($query, $key)
     {
         return $query->where('key', $key);
+    }
+
+    public function scopeConsumeAble($query)
+    {
+        return $query->where(['verified' => true, 'consuming' => true, 'available' => true]);
+    }
+
+    public function wallet()
+    {
+        return $this->hasOne(Wallet::class, 'user_id', 'user_id');
+    }
+
+    public function scopeAvailable($query, $status = true)
+    {
+        return $query->where('available', $status);
     }
 
 }

@@ -18,15 +18,16 @@ class CreateMediasTable extends Migration
             $table->unsignedInteger('user_id')->index();
             $table->string('name');
             $table->string('domain');
-            $table->string('promotion_url');
+            $table->string('consume_url');
             $table->string('logo')->default('');
             $table->string('description')->default('');
-            $table->string('key', 16);
+            $table->string('key', 16)->index();
             $table->string('secret', 16);
             $table->string('verification_key', 32);
             $table->boolean('verified')->default(false);
             $table->boolean('providing')->default(true);
             $table->boolean('consuming')->default(true);
+            $table->boolean('available')->default(true);
             $table->unsignedInteger('consume_bid')->default(1);
             $table->timestamps();
             $table->softDeletes();

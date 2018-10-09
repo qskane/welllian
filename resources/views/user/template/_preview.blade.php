@@ -10,13 +10,7 @@
             <small>{{$template->description}}</small>
         </div>
         <div class="card-text pt-2 pb-2 scroll-x" >
-            @php
-                $container = \App\Services\String\StrHelper::randomAlphabet();
-                $medias = \App\Models\Media::all();
-            @endphp
-            <div id="{{$container}}" >
-                {!! $template->toCompiled($container,compact('container','medias')) !!}
-            </div>
+            {!! app('services.template')->preview($template) !!}
         </div>
     </div>
 </div>

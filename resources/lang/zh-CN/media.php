@@ -6,7 +6,7 @@ return [
     'only_promotion_link_path' => '推广链接路径',
     'domain_with_schema' => '',
     'domain' => '域名',
-    'promotion_url' => '推广链接',
+    'consume_url' => '消费链接',
     'logo' => 'LOGO图标',
     'description' => '描述',
     'verification_code' => '验证代码',
@@ -19,5 +19,5 @@ return [
     'verification_fail' => '验证失败',
     'start_verification' => '开始验证',
     'key' => 'key',
-    'install_code'=>'安装代码'
+    'install_code' => '安装代码',
 ];

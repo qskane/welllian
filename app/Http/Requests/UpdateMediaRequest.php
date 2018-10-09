@@ -13,7 +13,7 @@ class UpdateMediaRequest extends StoreMediaRequest
             [
                 'providing' => 'required|boolean',
                 'consuming' => 'required|boolean',
-                'consume_bid' => 'required|integer',
+                'consume_bid' => 'required|integer|min:1',
             ]
         );
     }

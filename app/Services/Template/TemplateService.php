@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Services\Media;
+namespace App\Services\Template;
 
 
 use App\Models\Template;
 
 class TemplateService
 {
-
+    use Optimize;
 
     /**
      * @param $template
@@ -26,11 +26,12 @@ class TemplateService
             throw new \Exception('not supported parameter $template type');
         }
 
-        // FIXME
-        $medias = \App\Models\Media::all();
+        $medias = app('services.media')->auto($template->quantity);
 
-        $html = $template->toCompiled($container, compact('container', 'medias'));
+        $html = $template->toCompiled($container, compact('medias'));
 
-        return "<div id='{$container}'>{$html}</div>";
+        return $this->optimize("<div id='{$container}'>{$html}</div>");
     }
+
+
 }

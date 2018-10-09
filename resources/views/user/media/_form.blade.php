@@ -19,9 +19,9 @@
     ])
 
     @include('components.form.text',[
-        'label'=>__('media.promotion_url'),
-        'name'=>'promotion_url',
-        'default'=>$media->promotion_url,
+        'label'=>__('media.consume_url'),
+        'name'=>'consume_url',
+        'default'=>$media->consume_url,
         'help'=>__('media.same_domain_required'),
         'placeholder'=>'https://www.awesome.com/blog?perfect=1'
     ])

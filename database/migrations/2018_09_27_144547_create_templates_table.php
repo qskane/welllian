@@ -19,6 +19,7 @@ class CreateTemplatesTable extends Migration
             $table->text('html');
             $table->text('description');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('quantity')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

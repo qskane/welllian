@@ -15,7 +15,7 @@ class TemplateCompiler
      * @return mixed
      * @throws Exception
      */
-    public function make($template, $container, $data = [])
+    public function make($template, $container, array $data = [])
     {
         if ($template instanceof Template) {
             $stub = $template->toString();
