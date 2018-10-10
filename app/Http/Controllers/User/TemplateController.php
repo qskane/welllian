@@ -63,9 +63,19 @@ class TemplateController extends Controller
     public function destroy($id)
     {
         $template = Template::findOrFail($id);
+
         $this->authorize('delete', $template);
 
-        // FIXME how to handle related data ?
+        if ($template->hasRelated()) {
+            $this->alertFail(__('cannot_delete_data_in_use'));
+
+            return back();
+        }
+        $status = $template->delete();
+
+        $this->alert($status);
+
+        return $status ? redirect()->route('user.template.index') : back();
     }
 
     public function preview($id)

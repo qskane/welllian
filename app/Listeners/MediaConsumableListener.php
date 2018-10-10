@@ -2,16 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Events\WalletCoinUpdated;
+use App\Contracts\HasWallet;
 use App\Models\Media;
 
 class MediaConsumableListener
 {
 
-    /**
-     * @param $event WalletCoinUpdated
-     */
-    public function handle($event)
+    public function handle(HasWallet $event)
     {
         $wallet = $event->wallet();
 

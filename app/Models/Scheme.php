@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Scheme extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasOwner;
 
     protected $fillable = ['user_id', 'name', 'container', 'quantity', 'media_id', 'template_id', 'running'];
 
@@ -34,6 +36,20 @@ class Scheme extends Model
     public function scopeMediaId($query, $mediaId)
     {
         return $query->where('media_id', $mediaId);
+    }
+
+
+    public function scopeTemplate($query, $id)
+    {
+        return $query->where('template_id', $id);
+    }
+
+    public function simpleCreate($returnInstance = true)
+    {
+        $this->attributes['user_id'] = $this->attributes['user_id'] ?? Auth::id();
+        $saved = $this->save();
+
+        return $returnInstance ? $this : $saved;
     }
 
 

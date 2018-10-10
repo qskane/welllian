@@ -6,12 +6,16 @@
 - 添加media table 名词解释
 - 添加 breadcrumb
 - 主色调
-- sync template from github webhook
 - scheme unique container name
 - change create button to header right
-- fix jump url 
-- self media can show self bug
+- fix jump url , add google analysis
+- self media can show self,用于查看media效果，暂未使用
+- change mobile number
+- 仅可修改一次名字
+## BUGS
+
 - 白色文字logo无法显示
+
 
 ## CONFIG
 

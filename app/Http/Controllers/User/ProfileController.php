@@ -3,24 +3,33 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws AuthorizationException
-     */
-    public function show()
+    public function edit()
     {
         $user = User::findOrfail(Auth::id());
 
-        $this->authorize('view', $user);
+        $this->authorize('update', $user);
 
-        return view('user.profile.show', compact('user'));
+        return view('user.profile.edit', compact('user'));
+    }
+
+
+    public function update(UpdateUserRequest $request)
+    {
+        $user = User::findOrFail(Auth::id());
+
+        $this->authorize('update', $user);
+
+        $user->name = $request->get('name');
+        $status = $user->save();
+
+        return back()->with('status', $status);
     }
 
 }

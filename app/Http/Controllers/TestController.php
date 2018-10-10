@@ -6,22 +6,17 @@ use App\Models\Media;
 use App\Models\Template;
 use App\Services\View\TemplateCompiler;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class TestController extends Controller
 {
 
     public function index()
     {
-        $quantity = 10;
 
-        $medias = Media::leftJoin('wallets', 'wallets.user_id', '=', 'medias.user_id')
-            ->where('wallets.coin', '>=', DB::raw('medias.consume_bid'))
-            ->where('medias.consumable', true)
-            ->orderBy('medias.consume_bid', 'desc')
-            ->limit($quantity)
-            ->get();
 
-        dd($medias);
+        //        $request = request();
+        //        Log::info('Wrong parameter', array_merge(['location' => 'SupportController@verificationCode', 'request' => $request->all()]));
     }
 
     public function view()

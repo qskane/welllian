@@ -3,19 +3,28 @@
 namespace App\Services\Media;
 
 use App\Models\Media;
-use Illuminate\Support\Facades\DB;
 
 class MediaService
 {
 
-    public function auto($quantity = 12)
+    public function auto($quantity = null, $excepts = [], $include = [])
     {
-        $medias = Media::leftJoin('wallets', 'wallets.user_id', '=', 'medias.user_id')
-            ->where('wallets.coin', '>=', DB::raw('medias.consume_bid'))
-            ->where('medias.consumable', true)
-            ->orderBy('medias.consume_bid', 'desc')
+        $quantity = $quantity ?? config('web.media.default_preview_quantity');
+        $query = Media::consumable();
+
+        if ($notIn = array_merge($excepts, $include)) {
+            $query->whereNotIn('id', $notIn);
+        }
+
+        $medias = $query->orderBy('consume_bid', 'desc')
             ->limit($quantity)
             ->get();
+
+        if ($include) {
+            $medias->merge(
+                Media::whereIn('id', $include)->get()
+            );
+        }
 
         return $this->mixRedirect($medias, config('web.official_media_key'));
     }

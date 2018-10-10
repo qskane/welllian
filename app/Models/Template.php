@@ -30,4 +30,9 @@ class Template extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function hasRelated()
+    {
+        return (boolean)Scheme::template($this->id)->count();
+    }
+
 }

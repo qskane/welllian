@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 class ResetPasswordController extends Controller
 {
 
-    protected $redirectTo = '/';
+    protected $redirectTo = '/user';
 
     public function showMobileResetForm()
     {

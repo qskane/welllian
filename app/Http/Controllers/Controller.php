@@ -23,4 +23,9 @@ class Controller extends BaseController
         session()->flash('status', false);
     }
 
+    protected function alert($status, $success = null, $fail = null)
+    {
+        $status ? $this->alertSuccess($success) : $this->alertFail($fail);
+    }
+
 }

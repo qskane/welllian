@@ -2,34 +2,27 @@
 
 namespace App\Events;
 
+
 use App\Contracts\HasWallet;
+use App\Models\Media;
 use App\Models\Wallet;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 
-class WalletCoinUpdated implements HasWallet
+class MediaSaved implements HasWallet
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $id;
+    public $userId;
 
-    /**
-     * Create a new event instance.
-     *
-     * @param $id
-     */
-    public function __construct($id)
+    public function __construct(Media $model)
     {
-        $this->id = $id;
+        $this->userId = $model->user_id;
     }
 
-    /**
-     * @return Wallet | null
-     */
     public function wallet()
     {
-        return Wallet::find($this->id);
+        return Wallet::owner($this->userId)->first();
     }
-
 }

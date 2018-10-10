@@ -28,19 +28,11 @@ class MediaController extends Controller
 
     public function store(StoreMediaRequest $request)
     {
-        $media = new Media($request->inputs());
-        $media->setUserId();
-        $media->setGenerateValues();
-        $media->save();
+        $status = (new Media($request->inputs()))->simpleCreate(false);
 
-        return redirect()->route('user.media.index')->with('status', true);
+        return redirect()->route('user.media.index')->with('status', $status);
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
-     */
     public function show($id)
     {
         $media = Media::owner()->findOrFail($id);
@@ -50,11 +42,6 @@ class MediaController extends Controller
         return view('user.media.show', compact('media'));
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
-     */
     public function edit($id)
     {
         $media = Media::owner()->findOrFail($id);
@@ -64,12 +51,6 @@ class MediaController extends Controller
         return view('user.media.edit', compact('media'));
     }
 
-    /**
-     * @param UpdateMediaRequest $request
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Auth\Access\AuthorizationException
-     */
     public function update(UpdateMediaRequest $request, $id)
     {
         $media = Media::owner()->findOrFail($id);
@@ -87,11 +68,6 @@ class MediaController extends Controller
         return redirect()->route($route, $media->id)->with('status', $status);
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Auth\Access\AuthorizationException
-     */
     public function destroy($id)
     {
         $media = Media::owner()->findOrFail($id);
@@ -100,14 +76,11 @@ class MediaController extends Controller
 
         $status = $media->delete();
 
-        return redirect()->route('user.media.index')->with('status', $status);
+        $this->alert($status);
+
+        return $status ? redirect()->route('user.media.index') : back();
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
-     */
     public function showVerificationForm($id)
     {
         $media = Media::owner()->findOrFail($id);
@@ -117,11 +90,6 @@ class MediaController extends Controller
         return view('user.media.verification', compact('media'));
     }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Illuminate\Auth\Access\AuthorizationException
-     */
     public function verification($id)
     {
         $media = Media::owner()->findOrFail($id);
@@ -134,30 +102,23 @@ class MediaController extends Controller
             'timeout' => 5.0,
         ]);
 
-        $status = $requested = false;
-
         try {
             $response = $client->get('/');
-            $requested = true;
         } catch (Exception $e) {
-            Log::info($e->getMessage(), ['url' => $base]);
+            Log::info($e->getMessage(), ['location' => __METHOD__, 'url' => $base]);
         }
 
-        if ($requested && $response->getStatusCode() === Response::HTTP_OK) {
+        $status = false;
+        if (isset($response) && $response->getStatusCode() === Response::HTTP_OK) {
             if (strpos($response->getBody()->getContents(), $media->verification_key) !== false) {
                 $media->verified = true;
-                $media->save();
-                $status = true;
+                $status = $media->save();
             }
         }
 
-        if ($status) {
-            $route = 'user.media.show';
-            $this->alertSuccess();
-        } else {
-            $route = 'user.media.verification';
-            $this->alertFail(__('media.verification_fail'));
-        }
+        $this->alert($status, null, __('media.verification_fail'));
+
+        $route = $status ? 'user.media.show' : 'user.media.verification';
 
         return redirect()->route($route, $media->id);
     }

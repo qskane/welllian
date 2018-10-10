@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 class VerificationAble implements Rule
 {
 
-    const ABLES = ['EMAIL', 'MOBILE'];
+    const ABLES = ['EMAIL', 'MOBILE',];
 
     public function passes($attribute, $value)
     {
@@ -16,7 +16,9 @@ class VerificationAble implements Rule
             return true;
         }
 
-        return $this->isEmail($attribute, $value);
+        return false;
+        // FIXME 未开发 email verification
+        //        return $this->isEmail($attribute, $value);
     }
 
     public function isEmail($attribute, $value)

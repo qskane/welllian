@@ -21,8 +21,8 @@ Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
 
 
 Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
-    Route::get('/', "ProfileController@show");
-    Route::get('/profile', "ProfileController@show")->name('profile.edit');
+    Route::get('/', "ProfileController@edit");
+    Route::get('/profile', "ProfileController@edit")->name('profile.edit');
     Route::post('/profile', "ProfileController@update");
 
     Route::get('/wallet', "WalletController@show")->name('wallet.show');

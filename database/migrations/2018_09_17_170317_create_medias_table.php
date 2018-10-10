@@ -27,7 +27,7 @@ class CreateMediasTable extends Migration
             $table->boolean('verified')->default(false);
             $table->boolean('providing')->default(true);
             $table->boolean('consuming')->default(true);
-            $table->boolean('consumable')->default(true);
+            $table->boolean('consumable')->default(false);
             $table->unsignedInteger('consume_bid')->default(1);
             $table->timestamps();
             $table->softDeletes();

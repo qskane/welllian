@@ -14,9 +14,9 @@
   "operation_need_confirm": "是否继续执行？",
   "start": "开始",
   "verification": "验证",
-  "Login": "登录",
-  "Register": "注册",
-  "Logout": "退出",
+  "login": "登录",
+  "register": "注册",
+  "logout": "退出",
   "Password": "密码",
   "E-Mail Address": "邮件地址",
   "Forgot Your Password?": "忘记密码？",
@@ -27,10 +27,6 @@
   "resend": "重新发送",
   "fail": "操作失败",
   "success": "操作成功",
-  "Request too frequently": "请求过于频繁",
-  "Send Password Reset Link": "发送重置密码链接",
-  "Verify Your Email Address": "验证你的邮件地址",
-  "Before proceeding, please check your email for a verification link.": "在继续之前，请确认您的电子邮件（<b>:email</b>）用于获取验证链接。",
-  "click here to request one": "点击这里申请发送",
-  "A fresh verification link has been sent to your email address, please pay attention to check spam.": "一个新的重置密码链接已经发送到<b>:email</b>，请留意查看收件箱和垃圾邮件。"
+  "cannot_delete_data_in_use": "不能删除正在使用中的数据",
+  "request_too_frequently": "请求过于频繁"
 }

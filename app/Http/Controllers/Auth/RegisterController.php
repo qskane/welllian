@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Wallet;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Validation\Rule;
@@ -17,7 +16,7 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    protected $redirectTo = '/';
+    protected $redirectTo = '/user';
 
     public function __construct()
     {
@@ -40,7 +39,7 @@ class RegisterController extends Controller
                     $query->where([
                         'verification' => $mobile,
                         'code' => $verificationCode,
-                    ])->where('created_at', '>', Carbon::make('-30 minutes'));
+                    ])->where('created_at', '>', Carbon::make('-' . config('web.verification_code_expires')));
                 }),
             ],
 
@@ -49,19 +48,14 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        $mobile = $data['mobile'];
-        $name = substr($mobile, 0, 3) . '*****' . substr($mobile, -3);
-
-        return User::create([
-            'name' => $name,
-            'mobile' => $mobile,
-            'password' => Hash::make($data['password']),
-        ]);
+        return (new User(array_only($data, ['mobile', 'password'])))->simpleCreate();
     }
 
     protected function registered(Request $request, $user)
     {
         Wallet::create(['user_id' => $user->id]);
+
+        // FIXME 转账初始coin
 
         $this->alertSuccess();
 

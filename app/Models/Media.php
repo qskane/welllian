@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Events\MediaSaved;
 use App\Models\Concerns\HasOwner;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,6 +17,10 @@ class Media extends Model
 
     protected $guarded = [];
 
+    protected $dispatchesEvents = [
+        'saved' => MediaSaved::class,
+    ];
+
     public function setDomainAttribute($value)
     {
         $this->attributes['domain'] = Str::lower($value);
@@ -24,14 +29,30 @@ class Media extends Model
     public function setUserId($userId = null)
     {
         $this->attributes['user_id'] = $userId ?? Auth::id();
+
+        return $this;
     }
 
     public function setGenerateValues()
     {
-        $this->attributes['key'] = Str::lower(str_random(16));
-        $this->attributes['secret'] = Str::lower(str_random(16));
-        $this->attributes['verification_key'] = str_random(32);
+        $this->attributes['key'] = Str::lower(str_random(config('web.media.key_length')));
+        $this->attributes['secret'] = Str::lower(str_random(config('web.media.secret_length')));
+        $this->attributes['verification_key'] = str_random(config('web.media.verification_key_length'));
+
+        return $this;
     }
+
+    public function simpleCreate($returnInstance = true)
+    {
+        $this->attributes['user_id'] = $this->attributes['user_id'] ?? Auth::id();
+        $this->attributes['key'] = Str::lower(str_random(config('web.media.key_length')));
+        $this->attributes['secret'] = Str::lower(str_random(config('web.media.secret_length')));
+        $this->attributes['verification_key'] = str_random(config('web.media.verification_key_length'));
+        $saved = $this->save();
+
+        return $returnInstance ? $this : $saved;
+    }
+
 
     public function scopeVerified($query, $status = true)
     {

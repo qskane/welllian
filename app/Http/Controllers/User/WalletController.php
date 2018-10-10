@@ -8,10 +8,6 @@ use App\Models\Wallet;
 class WalletController extends Controller
 {
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * @throws \Illuminate\Auth\Access\AuthorizationException
-     */
     public function show()
     {
         $wallet = Wallet::owner()->firstOrFail();

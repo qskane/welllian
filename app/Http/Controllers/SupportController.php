@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\VerificationCodeRequest;
 use App\Models\VerificationCode;
 use App\Rules\VerificationAble;
+use Illuminate\Support\Facades\Log;
 
 class SupportController extends Controller
 {
@@ -13,18 +14,17 @@ class SupportController extends Controller
     {
         $verification = $request->get('verification');
 
-        // FIXME send verification code
-        if ((new VerificationAble)->isEmail('verification', $verification)) {
-
-        } else if ((new VerificationAble)->isMobile('verification', $verification)) {
-
+        if ((new VerificationAble)->isMobile('verification', $verification)) {
+            // FIXME send mobile verification code
+            $code = mt_rand(100000, 999999);
         } else {
-            // FIXME handle exception
-            throw new \Exception('Internal exception');
+            Log::info('Wrong parameter', array_merge(['location' => __METHOD__, 'request' => $request->all()]));
+            abort(403);
         }
-
-
-        $code = mt_rand(100000, 999999);
+        //    else if ((new VerificationAble)->isEmail('verification', $verification)) {
+        //        Log::info('Wrong parameter', array_merge(['location' => __METHOD__, 'request' => $request->all()]));
+        //        abort(403);
+        //    }
 
         VerificationCode::create(compact('verification', 'code'));
     }
