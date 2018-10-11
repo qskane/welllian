@@ -32,14 +32,14 @@
     ])
 
     @include('components.form.select',[
-        'label'=>__('media.name'),
+        'label'=>__('media.media'),
         'name'=>'media_id',
         'options'=>auth()->user()->verifiedMedias(),
         'selected'=>$scheme->media_id
     ])
 
     @include('components.form.select',[
-        'label'=>__('template.name'),
+        'label'=>__('template.template'),
         'name'=>'template_id',
         'options'=>\App\Models\Template::all(),
         'selected'=>$scheme->template_id

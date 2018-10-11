@@ -4,11 +4,11 @@
     'selected'=>isset($selected) ? (int)$selected : null,
     'options'=>[
         [
-            'name'=>__('form.yes'),
+            'name'=>__('yes'),
             'value'=> 1
         ],
         [
-            'name'=>__('form.no'),
+            'name'=>__('no'),
             'value'=> 0
         ],
     ]

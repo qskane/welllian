@@ -15,12 +15,12 @@ class StoreSchemeRequest extends FormRequest
 
     public function rules()
     {
-        $quantityMax = config('league.scheme.max_quantity');
+        $quantityMax = config('web.scheme.max_quantity');
 
         return [
             'name' => 'required|string',
             'container' => ['required', 'string', 'regex:/^[a-zA-Z]{1}[a-zA-Z0-9_-]*$/'],
-            'quantity' => ['required', 'integer', "between:1,$quantityMax"],
+            'quantity' => ['required', 'integer', "between:0,$quantityMax"],
             'media_id' => 'required|integer|exists:medias,id',
             'template_id' => 'required|integer|exists:templates,id',
             'running' => 'required|boolean',

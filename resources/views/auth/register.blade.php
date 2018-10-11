@@ -7,31 +7,31 @@
 
             @component('components.cards.layout')
                 @slot('header')
-                    {{ __('Register') }}
+                    {{ __('register') }}
                 @endslot
 
                 @component('components.form.layout',['action'=>route('register'),'submit'=>false])
 
                     @include('components.form.text',[
-                        'label'=>__('form.mobile'),
+                        'label'=>__('user.mobile'),
                         'name'=>'mobile',
                     ])
 
                     @include('components.form.mobile_verification_code')
 
                     @include('components.form.text',[
-                        'label'=>__('Password'),
+                        'label'=>__('user.password'),
                         'name'=>'password',
                         'type'=>'password'
                     ])
 
                     @include('components.form.text',[
-                        'label'=> __('Confirm Password'),
+                        'label'=> __('user.confirm_password'),
                         'name'=>'password_confirmation',
                         'type'=>'password'
                     ])
 
-                    @include('components.form.submit',['text'=> __('Register')])
+                    @include('components.form.submit',['text'=> __('register')])
 
                 @endcomponent
 

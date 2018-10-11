@@ -3,7 +3,7 @@
     @include('components.lists.list_key_value',['items'=>[
         [__('name'),$template->name],
         [__('description'),$template->description],
-        [__('user.name'),$template->user->name],
+        [__('user.user'),$template->user->name],
         [__('template.html'),$template->html,'TEXTAREA'],
         [__('template.new_window_preview'),__('view'),'LINK',route('user.template.preview',$template->id),true],
     ]])

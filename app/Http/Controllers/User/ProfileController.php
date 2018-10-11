@@ -24,7 +24,12 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail(Auth::id());
 
-        $this->authorize('update', $user);
+        $this->authorize('restore', $user);
+
+        if (!$user->isDefaultName()) {
+            // can only modify name once
+            abort(403);
+        }
 
         $user->name = $request->get('name');
         $status = $user->save();

@@ -1,10 +1,8 @@
 <?php
 
 return [
-    'name' => '媒体',
-
+    'media' => '媒体',
     'only_promotion_link_path' => '推广链接路径',
-    'domain_with_schema' => '',
     'domain' => '域名',
     'consume_url' => '消费链接',
     'logo' => 'LOGO图标',

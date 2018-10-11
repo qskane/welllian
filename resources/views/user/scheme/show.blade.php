@@ -12,8 +12,8 @@
         [__('name'),$scheme->name],
         [__('scheme.container'),$scheme->container,'CODE'],
         [__('scheme.quantity'),$scheme->quantity],
-        [__('media.name'),$scheme->media->name,'LINK',route('user.media.show',$scheme->media->id)],
-        [__('template.name'),$scheme->template->name,'LINK',route('user.template.show',$scheme->template->id)],
+        [__('media.media'),$scheme->media->name,'LINK',route('user.media.show',$scheme->media->id)],
+        [__('template.template'),$scheme->template->name,'LINK',route('user.template.show',$scheme->template->id)],
         [__('scheme.running'),$scheme->running,'STATUS'],
         [__('scheme.install_code'),$install,'TEXTAREA'],
     ]])

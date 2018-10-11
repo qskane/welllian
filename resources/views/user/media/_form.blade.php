@@ -5,7 +5,7 @@
 @component('components.form.layout',['action'=>$action,'method'=>$method??'POST'])
 
     @include('components.form.text',[
-        'label'=>__('media.name'),
+        'label'=>__('name'),
         'name'=>'name',
         'default'=>$media->name,
     ])
@@ -14,7 +14,6 @@
         'label'=>__('media.domain'),
         'name'=>'domain',
         'default'=>$media->domain,
-        'help'=>__('media.domain_with_schema'),
         'placeholder'=>'www.awesome.com'
     ])
 

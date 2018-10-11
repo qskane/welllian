@@ -2,9 +2,9 @@
     <thead>
     <tr>
         <th>{{__('name')}}</th>
-        <th>{{__('media.name')}}</th>
+        <th>{{__('media.media')}}</th>
         <th>{{__('scheme.container')}}</th>
-        <th>{{__('template.name')}}</th>
+        <th>{{__('template.template')}}</th>
         <th>{{__('scheme.running')}}</th>
         <th></th>
     </tr>

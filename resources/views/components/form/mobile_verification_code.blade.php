@@ -1,6 +1,6 @@
 <div class="form-group row">
     <label for="password"
-           class="col-md-3 col-form-label text-md-right">{{ __('form.mobile_verification_code') }}</label>
+           class="col-md-3 col-form-label text-md-right">{{ __('user.mobile_verification_code') }}</label>
 
     <div class="col-md-5">
         <input id="mobile_verification_code"
@@ -10,7 +10,7 @@
                required
         />
         <span class="invalid-feedback" role="alert">
-        <strong>{{ $errors->has('mobile_verification_code') ? $errors->first('mobile_verification_code') : __('form.mobile_verification_code') . __('form.invalid_input') }}</strong>
+        <strong>{{ $errors->has('mobile_verification_code') ? $errors->first('mobile_verification_code') : __('user.mobile_verification_code') . __('form.invalid_input') }}</strong>
         </span>
     </div>
 
@@ -66,7 +66,7 @@
             },
             error: function (error) {
               $.notify(
-                {message: error.status === 403 ? "{{__('Request too frequently')}}" : "{{__('fail')}}"},
+                {message: error.status === 403 ? "{{__('request_too_frequently')}}" : "{{__('fail')}}"},
                 {type: 'danger'}
               );
             }
