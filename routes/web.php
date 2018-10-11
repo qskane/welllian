@@ -13,8 +13,6 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::get('password/mobile-reset', 'Auth\ResetPasswordController@showMobileResetForm')->name('password.mobile_reset');
 Route::post('password/mobile-reset', 'Auth\ResetPasswordController@mobileReset');
 
-Route::resource('product', 'ProductController');
-
 Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
     Route::post('/verification', "SupportController@verificationCode")->name('verification');
 });
@@ -37,3 +35,16 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
 });
 
 Route::get('/link/league', "LinkController@league")->name('link.league');
+
+Route::get('/docs', "DocsController@index")->name('docs');
+
+
+
+
+/*
+ * 二期功能
+ *
+ * Route::resource('product', 'ProductController');
+ *
+ */
+

@@ -10,6 +10,7 @@ services:
     command: "--innodb_use_native_aio=0"
     volumes:
       - /var/lib/mysql/malllian-db:/var/lib/mysql
+    privileged: true
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: malllian.com-dev

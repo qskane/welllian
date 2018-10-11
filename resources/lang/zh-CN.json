@@ -28,5 +28,8 @@
   "fail": "操作失败",
   "success": "操作成功",
   "cannot_delete_data_in_use": "不能删除正在使用中的数据",
-  "request_too_frequently": "请求过于频繁"
+  "request_too_frequently": "请求过于频繁",
+  "setting": "设置",
+  "help": "帮助",
+  "docs": "文档"
 }

@@ -8,6 +8,7 @@ class TemplateTableSeeder extends Seeder
     public function run()
     {
         $userId = config('web.official_user_id');
+
         \App\Models\Template::insert([
             [
                 'name' => 'fake',

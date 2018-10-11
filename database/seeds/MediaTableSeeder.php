@@ -22,6 +22,7 @@ class MediaTableSeeder extends Seeder
                 'providing' => 1,
                 'consuming' => 1,
                 'consume_bid' => 1,
+                'consumable' => true,
             ],
             [
                 'user_id' => 1,
@@ -37,6 +38,7 @@ class MediaTableSeeder extends Seeder
                 'providing' => 1,
                 'consuming' => 1,
                 'consume_bid' => 2,
+                'consumable' => true,
             ],
             [
                 'user_id' => 2,
@@ -52,6 +54,7 @@ class MediaTableSeeder extends Seeder
                 'providing' => 1,
                 'consuming' => 1,
                 'consume_bid' => 2,
+                'consumable' => true,
             ],
             [
                 'user_id' => 2,
@@ -67,6 +70,7 @@ class MediaTableSeeder extends Seeder
                 'providing' => 1,
                 'consuming' => 1,
                 'consume_bid' => 3,
+                'consumable' => true,
             ],
             [
                 'user_id' => 2,
@@ -82,6 +86,7 @@ class MediaTableSeeder extends Seeder
                 'providing' => 1,
                 'consuming' => 1,
                 'consume_bid' => 3,
+                'consumable' => true,
             ],
             [
                 'user_id' => 2,
@@ -97,6 +102,7 @@ class MediaTableSeeder extends Seeder
                 'providing' => 1,
                 'consuming' => 1,
                 'consume_bid' => 3,
+                'consumable' => true,
             ],
             [
                 'user_id' => 2,
@@ -112,6 +118,7 @@ class MediaTableSeeder extends Seeder
                 'providing' => 1,
                 'consuming' => 1,
                 'consume_bid' => 3,
+                'consumable' => true,
             ],
             [
                 'user_id' => 2,
@@ -127,6 +134,7 @@ class MediaTableSeeder extends Seeder
                 'providing' => 1,
                 'consuming' => 1,
                 'consume_bid' => 3,
+                'consumable' => true,
             ],
             [
                 'user_id' => 2,
@@ -142,6 +150,7 @@ class MediaTableSeeder extends Seeder
                 'providing' => 1,
                 'consuming' => 1,
                 'consume_bid' => 3,
+                'consumable' => true,
             ],
             [
                 'user_id' => 2,
@@ -153,10 +162,11 @@ class MediaTableSeeder extends Seeder
                 'key' => str_random(config('web.media.key_length')),
                 'secret' => str_random(config('web.media.secret_length')),
                 'verification_key' => '5P9xLbvLJoUP5IheLt2cIxmkdUiRaMV6',
-                'verified' => 1,
-                'providing' => 1,
-                'consuming' => 1,
+                'verified' => true,
+                'providing' => true,
+                'consuming' => true,
                 'consume_bid' => 3,
+                'consumable' => true,
             ],
             [
                 'user_id' => 2,
@@ -172,6 +182,7 @@ class MediaTableSeeder extends Seeder
                 'providing' => 1,
                 'consuming' => 1,
                 'consume_bid' => 3,
+                'consumable' => true,
             ],
         ]);
     }

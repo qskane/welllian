@@ -12,8 +12,9 @@
 - self media can show self,用于查看media效果，暂未使用
 - change mobile number
 - 仅可修改一次名字
-## BUGS
+- 转账初始coin
 
+## BUGS
 - 白色文字logo无法显示
 
 

@@ -14,12 +14,15 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UsersTableSeeder::class,
             WalletTableSeeder::class,
+            TemplateTableSeeder::class,
+            MediaTableSeeder::class,
+            /*
+             * version product
             TagsTableSeeder::class,
             MallsTableSeeder::class,
             StoresTableSeeder::class,
             ProductsTableSeeder::class,
-            TemplateTableSeeder::class,
-            MediaTableSeeder::class,
+             */
         ]);
 
     }

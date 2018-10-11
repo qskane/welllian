@@ -11,6 +11,7 @@ class WalletTableSeeder extends Seeder
     {
         $users = User::select('id')->get();
         foreach ($users as $user) {
+            // FIXME 系统转账
             $wallet = Wallet::create(['user_id' => $user->id]);
             $wallet->coin = 1000;
             $wallet->save();
