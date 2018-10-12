@@ -19,7 +19,7 @@
         }
     @endphp
 
-    @push('scripts')
+    @push('script')
         <script type="text/javascript">
             $.notify(
                 {message: '{{$message}}'},

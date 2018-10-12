@@ -1,6 +1,6 @@
 @extends("layouts.app")
 
-@push("styles")
+@push("style")
     <link rel="stylesheet" href="/css/markdown.css">
     <style>
         .markdown-body {

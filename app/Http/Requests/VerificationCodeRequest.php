@@ -29,7 +29,7 @@ class VerificationCodeRequest extends FormRequest
     public function rules()
     {
         return [
-            'verification' => ['required', new VerificationAble],
+            'verification' => [ new VerificationAble],
         ];
     }
 

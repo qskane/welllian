@@ -10,7 +10,7 @@
     <link href="/css/malllian.css" rel="stylesheet">
     <link rel="stylesheet" href="/vendor/fontawesome-free-5.3.1-web/css/all.min.css">
 
-    @stack('styles')
+    @stack('style')
 </head>
 <body>
 @include('layouts.nav')
@@ -33,7 +33,7 @@
 
 @include('components.alerts.global')
 
-@stack('scripts')
+@stack('script')
 
 </body>
 </html>

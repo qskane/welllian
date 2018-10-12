@@ -21,4 +21,5 @@ return [
     'new_password' => '新密码',
     'email_address' => '邮件地址',
     'mobile_verification_code' => '手机验证码',
+    'user_not_registered' => '用户未注册',
 ];

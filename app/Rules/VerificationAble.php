@@ -10,11 +10,22 @@ class VerificationAble implements Rule
 
     const ABLES = ['EMAIL', 'MOBILE',];
 
+    protected $message;
+
+
     public function passes($attribute, $value)
     {
+
+        if (!$value) {
+            $this->message = __('validation.custom.verification.mobile_required');
+
+            return false;
+        }
+
         if ($this->isMobile($attribute, $value)) {
             return true;
         }
+        $this->message = __('validation.custom.verification.mobile_invalid');
 
         return false;
         // FIXME 未开发 email verification
@@ -37,6 +48,6 @@ class VerificationAble implements Rule
 
     public function message()
     {
-        return ':attribute 无效。';
+        return $this->message;
     }
 }

@@ -28,7 +28,7 @@
         @endif
 
         <span class="invalid-feedback" role="alert">
-            <strong>{{ $errors->has($name) ? $errors->first($name) : $label . __('form.invalid_input') }}</strong>
+            <strong id="{{$name}}-invalid-feedback">{{ $errors->has($name) ? $errors->first($name) : $label . __('form.invalid_input') }}</strong>
         </span>
 
         @if($validFeedback??false)

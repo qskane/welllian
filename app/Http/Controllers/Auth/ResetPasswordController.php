@@ -13,8 +13,6 @@ use Illuminate\Support\Str;
 class ResetPasswordController extends Controller
 {
 
-    protected $redirectTo = '/user';
-
     public function showMobileResetForm()
     {
         $mobile = auth()->check() ? auth()->user()->mobile : '';
@@ -24,24 +22,21 @@ class ResetPasswordController extends Controller
 
     public function mobileReset(ResetPasswordRequest $request)
     {
-        $user = User::where('mobile', $request->get('mobile'))->firstOrFail();
+        /*
+         * authenticated with verification code
+         */
+        $user = User::where('mobile', $request->mobile())->firstOrFail();
 
-        $this->resetPassword($user, $request->get('password'));
-
-        return redirect($this->redirectTo)->with('status', true);
-    }
-
-    protected function resetPassword($user, $password)
-    {
-        $user->password = Hash::make($password);
+        $user->password = Hash::make($request->get('password'));
 
         $user->setRememberToken(Str::random(60));
 
-        $user->save();
+        if ($status = $user->save()) {
+            event(new PasswordReset($user));
+            Auth::guard()->login($user);
+        }
 
-        event(new PasswordReset($user));
-
-        Auth::guard()->login($user);
+        return redirect()->route('user.index')->with('status', $status);
     }
 
 }

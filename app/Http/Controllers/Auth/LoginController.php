@@ -4,13 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
 
     use AuthenticatesUsers;
-
-    protected $redirectTo = '/user';
 
     public function __construct()
     {
@@ -20,6 +19,11 @@ class LoginController extends Controller
     public function username()
     {
         return 'mobile';
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        return redirect()->route('user.index');
     }
 
 }

@@ -1,6 +1,6 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top" style="z-index: 30">
     <div class="container">
-        <a class="navbar-brand" href="/">malllian</a>
+        <a class="navbar-brand" href="/">{{config('app.name')}}</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
                         <a style="text-transform:none;" id="navbarDropdown" class="nav-link dropdown-toggle" href="#"
                            role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            {{ auth()->user()->name }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">

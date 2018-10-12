@@ -113,8 +113,10 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'verification' => [
+            'mobile_required' => '手机号码 不能为空',
+            'mobile_invalid' => '手机号码 无效',
+            'email' => '邮箱 无效',
         ],
     ],
 

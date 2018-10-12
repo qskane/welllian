@@ -19,7 +19,7 @@ Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
 
 
 Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
-    Route::get('/', "ProfileController@edit");
+    Route::get('/', "ProfileController@edit")->name('index');
     Route::get('/profile', "ProfileController@edit")->name('profile.edit');
     Route::post('/profile', "ProfileController@update");
 

@@ -16,8 +16,6 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    protected $redirectTo = '/user';
-
     public function __construct()
     {
         $this->middleware('guest');
@@ -59,8 +57,10 @@ class RegisterController extends Controller
 
         $this->alertSuccess();
 
-        return redirect($this->redirectTo);
+        return redirect()->route('user.index');
     }
+
+
 
 
 }

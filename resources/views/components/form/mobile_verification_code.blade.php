@@ -3,14 +3,14 @@
            class="col-md-3 col-form-label text-md-right">{{ __('user.mobile_verification_code') }}</label>
 
     <div class="col-md-5">
-        <input id="mobile_verification_code"
+        <input id="mobile-verification-code"
                class="form-control {{ $errors->has('mobile_verification_code') ? ' is-invalid' : '' }}"
                name="mobile_verification_code"
                value="{{ old('mobile_verification_code') ?? '' }}"
                required
         />
         <span class="invalid-feedback" role="alert">
-        <strong>{{ $errors->has('mobile_verification_code') ? $errors->first('mobile_verification_code') : __('user.mobile_verification_code') . __('form.invalid_input') }}</strong>
+        <strong id="mobile-verification-code-invalid-feedback">{{ $errors->has('mobile_verification_code') ? $errors->first('mobile_verification_code') : __('user.mobile_verification_code') . __('form.invalid_input') }}</strong>
         </span>
     </div>
 
@@ -23,7 +23,7 @@
     </div>
 </div>
 
-@push('scripts')
+@push('script')
     <script type="text/javascript">
       $(document).ready(function () {
         var $btn = $('#btn-mobile-verification-code');
@@ -59,14 +59,24 @@
             type: 'POST',
             success: function () {
               $.notify(
-                {message: "{{__('sent')}}"},
+                {message: "@lang('sent')"},
                 {type: 'success'}
               );
               timer($(that));
             },
             error: function (error) {
+              var message = "{{__('fail')}}";
+              switch (error.status) {
+                case 403:
+                  message = "@lang('request_too_frequently')";
+                  break;
+                case 422:
+                  message = error.responseJSON.errors.verification[0];
+                  break;
+              }
+
               $.notify(
-                {message: error.status === 403 ? "{{__('request_too_frequently')}}" : "{{__('fail')}}"},
+                {message: message},
                 {type: 'danger'}
               );
             }
