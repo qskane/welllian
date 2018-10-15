@@ -95,6 +95,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
         schemes.map(function (scheme) {
           var container = document.getElementById(scheme.container);
+          console.log(container);
           if (container !== null) {
             container.innerHTML = scheme.template;
           }

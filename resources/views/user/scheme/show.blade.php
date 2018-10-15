@@ -3,8 +3,8 @@
     @php
         $install = app(App\Services\View\BladeCompiler::class)
         ->make(file_get_contents(resource_path('views/user/scheme/_install.blade.php')), [
-        'key' => $scheme->media->key,
-        'container'=>$scheme->container
+            'key' => $scheme->media->key,
+            'container'=>$scheme->container
         ]);
     @endphp
 

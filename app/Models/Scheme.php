@@ -33,6 +33,11 @@ class Scheme extends Model
         return (boolean)$value;
     }
 
+    public function scopeRunning($query)
+    {
+        return $query->where('running', true);
+    }
+
     public function scopeMediaId($query, $mediaId)
     {
         return $query->where('media_id', $mediaId);

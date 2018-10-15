@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Parsedown;
-
 class TestController extends Controller
 {
 
@@ -13,15 +11,12 @@ class TestController extends Controller
 
     public function view()
     {
-        $Parsedown = new Parsedown();
+        return view('test.view');
+    }
 
-        $md = file_get_contents(base_path('docs/FAQ.md'));
-        $html = $Parsedown->text($md); # prints: <p>Hello <em>Parsedown</em>!</p>
-        // you can also parse inline markdown only
-        //        echo $Parsedown->line($md); # prints: Hello <em>Parsedown</em>!
-        //        echo $Parsedown->parse($md);
-
-        return view('test.markdown', compact('html'));
+    public function league()
+    {
+        return view('test.league');
     }
 
 }

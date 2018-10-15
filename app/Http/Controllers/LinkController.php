@@ -9,15 +9,17 @@ class LinkController extends Controller
 {
     public function league(Request $request)
     {
-        $produce = $request->get('produce');
-        $consume = $request->get('consume');
+        // http://malllian-dev.com/link/league?producer=8wz0u8ekgoi23333&consumer=8wz0u8ekgoi24444
+
+        $producer = $request->get('producer');
+        $consumer = $request->get('consumer');
         $redirect = $request->get('redirect');
 
-        dispatch_now(new LeagueConsumeJob($produce, $consume));
+        dispatch_now(new LeagueConsumeJob($producer, $consumer));
 
 
         dd('done');
-//        return redirect($redirect);
+        //        return redirect($redirect);
     }
 
 }

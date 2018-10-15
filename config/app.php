@@ -8,10 +8,9 @@ return [
 
     'debug' => env('APP_DEBUG', false),
 
+    'url' => env('APP_URL', 'http://malllian-dev.com'),
 
-    'url' => env('APP_URL', 'http://localhost'),
-
-    'domain' => 'malllian-dev.com',
+    'domain' => env('DOMAIN', 'malllian-dev.com'),
 
     'timezone' => 'PRC',
 

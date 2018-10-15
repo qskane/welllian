@@ -64,6 +64,11 @@ class Media extends Model
         return $query->where('key', $key);
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     * @deprecated
+     */
     public function scopeConsumeAble($query)
     {
         return $query->where(['verified' => true, 'consuming' => true, 'available' => true]);
@@ -86,5 +91,15 @@ class Media extends Model
     {
         return $query->where('consuming', $status);
     }
+
+    public function scopeProvidable($query, $status = true)
+    {
+        if ($status) {
+            return $query->where('verified', true)->where('providing', true);
+        }
+
+        return $query->where('verified', false)->orWhere('providing', false);
+    }
+
 
 }

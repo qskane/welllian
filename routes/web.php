@@ -2,21 +2,28 @@
 
 Route::get('/', "HomeController@index")->name('home');
 
-Route::get('/test', "TestController@index")->name('test');
-Route::get('/test/view', "TestController@view")->name('test.view');
 
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
-Route::get('password/mobile-reset', 'Auth\ResetPasswordController@showMobileResetForm')->name('password.mobile_reset');
-Route::post('password/mobile-reset', 'Auth\ResetPasswordController@mobileReset');
+Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
+    Route::get('/', "TestController@index")->name('index');
+    Route::get('/view', "TestController@view")->name('view');
+    Route::get('/league', "TestController@league")->name('league');
+});
+
+
+Route::group(['namespace' => 'Auth'], function () {
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@login');
+    Route::post('logout', 'LoginController@logout')->name('logout');
+    Route::get('register', 'RegisterController@showRegistrationForm')->name('register');
+    Route::post('register', 'RegisterController@register');
+    Route::get('password/mobile-reset', 'ResetPasswordController@showMobileResetForm')->name('password.mobile_reset');
+    Route::post('password/mobile-reset', 'ResetPasswordController@mobileReset');
+});
+
 
 Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
     Route::post('/verification', "SupportController@verificationCode")->name('verification');
 });
-
 
 Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
     Route::get('/', "ProfileController@edit")->name('index');
@@ -42,7 +49,7 @@ Route::get('/docs', "DocsController@index")->name('docs');
 
 
 /*
- * 二期功能
+ * NEXT VERSION
  *
  * Route::resource('product', 'ProductController');
  *

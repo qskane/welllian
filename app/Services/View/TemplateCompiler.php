@@ -9,7 +9,7 @@ class TemplateCompiler
 {
 
     /**
-     * @param $template
+     * @param Template|string $template
      * @param array $data
      * @param $container
      * @return mixed

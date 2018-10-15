@@ -18,6 +18,7 @@
 
         schemes.map(function (scheme) {
           const container = document.getElementById(scheme.container);
+          console.log(container)
           if (container !== null) {
             container.innerHTML = scheme.template;
           }

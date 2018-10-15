@@ -15,18 +15,18 @@
 <body>
 @include('layouts.nav')
 @yield('header')
-<div id="root">
-    <main class="container mt-2 mb-2 p-2">
+<main>
+    <div id="root">
         @yield("content")
-    </main>
-</div>
+    </div>
+</main>
 
 @yield('footer')
 @include('layouts.footer')
 
 <script src="/vendor/jquery/jquery-3.3.1.min.js"></script>
 <script src="/vendor/bootstrap/popper.min.js"></script>
-<script src="/vendor/bootstrap/bootstrap.min.js" ></script>
+<script src="/vendor/bootstrap/bootstrap.min.js"></script>
 <script src="/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>
 
 <script src="/js/global.js"></script>

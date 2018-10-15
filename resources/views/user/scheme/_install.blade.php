@@ -1,9 +1,10 @@
-<!--请将此div标签置于您希望显示的位置-->
+<!-{{__('scheme.install_div_to_your_position')}}->
 <div id="{{$container}}"></div>
-<!--请将此script标签置于<body></body>之间-->
-<script>
+
+<!-{{__('scheme.install_script_to_your_position')}}->
+<script type="text/javascript">
   (function (i, s, o, g, r, a, m) {
-    i['welllianObject'] = r;
+    i['leagueObject'] = r;
     i[r] = i[r] || function () {
       (i[r].q = i[r].q || []).push(arguments);
     };

@@ -121,13 +121,13 @@ color:blue;
             </style>
             
             <ul class="league-container">
-                @foreach($medias as $media)
+                @foreach($consumers as $consumer)
                     <li class="league-item-container">
-                        <a href="{{$media->url}}">
+                        <a href="{{$consumer->url}}">
                             <div class="league-item-warp">
-                                <img src="{{$media->logo}}" class="league-item-logo"/>
+                                <img src="{{$consumer->logo}}" class="league-item-logo"/>
                             </div>
-                            <h4 class="league-item-name">{{$media->name}}</h4>
+                            <h4 class="league-item-name">{{$consumer->name}}</h4>
                         </a>
                     </li>
                 @endforeach

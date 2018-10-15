@@ -6,5 +6,7 @@ return [
     'quantity' => '数量',
     'quantity_explain' => '每次显示内容的数量',
     'running' => '运行中',
-    'install_code'=>'安装代码'
+    'install_code' => '安装代码',
+    'install_div_to_your_position' => '将此div标签放置于您希望显示的位置',
+    'install_script_to_your_position' => '将此script标签放置于您的网页body标签内',
 ];

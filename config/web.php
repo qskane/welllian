@@ -19,4 +19,5 @@ return [
     ],
 
     'verification_code_expires' => '30 minutes',
+
 ];
