@@ -1,5 +1,4 @@
 @if(session()->has('message') || session()->has('status'))
-
     @php
         $message  = null;
         $type = 'info';
@@ -27,5 +26,4 @@
             );
         </script>
     @endpush
-
 @endif

@@ -1,15 +1,19 @@
 <?php
 
-Route::get('/', "HomeController@index")->name('home');
+Route::get('/', "WebController@home")->name('home');
 
-
+/*
+ * Test
+ */
 Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
     Route::get('/', "TestController@index")->name('index');
     Route::get('/view', "TestController@view")->name('view');
     Route::get('/league', "TestController@league")->name('league');
 });
 
-
+/*
+ * Auth
+ */
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('login', 'LoginController@showLoginForm')->name('login');
     Route::post('login', 'LoginController@login');
@@ -21,10 +25,16 @@ Route::group(['namespace' => 'Auth'], function () {
 });
 
 
+/*
+ * Support
+ */
 Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
     Route::post('/verification', "SupportController@verificationCode")->name('verification');
 });
 
+/*
+ * User
+ */
 Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
     Route::get('/', "ProfileController@edit")->name('index');
     Route::get('/profile', "ProfileController@edit")->name('profile.edit');
@@ -38,20 +48,17 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
 
     Route::resource('scheme', 'SchemeController');
     Route::resource('template', 'TemplateController');
-    Route::get('template/preview/{id}', 'TemplateController@preview')->name('template.preview');
+    Route::get('/template/preview/{id}', 'TemplateController@preview')->name('template.preview');
 });
 
+/*
+ * Link
+ */
 Route::get('/link/league', "LinkController@league")->name('link.league');
 
-Route::get('/docs', "DocsController@index")->name('docs');
-
-
-
-
 /*
- * NEXT VERSION
- *
- * Route::resource('product', 'ProductController');
- *
+ * Document
  */
+Route::get('/document', "ArticleController@document")->name('document.index');
+Route::get('/document/{id}', "ArticleController@documentShow")->name('document.show');
 

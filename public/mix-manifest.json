@@ -1,3 +1,5 @@
 {
-    "/js/league.js": "/js/league.js"
+    "/js/app.js": "/js/app.js",
+    "/js/league.js": "/js/league.js",
+    "/css/app.css": "/css/app.css"
 }

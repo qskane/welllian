@@ -1,26 +1,28 @@
-@extends('layouts.app')
+@extends('layout.app')
 @section('content')
-    <div class="row">
-        <div class="col-sm-12 col-md-2">
-            @include('user.menu',['active'=>$active])
-        </div>
-        <div class="col-sm-12 col-md-10">
-            @component('components.cards.layout')
-                @if($header??false)
-                    @slot('header')
-                        {{$header}}
-                    @endslot
-                @endif
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-2">
+                @include('user._menu',['active'=>$active])
+            </div>
+            <div class="col-sm-12 col-md-10">
+                @component('components.cards.layout')
+                    @if($header??false)
+                        @slot('header')
+                            {{$header}}
+                        @endslot
+                    @endif
 
-                {{$slot}}
+                    {{$slot}}
 
-                @if($footer??false)
-                    @slot('footer')
-                        {{$footer}}
-                    @endslot
-                @endif
+                    @if($footer??false)
+                        @slot('footer')
+                            {{$footer}}
+                        @endslot
+                    @endif
 
-            @endcomponent
+                @endcomponent
+            </div>
         </div>
     </div>
 @endsection

@@ -20,4 +20,9 @@ return [
 
     'verification_code_expires' => '30 minutes',
 
+    'article' => [
+        // FIXME
+        'document_category' => 1,
+    ],
+
 ];
