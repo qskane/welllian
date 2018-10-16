@@ -25,4 +25,8 @@ return [
         'document_category' => 1,
     ],
 
+    'view' => [
+        'storage_placeholder' => '{#STORAGE#}',
+    ],
+
 ];

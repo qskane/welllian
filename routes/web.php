@@ -1,6 +1,6 @@
 <?php
 
-Route::get('/', "WebController@home")->name('home');
+Route::get('/', "WebController@home")->name('home')->middleware('view.storage');
 
 /*
  * Test

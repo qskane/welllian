@@ -9,9 +9,6 @@
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}"/>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    @stack('style')
 </head>
 <body>
 <div id="app">
@@ -22,11 +19,12 @@
     </main>
     @yield('footer')
     @include('layout.footer')
+    <textarea style="display: none" id="storage">{{config('web.view.storage_placeholder')}}</textarea>
 </div>
 
+<script src="{{ asset('js/app.js') }}"></script>
 @include('components.alerts.global')
 @stack('script')
-
 </body>
 </html>
 

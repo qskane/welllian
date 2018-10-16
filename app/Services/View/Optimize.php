@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Template;
+namespace App\Services\View;
 
 trait Optimize
 {

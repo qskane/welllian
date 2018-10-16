@@ -5,7 +5,7 @@ namespace App\Services\View;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Support\Facades\Blade;
 
-class BladeCompiler
+trait BladeCompiler
 {
 
     /**
@@ -15,7 +15,7 @@ class BladeCompiler
      * @throws \Exception
      * @source https://stackoverflow.com/questions/16891398/is-there-any-way-to-compile-a-blade-template-from-a-string
      */
-    public function make($str, array $args = [])
+    public function compile($str, array $args = [])
     {
         $generated = Blade::compileString($str);
 

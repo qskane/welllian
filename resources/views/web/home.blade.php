@@ -1,26 +1,11 @@
 @extends("layout.app")
 @section('content')
 
-
     @php
-        $items = [
-            'id'=>1,
-            "name"=>'name1',
-            "children"=>[
-                [
-                'id'=>2,
-                "name"=>'name2',
-                ],
-                [
-                'id'=>3,
-                "name"=>'name3',
-                ]
-            ]
-        ];
+        viewer()->storage('menu',['name'=>'menu name']);
     @endphp
 
-    <tree-menu :menu="@vue($items)"></tree-menu>
-
+    <tree-menu :menu="menu"></tree-menu>
 @endsection
 
 
