@@ -18,7 +18,6 @@
         <link rel="stylesheet"
               href="https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i"
               type="text/css">
-
     @endpush
 
     <section class="carousel slide cid-qvc4M4vblc" data-interval="false" id="slider1-a4" data-rv-view="8507">

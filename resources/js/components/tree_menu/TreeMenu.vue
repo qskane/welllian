@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <item class="item" :item="menu"></item>
+        <item class="item" :item="item" v-for="(item,index) in items" :key="index"></item>
     </ul>
 </template>
 
@@ -9,14 +9,11 @@
 
   export default {
     props: {
-      menu: Object,
+      items: Array,
       selected: Array
     },
     components: {
       'item': item
-    },
-    mounted: function () {
-      console.log(this.menu);
     }
   };
 </script>

@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
             WalletTableSeeder::class,
             TemplateTableSeeder::class,
             MediaTableSeeder::class,
+            ArticleCategoriesTableSeeder::class,
+            ArticlesTableSeeder::class
+
             /*
              * version product
             TagsTableSeeder::class,

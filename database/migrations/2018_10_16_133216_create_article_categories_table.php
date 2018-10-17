@@ -16,7 +16,13 @@ class CreateArticleCategoriesTable extends Migration
         Schema::create('article_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->unsignedInteger('parent_id')->default(0);
+            $table->unsignedInteger('parent_id');
+
+            $table->unsignedInteger('parent_id')->nullable();
+            $table->integer('lft')->nullable();
+            $table->integer('rgt')->nullable();
+            $table->integer('depth')->nullable();
+
             $table->timestamps();
             $table->softDeletes();
         });

@@ -27,12 +27,3 @@
 @stack('script')
 </body>
 </html>
-
-
-{{--<link rel="stylesheet" href="/vendor/bootstrap/bootstrap.min.css">--}}
-{{--<link rel="stylesheet" href="/vendor/fontawesome-free-5.3.1-web/css/all.min.css">--}}
-{{--<script src="/vendor/jquery/jquery-3.3.1.min.js"></script>--}}
-{{--<script src="/vendor/bootstrap/popper.min.js"></script>--}}
-{{--<script src="/vendor/bootstrap/bootstrap.min.js"></script>--}}
-{{--<script src="/vendor/bootstrap-notify/bootstrap-notify.min.js"></script>--}}
-{{--<script src="/js/global.js"></script>--}}

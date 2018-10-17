@@ -51,10 +51,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        'Baum\Providers\BaumServiceProvider',
 
         \App\Services\Media\MediaServiceProvider::class,
         \App\Services\Template\TemplateServiceProvider::class,
-        \App\Services\View\ViewServiceProvider::class
+        \App\Services\View\ViewServiceProvider::class,
     ],
 
 
