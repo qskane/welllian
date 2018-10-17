@@ -7,13 +7,20 @@ class ArticleCategoriesTableSeeder extends Seeder
     public function run()
     {
 
-        factory(App\Models\ArticleCategory::class, 10)->create()->each(function ($category) {
-            $has = App\Models\ArticleCategory::count();
-            if ($has > 1) {
-                $category->parent_id = mt_rand(0, 2);
-            }
-            $category->save();
-        });
+        $categories = [
+            ['id' => 1, 'name' => 'TV & Home Theather'],
+            ['id' => 2, 'name' => 'Tablets & E-Readers'],
+            ['id' => 3, 'name' => 'Computers', 'children' => [
+                ['id' => 4, 'name' => 'Laptops', 'children' => [
+                    ['id' => 5, 'name' => 'PC Laptops'],
+                    ['id' => 6, 'name' => 'Macbooks (Air/Pro)'],
+                ]],
+                ['id' => 7, 'name' => 'Desktops'],
+                ['id' => 8, 'name' => 'Monitors'],
+            ]],
+            ['id' => 9, 'name' => 'Cell Phones'],
+        ];
 
+        \App\Models\ArticleCategory::buildTree($categories);
     }
 }

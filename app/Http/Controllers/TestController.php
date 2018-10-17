@@ -10,12 +10,11 @@ class TestController extends Controller
 
     public function index()
     {
+        $categories = (new ArticleCategory)->tree();
 
-        $selected = [];
 
-        viewer()->storage('menu', cache('article_categories'));
+        dd($categories->toArray());
 
-//        dd(viewer()->storage());
         return view('test.index');
     }
 

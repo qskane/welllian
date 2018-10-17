@@ -2,15 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
+use Baum\Node;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
-class ArticleCategory extends Model
+class ArticleCategory extends Node
 {
-    use SoftDeletes;
-
     /**
      * @param int $root
      * @return Collection
@@ -18,25 +15,13 @@ class ArticleCategory extends Model
     public function tree($root = 0)
     {
         return Cache::rememberForever('article_categories', function () use ($root) {
-            return (new ArticleCategory)->findTree($root);
+            return ArticleCategory::roots()->get()->map(function ($category) {
+                return $category->setRelation(
+                    'children',
+                    $category->getDescendants()->toHierarchy()
+                );
+            });
         });
     }
-
-    public function findTree($root = 0)
-    {
-        $categories = ArticleCategory::parent($root)->get();
-
-        foreach ($categories as $category) {
-            $category->children = $this->tree($category->id);
-        }
-
-        return $categories;
-    }
-
-    public function scopeParent($query, $id)
-    {
-        return $query->where('parent_id', $id);
-    }
-
 
 }
