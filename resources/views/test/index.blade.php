@@ -1,6 +1,13 @@
 @extends('layout.app')
 @section('content')
 
-    <tree-menu :items="menu"></tree-menu>
+
+    @php
+
+    $a = new \Faker\Generator();
+    $a->rgbCssColor();
+
+    dd($a);
+    @endphp
 
 @endsection

@@ -6,19 +6,23 @@ class ArticleCategoriesTableSeeder extends Seeder
 {
     public function run()
     {
-
         $categories = [
-            ['id' => 1, 'name' => 'TV & Home Theather'],
-            ['id' => 2, 'name' => 'Tablets & E-Readers'],
-            ['id' => 3, 'name' => 'Computers', 'children' => [
-                ['id' => 4, 'name' => 'Laptops', 'children' => [
-                    ['id' => 5, 'name' => 'PC Laptops'],
-                    ['id' => 6, 'name' => 'Macbooks (Air/Pro)'],
-                ]],
-                ['id' => 7, 'name' => 'Desktops'],
-                ['id' => 8, 'name' => 'Monitors'],
-            ]],
-            ['id' => 9, 'name' => 'Cell Phones'],
+            [
+                'id' => 1, 'name' => 'document', 'children' =>
+                [
+                    ['id' => 2, 'name' => 'TV & Home Theather'],
+                    ['id' => 3, 'name' => 'Tablets & E-Readers'],
+                    ['id' => 4, 'name' => 'Computers', 'children' => [
+                        ['id' => 5, 'name' => 'Laptops', 'children' => [
+                            ['id' => 6, 'name' => 'PC Laptops'],
+                            ['id' => 7, 'name' => 'Macbooks (Air/Pro)'],
+                        ]],
+                        ['id' => 8, 'name' => 'Desktops'],
+                        ['id' => 9, 'name' => 'Monitors'],
+                    ]],
+                    ['id' => 10, 'name' => 'Cell Phones'],
+                ],
+            ],
         ];
 
         \App\Models\ArticleCategory::buildTree($categories);

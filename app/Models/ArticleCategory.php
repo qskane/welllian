@@ -9,12 +9,11 @@ use Illuminate\Support\Facades\Cache;
 class ArticleCategory extends Node
 {
     /**
-     * @param int $root
      * @return Collection
      */
-    public function tree($root = 0)
+    public function tree()
     {
-        return Cache::rememberForever('article_categories', function () use ($root) {
+        return Cache::rememberForever('article_categories', function () {
             return ArticleCategory::roots()->get()->map(function ($category) {
                 return $category->setRelation(
                     'children',
@@ -22,6 +21,24 @@ class ArticleCategory extends Node
                 );
             });
         });
+    }
+
+
+    public function documents()
+    {
+        $tree = $this->tree();
+        $category = config('web.article.document_category');
+        foreach ($tree as $item) {
+            if ($item->id === $category) {
+                return $item->children;
+            }
+        }
+    }
+
+
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
     }
 
 }

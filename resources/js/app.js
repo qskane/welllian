@@ -9,6 +9,14 @@ Vue.component('tree-menu', require('./components/tree_menu/TreeMenu.vue'));
 const app = new Vue({
   el: '#app',
   data: function () {
-    return JSON.parse(document.getElementById('storage').innerText);
+    let data = JSON.parse(document.getElementById('storage').innerText);
+    if (!_.isObject(data)) {
+      data = {};
+    } else {
+      if (_.isArray(data)) {
+        data = {};
+      }
+    }
+    return data;
   }
 });

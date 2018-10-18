@@ -1,0 +1,23 @@
+
+.bg-black {
+  background-color: #000000;
+}
+
+.bg-black-75 {
+  background-color: rgba(0, 0, 0, 0.8)
+}
+
+$nav-black-color: #ffff;
+
+.navbar-black {
+  color: $nav-black-color;
+  .navbar-nav .nav-link {
+    color: $nav-black-color;
+  }
+
+  .navbar-brand {
+    color: $nav-black-color;
+  }
+}
+
+

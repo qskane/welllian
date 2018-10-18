@@ -1,4 +1,4 @@
-<nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-black fixed-top bg-black-75">
     <div class="container">
         <a class="navbar-brand" href="/">{{config('app.name')}}</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -12,7 +12,7 @@
                     <a class="nav-link" href="{{route('home')}}">@lang('homepage')</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('document.index')}}">@lang('document')</a>
+                    <a class="nav-link" href="{{route('article.index')}}">@lang('document')</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">

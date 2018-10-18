@@ -57,8 +57,13 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
 Route::get('/link/league', "LinkController@league")->name('link.league');
 
 /*
- * Document
+ * article
  */
-Route::get('/document', "ArticleController@document")->name('document.index');
-Route::get('/document/{id}', "ArticleController@documentShow")->name('document.show');
 
+
+Route::group(['prefix' => 'article', 'as' => 'article.'], function () {
+    Route::get('/', "ArticleController@index")->name('index');
+    Route::get('/category/{id}', "ArticleController@articleCategoryShow")->name('category.show');
+    Route::get('/{id}', "ArticleController@show")->name('show');
+
+});

@@ -16382,6 +16382,26 @@ a.text-dark:focus {
   }
 }
 
+.bg-black {
+  background-color: #000000;
+}
+
+.bg-black-75 {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.navbar-black {
+  color: #ffff;
+}
+
+.navbar-black .navbar-nav .nav-link {
+  color: #ffff;
+}
+
+.navbar-black .navbar-brand {
+  color: #ffff;
+}
+
 body {
   padding-top: 54px;
 }

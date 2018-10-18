@@ -4,16 +4,24 @@ namespace App\Http\Controllers;
 
 use App\Models\ArticleCategory;
 use App\Models\User;
+use Faker\Factory;
+use Faker\Generator;
 
 class TestController extends Controller
 {
 
     public function index()
     {
-        $categories = (new ArticleCategory)->tree();
+        //        $faker = Generator\Factory::create();
 
+        $fake = Factory::create();
 
-        dd($categories->toArray());
+        for ($i = 0; $i < 10; $i++) {
+            echo "<h3 style='background-color:$fake->rgbCssColor '>1</h3>";
+//            dump($fake->rgbCssColor, $fake->colorName, $fake->rgbColor);
+        }
+
+        exit();
 
         return view('test.index');
     }

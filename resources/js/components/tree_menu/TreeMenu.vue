@@ -1,6 +1,12 @@
 <template>
-    <ul>
-        <item class="item" :item="item" v-for="(item,index) in items" :key="index"></item>
+    <ul class="p-0 m-0">
+        <item class="item"
+              :item="item"
+              v-for="(item,index) in items"
+              :key="index"
+              :link="link"
+              :selected="selected"
+        ></item>
     </ul>
 </template>
 
@@ -10,7 +16,8 @@
   export default {
     props: {
       items: Array,
-      selected: Array
+      selected: Array,
+      link: String,
     },
     components: {
       'item': item
@@ -23,13 +30,7 @@
         cursor: pointer;
     }
 
-    .bold {
-        font-weight: bold;
-    }
-
     ul {
-        padding-left: 1em;
-        line-height: 1.5em;
         list-style-type: none;
     }
 </style>

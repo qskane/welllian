@@ -1,12 +1,18 @@
 <template>
     <li>
-        <div @click="toggle">
-            <span v-if="isFolder" class="pr-2">{{ opening ? '-' : '+' }}</span>
-            <a v-if="showLink" href="#">{{ item.name }}</a>
+        <div class="name" @click="toggle">
+            <a v-if="showLink" :href="href">{{ item.name }}</a>
             <span v-else>{{ item.name }}</span>
+            <span v-if="isFolder" class="pr-2">{{ opening ? '-' : '+' }}</span>
         </div>
-        <ul v-show="opening" v-if="isFolder" class="sub-items">
-            <item class="item" v-for="(next, index) in item.children" :key="index" :item="next"></item>
+        <ul v-show="opening" v-if="isFolder" class="sub-items pl-2">
+            <item class="item"
+                  v-for="(next, index) in children"
+                  :key="index"
+                  :item="next"
+                  :link="link"
+                  :selected="selected"
+            ></item>
         </ul>
     </li>
 </template>
@@ -14,20 +20,24 @@
 <script>
   export default {
     name: 'item',
-    props: {
-      item: Object
-    },
+    props: ['item', 'link', 'selected'],
     data: function () {
       return {
-        opening: false
+        opening: _.indexOf(this.selected, this.item.id) >= 0
       };
     },
     computed: {
       isFolder: function () {
-        return this.item.children && this.item.children.length > 0;
+        return this.children && this.children.length > 0;
       },
       showLink: function () {
-        return !this.isFolder && this.item.link;
+        return !this.isFolder && this.link;
+      },
+      href: function () {
+        return this.link + '/' + this.item.id;
+      },
+      children: function () {
+        return _.isArray(this.item.children) ? this.item.children : _.values(this.item.children);
       }
     },
     methods: {
@@ -44,5 +54,10 @@
     .sub-items {
         list-style: none;
     }
+
+    .name {
+        white-space: nowrap;
+    }
+
 </style>
 
