@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\View;
+namespace App\Services\Template;
 
 use App\Models\Template;
 use Exception;
@@ -27,7 +27,7 @@ class TemplateCompiler
 
         $vars = array_merge(compact('container'), $data);
 
-        return app(BladeCompiler::class)->make($stub, $vars);
+        return viewer()->compile($stub, $vars);
     }
 
 

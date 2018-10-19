@@ -4,7 +4,6 @@
 ## FEATURES
 
 - 添加media table 名词解释
-- 添加 breadcrumb
 - 主色调
 - scheme unique container name
 - change create button to header right

@@ -27,9 +27,9 @@ class TemplateService
 
         $medias = app('service.media')->auto($template->quantity);
 
-        $html = $template->toCompiled($container, compact('medias'));
+        $html = $template->toCompiled($container, ['consumers' => $medias]);
 
-        return app('service.view')->optimize("<div id='{$container}'>{$html}</div>");
+        return viewer()->optimize("<div id='{$container}'>{$html}</div>");
     }
 
 

@@ -23,7 +23,7 @@ class ResetPasswordController extends Controller
     public function mobileReset(ResetPasswordRequest $request)
     {
         /*
-         * authenticated with verification code
+         * Authorized by verification code
          */
         $user = User::where('mobile', $request->mobile())->firstOrFail();
 

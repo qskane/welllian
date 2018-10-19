@@ -7,7 +7,10 @@
   background-color: rgba(0, 0, 0, 0.8)
 }
 
-$nav-black-color: #ffff;
+/*
+nav bar
+ */
+$nav-black-color: #fff;
 
 .navbar-black {
   color: $nav-black-color;
@@ -20,4 +23,6 @@ $nav-black-color: #ffff;
   }
 }
 
-
+.scroll-x {
+  overflow-x: scroll;
+}

@@ -1,8 +1,7 @@
 @component('user.layout',['active'=>'scheme','header'=>__('user.scheme_info')])
 
     @php
-        $install = app(App\Services\View\BladeCompiler::class)
-        ->make(file_get_contents(resource_path('views/user/scheme/_install.blade.php')), [
+        $install = viewer()->compile(file_get_contents(resource_path('views/user/scheme/_install.blade.php')), [
             'key' => $scheme->media->key,
             'container'=>$scheme->container
         ]);

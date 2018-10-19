@@ -10,7 +10,7 @@
             <small>{{$template->description}}</small>
         </div>
         <div class="card-text pt-2 pb-2 scroll-x" >
-            {!! app('services.template')->preview($template) !!}
+            {!! app('service.template')->preview($template) !!}
         </div>
     </div>
 </div>

@@ -22,7 +22,7 @@ class MediaServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('services.media', function ($app) {
+        $this->app->singleton('service.media', function ($app) {
             return $app->make(MediaService::class);
         });
     }
