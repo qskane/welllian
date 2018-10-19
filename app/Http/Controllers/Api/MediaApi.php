@@ -19,7 +19,7 @@ class MediaApi extends Controller
         $schemes = Scheme::with(['template'])->mediaId($media->id)->running()->get();
         $response = [];
         foreach ($schemes as $scheme) {
-            $consumers = app('services.media')->produce($key, $scheme->quantity, [$media->id]);
+            $consumers = media()->produce($key, $scheme->quantity, [$media->id]);
             $container = $scheme->container;
             $response[] = [
                 'template' => str_replace(["\r", "\n"], ['', ''], $scheme->template->toCompiled($container, compact('consumers'))),

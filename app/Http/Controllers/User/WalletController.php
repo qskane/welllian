@@ -16,4 +16,12 @@ class WalletController extends Controller
 
         return view('user.wallet.show', compact('wallet'));
     }
+
+    public function log()
+    {
+        // FIXME
+
+        return view('user.wallet.log');
+    }
+
 }

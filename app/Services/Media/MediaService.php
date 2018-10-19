@@ -26,7 +26,7 @@ class MediaService
     protected function mixRedirect($consumers, $producer)
     {
         foreach ($consumers as $media) {
-            $media->url = route('link.league', ['producer' => $producer, 'consumer' => $media->key, 'redirect' => $media->promotion_url]);
+            $media->url = route('link.league', ['producer' => $producer, 'consumer' => $media->key, 'redirect' => $media->consume_url]);
         }
 
         return $consumers;

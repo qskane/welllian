@@ -4,10 +4,11 @@ namespace App\Services\Template;
 
 
 use App\Models\Template;
+use App\Services\String\StrHelper;
+use Exception;
 
 class TemplateService
 {
-
     /**
      * @param $template
      * @param null $container
@@ -16,7 +17,7 @@ class TemplateService
      */
     public function preview($template, $container = null)
     {
-        $container = $container ?? \App\Services\String\StrHelper::randomAlphabet();
+        $container = $container ?? StrHelper::randomAlphabet();
         if (is_numeric($template)) {
             $template = Template::findOrFail($template);
         } else if ($template instanceof Template) {
@@ -27,10 +28,32 @@ class TemplateService
 
         $medias = app('service.media')->auto($template->quantity);
 
-        $html = $template->toCompiled($container, ['consumers' => $medias]);
+        $html = viewer()->compile($template->toString(), ['consumers' => $medias, 'container' => $container]);
 
         return viewer()->optimize("<div id='{$container}'>{$html}</div>");
     }
 
+
+    /**
+     * @param Template|string $template
+     * @param array $data
+     * @param $container
+     * @return mixed
+     * @throws \Exception
+     */
+    public function compile($template, $container, array $data = [])
+    {
+        if ($template instanceof Template) {
+            $stub = $template->toString();
+        } else if (is_string($template)) {
+            $stub = $template;
+        } else {
+            throw new Exception('not support type of template');
+        }
+
+        $vars = array_merge(compact('container'), $data);
+
+        return viewer()->compile($stub, $vars);
+    }
 
 }

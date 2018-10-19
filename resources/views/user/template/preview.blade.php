@@ -6,7 +6,7 @@
 </head>
 <body>
 
-{!! app('services.template')->preview($template) !!}
+{!! template()->preview($template) !!}
 
 </body>
 </html>

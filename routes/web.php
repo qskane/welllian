@@ -41,12 +41,14 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
     Route::post('/profile', "ProfileController@update");
 
     Route::get('/wallet', "WalletController@show")->name('wallet.show');
+    Route::get('/wallet/log', "WalletController@log")->name('wallet.log');
 
     Route::resource('media', 'MediaController');
     Route::get('/media/verification/{id}', 'MediaController@showVerificationForm')->name('media.verification');
     Route::post('/media/verification/{id}', 'MediaController@verification');
 
     Route::resource('scheme', 'SchemeController');
+
     Route::resource('template', 'TemplateController');
     Route::get('/template/preview/{id}', 'TemplateController@preview')->name('template.preview');
 });
@@ -59,7 +61,6 @@ Route::get('/link/league', "LinkController@league")->name('link.league');
 /*
  * article
  */
-
 
 Route::group(['prefix' => 'article', 'as' => 'article.'], function () {
     Route::get('/', "ArticleController@index")->name('index');

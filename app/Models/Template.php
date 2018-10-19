@@ -11,7 +11,7 @@ class Template extends Model
 {
     use SoftDeletes, HasOwner;
 
-    protected $fillable = ['name', 'html', 'description', 'user_id'];
+    protected $fillable = ['name', 'html', 'description', 'user_id', 'quantity'];
 
     protected $container;
 
@@ -20,9 +20,15 @@ class Template extends Model
         return $this->html;
     }
 
+    /**
+     * @param $container
+     * @param array $data
+     * @return mixed
+     * @throws \Exception
+     */
     public function toCompiled($container, array $data = [])
     {
-        return app(TemplateCompiler::class)->make($this, $container, $data);
+        return template()->compile($this, $container, $data);
     }
 
     public function user()

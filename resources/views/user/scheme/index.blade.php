@@ -8,7 +8,7 @@
         @include('components.contents.empty')
     @endif
 
-    @slot('footer')
+    @slot('operation')
         @include('components.buttons.create',['link'=>route('user.scheme.create')])
     @endslot
 

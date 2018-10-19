@@ -1,3 +1,7 @@
+@php
+view()->share('vue',false);
+@endphp
+
 @component('user.layout',['active'=>'template','header'=>__('user.template_info')])
 
     @if($templates->count())
@@ -11,7 +15,7 @@
         @include('components.contents.empty')
     @endif
 
-    @slot('footer')
+    @slot('operation')
         @include('components.buttons.create',['link'=>route('user.template.create')])
     @endslot
 

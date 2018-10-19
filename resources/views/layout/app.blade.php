@@ -12,7 +12,7 @@
     @stack('style')
 </head>
 <body>
-<div id="app">
+<div @if($vue??true) id="app" @endif>
     @include('layout.nav')
     @yield('header')
     <main id="main" class="{{ $padding ?? 'pt-4 pb-4' }}">

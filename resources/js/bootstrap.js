@@ -12,7 +12,6 @@ window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
 require('bootstrap-notify');
 
 
-
 // import Echo from 'laravel-echo'
 
 // window.Pusher = require('pusher-js');

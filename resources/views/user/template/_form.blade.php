@@ -10,6 +10,12 @@
         'default'=>$template->name,
     ])
 
+    @include('components.form.text',[
+        'label'=>__('template.preview_media_quantity'),
+        'name'=>'quantity',
+        'default'=>$template->quantity,
+    ])
+
     @include('components.form.textarea',[
         'label'=>__('template.html'),
         'name'=>'html',
@@ -20,12 +26,7 @@
         // FIXME fix help message
     @endphp
 
-    @include('components.form.text',[
-        'label'=>__('template.quantity'),
-        'name'=>'quantity',
-        'default'=>$template->quantity,
-        'help'=>__('template.quantity_explain'),
-    ])
+
 
     @include('components.form.textarea',[
         'label'=>__('description'),
