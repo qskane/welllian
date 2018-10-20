@@ -4,6 +4,18 @@
 
 @component('user.layout',['active'=>'wallet','header'=>$title])
 
-    222
+
+    <table>
+        <td></td>
+        <tbody>
+
+        @foreach($logs as $log)
+            <tr>
+                <td>{{$log->ser}}</td>
+            </tr>
+        @endforeach
+        </tbody>
+
+    </table>
 
 @endcomponent

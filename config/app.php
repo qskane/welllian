@@ -56,6 +56,7 @@ return [
         \App\Services\Media\MediaServiceProvider::class,
         \App\Services\Template\TemplateServiceProvider::class,
         \App\Services\View\ViewServiceProvider::class,
+        \App\Services\Wallet\WalletServiceProvider::class,
     ],
 
 

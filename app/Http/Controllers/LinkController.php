@@ -17,7 +17,6 @@ class LinkController extends Controller
 
         dispatch_now(new LeagueConsumeJob($producer, $consumer));
 
-
         return redirect($redirect);
     }
 

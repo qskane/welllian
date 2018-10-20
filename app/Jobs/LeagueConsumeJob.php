@@ -34,6 +34,7 @@ class LeagueConsumeJob implements ShouldQueue
     {
         $produceMedia = Media::with('wallet')->key($this->produce)->first();
         $consumeMedia = Media::with('wallet')->key($this->consume)->first();
+
         if (!$produceMedia || !$consumeMedia) {
             return;
         }
@@ -44,7 +45,14 @@ class LeagueConsumeJob implements ShouldQueue
             return;
         }
 
-        (new Wallet)->transfer($consumeWalletId, $produceWalletId, $consumeMedia->consume_bid, true);
+        $status = transfer()->fromWallet($consumeWalletId)
+            ->toWallet($produceWalletId)
+            ->coin($consumeMedia->consume_bid)
+            ->force(true)
+            ->category(config('web.wallet_log_category.league'))
+            ->run();
+
+        // FIXME transfer failed
 
         LeagueLog::create([
             'produce_media_id' => $produceMedia->id,

@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ArticleCategory;
-use App\Models\User;
-use Faker\Factory;
-use Faker\Generator;
+use App\Jobs\LeagueConsumeJob;
 
 class TestController extends Controller
 {
 
     public function index()
     {
-        //        $faker = Generator\Factory::create();
+        $producer = '8wz0u8ekgoi21111';
+        $consumer = '8wz0u8ekgoi23333';
 
-        $fake = Factory::create();
+        dispatch_now(new LeagueConsumeJob($producer, $consumer));
 
-        for ($i = 0; $i < 10; $i++) {
-            echo "<h3 style='background-color:$fake->rgbCssColor '>1</h3>";
-//            dump($fake->rgbCssColor, $fake->colorName, $fake->rgbColor);
-        }
-
-        exit();
+        dd(11);
 
         return view('test.index');
     }

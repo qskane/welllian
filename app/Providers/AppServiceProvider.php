@@ -27,17 +27,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() === 'local') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
     }
 
     protected function directive()
     {
         Blade::directive('storage', function ($variable) {
             dd(func_get_args());
+
             return "<?php echo is_object($variable) || is_array($variable) ? json_encode({$variable}) : $variable; ?>";
         });
-
-
-
     }
 }

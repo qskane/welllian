@@ -29,3 +29,15 @@ if (!function_exists('template')) {
         return app('service.template');
     }
 }
+
+
+if (!function_exists('transfer')) {
+
+    /**
+     * @return \App\Services\Wallet\Transfer
+     */
+    function transfer()
+    {
+        return app('service.wallet')->transfer();
+    }
+}

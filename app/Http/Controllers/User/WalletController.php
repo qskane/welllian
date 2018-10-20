@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Wallet;
+use App\Models\WalletLog;
 
 class WalletController extends Controller
 {
@@ -19,9 +20,13 @@ class WalletController extends Controller
 
     public function log()
     {
-        // FIXME
+        $wallet = Wallet::owner()->firstOrFail();
 
-        return view('user.wallet.log');
+        $this->authorize('view', $wallet);
+
+        $logs = WalletLog::walletRelation($wallet->id)->latest('id')->paginate();
+
+        return view('user.wallet.log', compact('logs'));
     }
 
 }

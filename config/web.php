@@ -32,5 +32,8 @@ return [
     // FIXME utm_source
     'league_utm' => 'utm_source=malllian.com&utm_medium=cpc&utm_campaign=swap_league',
 
+    'wallet_log_category' => [
+        'league' => 1,
+    ],
 
 ];
