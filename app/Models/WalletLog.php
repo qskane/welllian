@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class WalletLog extends Model
 {
-    use SoftDeletes;
 
     protected $fillable = [
         'from_user_id',
@@ -25,9 +23,9 @@ class WalletLog extends Model
 
     public $timestamps = false;
 
-    public function scopeWalletRelation($query, $walletId)
+    public function scopeTo($query, $walletId)
     {
-        return $query->where('from_wallet_id', $walletId)->orWhere('to_wallet_id', $walletId);
+        return $query->where('to_wallet_id', $walletId);
     }
 
     public function fromWallet()

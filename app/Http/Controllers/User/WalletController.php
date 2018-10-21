@@ -24,7 +24,7 @@ class WalletController extends Controller
 
         $this->authorize('view', $wallet);
 
-        $logs = WalletLog::walletRelation($wallet->id)->latest('id')->paginate();
+        $logs = WalletLog::to($wallet->id)->latest('id')->paginate();
 
         return view('user.wallet.log', compact('logs'));
     }

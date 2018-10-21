@@ -21,12 +21,21 @@
 
 
 
+
             }
 
             #header-title {
                 /*background-color: #0000001f !important;*/
                 color: white !important;
                 /*display: inline-block;*/
+            }
+
+            .block {
+                min-height: 20rem;
+            }
+
+            .block img {
+                max-width: 100%;
             }
         </style>
     @endpush
@@ -41,17 +50,67 @@
         </div>
     </section>
 
-    <section>
-        <div class="row">
-            <div class="col-md-6 col-sm-12 bg-warning">2</div>
-            <div class="col-md-6 col-sm-12 bg-black">1</div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 col-sm-12 bg-black">1</div>
-            <div class="col-md-6 col-sm-12 bg-warning">2</div>
-        </div>
 
+    <section id="home-header" class="bg-dark">
+        <div class="container">
+            <div class="row">
+                <h1 id="header-title" class="p-5 col-12 text-center">Bootstrap 4 Grid Template</h1>
+                <div class="col-4 offset-4 text-center">
+                    <a class="btn btn-light btn-block" href="#">FREE</a>
+                </div>
+            </div>
+        </div>
     </section>
+
+
+    <section id="home-header" class="bg-secondary">
+        <div class="container">
+            <div class="row">
+                <h1 id="header-title" class="p-5 col-12 text-center">Bootstrap 4 Grid Template</h1>
+                <div class="col-4 offset-4 text-center">
+                    <a class="btn btn-light btn-block" href="#">FREE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="home-header" style="background: url('/fake/3.jpg')">
+        <div class="container">
+            <div class="row">
+                <h1 id="header-title" class="p-5 col-12 text-center">Bootstrap 4 Grid Template</h1>
+                <div class="col-4 offset-4 text-center">
+                    <a class="btn btn-light btn-block" href="#">FREE</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{--<section>--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-md-6 col-sm-12 block m-0 pr-1 pb-1 ">--}}
+                {{--<div class="justify-content-center align-self-center text-bold">--}}
+                    {{--All-new Liquid Retina display — the most advanced LCD in the industry. Even faster Face ID. The--}}
+                    {{--smartest, most powerful chip in a smartphone. And a breakthrough camera system with Depth Control.--}}
+                    {{--iPhone XR. It’s beautiful any way you look at it.--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="col-md-6 col-sm-12  block m-0 pl-1 pb-1">--}}
+                {{--<img src="/fake/1.jpg"/>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="row">--}}
+            {{--<div class="col-md-6 col-sm-12 block m-0 pr-1 pb-1">--}}
+                {{--<img src="/fake/3.jpg"/>--}}
+            {{--</div>--}}
+            {{--<div class="col-md-6 col-sm-12  block m-0 pl-1 pb-1">--}}
+                {{--<img src="/fake/2.jpg"/>--}}
+            {{--</div>--}}
+
+        {{--</div>--}}
+
+    {{--</section>--}}
 
 
 
