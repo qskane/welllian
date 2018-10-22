@@ -4,7 +4,6 @@ namespace App\Jobs;
 
 use App\Models\LeagueLog;
 use App\Models\Media;
-use App\Models\Wallet;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
@@ -20,6 +19,10 @@ class LeagueConsumeJob implements ShouldQueue
     protected $consume;
     protected $userAgent;
     protected $ip;
+    /**
+     * @var Carbon
+     */
+    protected $now;
 
 
     public function __construct($produce, $consume)
@@ -28,6 +31,7 @@ class LeagueConsumeJob implements ShouldQueue
         $this->consume = $consume;
         $this->userAgent = request()->userAgent();
         $this->ip = request()->ip();
+        $this->now = Carbon::now();
     }
 
     public function handle()
@@ -39,20 +43,27 @@ class LeagueConsumeJob implements ShouldQueue
             return;
         }
 
+        $leagueLog = new LeagueLog;
+        if (
+            $leagueLog->isRepeated($produceMedia->id, $consumeMedia->id, $this->ip)
+            || $leagueLog->isExhausted($produceMedia->id, $this->ip)
+        ) {
+            return;
+        }
+
         $produceWalletId = $produceMedia->wallet->id;
         $consumeWalletId = $consumeMedia->wallet->id;
         if (!$produceWalletId || !$consumeWalletId) {
             return;
         }
 
-        $status = transfer()->fromWallet($consumeWalletId)
+        // what should to do when transfer failed ?
+        transfer()->fromWallet($consumeWalletId)
             ->toWallet($produceWalletId)
             ->coin($consumeMedia->consume_bid)
             ->force(true)
             ->category(config('web.wallet_log_category.league'))
             ->run();
-
-        // FIXME transfer failed
 
         LeagueLog::create([
             'produce_media_id' => $produceMedia->id,
@@ -63,7 +74,10 @@ class LeagueConsumeJob implements ShouldQueue
             'consume_bid' => $consumeMedia->consume_bid,
             'ip' => $this->ip,
             'user_agent' => $this->userAgent,
-            'created_at' => Carbon::now(),
+            'created_time' => $this->now->timestamp,
+            'created_at' => $this->now->toDateTimeString(),
         ]);
     }
+
+
 }

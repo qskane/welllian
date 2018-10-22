@@ -26,7 +26,9 @@ class ResetPasswordRequest extends FormRequest
                 'string',
                 'size:6',
                 Rule::exists('verification_codes', 'code')->where(function ($query) use ($verification, $code) {
-                    $query->where(compact('verification', 'code'))->where('created_at', '>', Carbon::make('-' . config('web.verification_code_expires')));
+                    $seconds = config('web.verification_code.refresh_seconds');
+                    $query->where(compact('verification', 'code'))
+                        ->where('created_at', '>', Carbon::make("-$seconds seconds"));
                 }),
             ],
         ];

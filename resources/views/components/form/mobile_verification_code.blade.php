@@ -28,7 +28,8 @@
       $(document).ready(function () {
         var $btn = $('#btn-mobile-verification-code');
         var loading = false;
-        var seconds = 10;
+        var refreshSeconds = {{config('web.verification_code.refresh_seconds')}};
+        var seconds = refreshSeconds;
         var $verification = $('input[name="mobile"]').first();
 
         var timer = function ($this) {
@@ -39,7 +40,7 @@
               clearInterval(x);
               $this.attr('disabled', false);
               $this.text('{{__('resend')}}');
-              seconds = 3;
+              seconds = refreshSeconds;
               return;
             }
             seconds--;

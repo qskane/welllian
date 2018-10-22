@@ -45,16 +45,26 @@ class StoreMediaRequest extends FormRequest
         return request()->route('medium', 0);
     }
 
-
     public function inputs()
     {
         return [
             'name' => $this->get('name'),
             'domain' => $this->get('domain'),
-            'consume_url' => $this->get('consume_url'),
+            'consume_url' => $this->normalizeConsumeUrl(),
             'logo' => $this->get('logo') ?? '',
             'description' => $this->get('description') ?? '',
         ];
+    }
+
+    protected function normalizeConsumeUrl()
+    {
+        $url = $this->get('consume_url');
+        $end = substr($url, -1);
+        if ($end === '?' || $end === '&') {
+            return substr($url, 0, -1);
+        }
+
+        return $url;
     }
 
 }

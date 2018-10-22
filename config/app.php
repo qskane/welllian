@@ -12,6 +12,8 @@ return [
 
     'domain' => env('DOMAIN', 'malllian-dev.com'),
 
+    'cdn' => env('CDN', 'malllian-dev.com'),
+
     'timezone' => 'PRC',
 
     'locale' => 'zh-CN',

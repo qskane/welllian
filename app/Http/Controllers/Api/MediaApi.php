@@ -21,10 +21,14 @@ class MediaApi extends Controller
         foreach ($schemes as $scheme) {
             $consumers = media()->produce($key, $scheme->quantity, [$media->id]);
             $container = $scheme->container;
-            $response[] = [
-                'template' => str_replace(["\r", "\n"], ['', ''], $scheme->template->toCompiled($container, compact('consumers'))),
-                'container' => $container,
-            ];
+            $template = str_replace(
+                ["\r", "\n"],
+                ['', ''],
+                $scheme->template->toCompiled($container, compact('consumers'))
+            );
+            $template = viewer()->optimize($template);
+
+            $response[] = compact('template', 'container');
         }
 
         return response()->json(['data' => $response])->withHeaders(['Access-Control-Allow-Origin' => '*']);

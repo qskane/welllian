@@ -2,12 +2,15 @@
 @section('content')
 
 
-    @php
+    111
+    <div id="fake">fake</div>
+    <tree-menu></tree-menu>
 
-    $a = new \Faker\Generator();
-    $a->rgbCssColor();
-
-    dd($a);
-    @endphp
-
+    @push('script')
+        <script>
+          $(document).ready(function () {
+            $('#fake').html('<h1>h1 title</h1><style> #fake{color:red;}</style><script> console.log(11)<\/script>');
+          });
+        </script>
+    @endpush
 @endsection

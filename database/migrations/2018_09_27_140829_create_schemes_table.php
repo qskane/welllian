@@ -24,6 +24,8 @@ class CreateSchemesTable extends Migration
             $table->boolean('running')->default(false);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->index(['user_id', 'media_id']);
         });
     }
 

@@ -34,10 +34,12 @@ class RegisterController extends Controller
                 'string',
                 'size:6',
                 Rule::exists('verification_codes', 'code')->where(function ($query) use ($mobile, $verificationCode) {
+                    $seconds = config('web.verification_code.expires_seconds');
+
                     $query->where([
                         'verification' => $mobile,
                         'code' => $verificationCode,
-                    ])->where('created_at', '>', Carbon::make('-' . config('web.verification_code_expires')));
+                    ])->where('created_at', '>', Carbon::make("-$seconds seconds"));
                 }),
             ],
 
@@ -53,14 +55,12 @@ class RegisterController extends Controller
     {
         Wallet::create(['user_id' => $user->id]);
 
-        // FIXME 转账初始coin
+        wallet()->initial($user);
 
         $this->alertSuccess();
 
         return redirect()->route('user.index');
     }
-
-
 
 
 }

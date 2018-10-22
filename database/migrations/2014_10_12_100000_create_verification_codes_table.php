@@ -16,8 +16,8 @@ class CreateVerificationCodesTable extends Migration
         Schema::create('verification_codes', function (Blueprint $table) {
             $table->string('verification', 32)->index();
             $table->string('code', 6);
+            $table->ipAddress('ip')->index();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

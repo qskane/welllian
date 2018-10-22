@@ -21,7 +21,7 @@ class CreateMediasTable extends Migration
             $table->string('consume_url');
             $table->text('logo');
             $table->string('description')->default('');
-            $table->string('key', 16)->index();
+            $table->string('key', 16)->unique()->index();
             $table->string('secret', 16);
             $table->string('verification_key', 32);
             $table->boolean('verified')->default(false);

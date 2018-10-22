@@ -28,17 +28,19 @@ class VerificationAble implements Rule
         $this->message = __('validation.custom.verification.mobile_invalid');
 
         return false;
-        // FIXME 未开发 email verification
-        //        return $this->isEmail($attribute, $value);
+
+        //  未开发 email verification
+        //  return $this->isEmail($attribute, $value);
     }
 
+    /*
     public function isEmail($attribute, $value)
     {
         $emailValidator = Validator::make([$attribute => $value], [$attribute => 'email']);
 
         return !$emailValidator->fails();
     }
-
+    */
     public function isMobile($attribute, $value)
     {
         $telValidator = Validator::make([$attribute => $value], [$attribute => 'string|size:11']);

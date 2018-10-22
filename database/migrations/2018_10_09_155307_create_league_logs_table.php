@@ -26,7 +26,10 @@ class CreateLeagueLogsTable extends Migration
             $table->unsignedInteger('consume_bid');
             $table->ipAddress('ip');
             $table->string('user_agent');
-            $table->dateTime('created_at')->useCurrent();
+            $table->unsignedInteger('created_time');
+            $table->dateTime('created_at');
+
+            $table->index(['produce_media_id', 'consume_media_id', 'ip', 'created_time'],'league_logs_medias_ip_time');
         });
     }
 

@@ -26,7 +26,7 @@ class WalletController extends Controller
 
         $logs = WalletLog::to($wallet->id)->latest('id')->paginate();
 
-        return view('user.wallet.log', compact('logs'));
+        return view('user.wallet.log.index', compact('logs'));
     }
 
 }

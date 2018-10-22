@@ -23,6 +23,7 @@ class CreateArticlesTable extends Migration
             $table->unsignedInteger('article_category_id');
             $table->timestamps();
             $table->softDeletes();
+
         });
     }
 

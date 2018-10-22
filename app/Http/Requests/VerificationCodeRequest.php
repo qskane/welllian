@@ -11,12 +11,12 @@ class VerificationCodeRequest extends FormRequest
 
     public function authorize()
     {
-        if ((new VerificationCode)->overloaded($this->get('verification'))) {
+        $verificationCode = new VerificationCode;
+        if ($verificationCode->verificationOverloaded($this->get('verification'))
+            || $verificationCode->ipOverloaded($this->ip())
+        ) {
             return false;
         }
-
-        // FIXME check IP is overloaded
-        // ...
 
         return true;
     }
@@ -29,7 +29,7 @@ class VerificationCodeRequest extends FormRequest
     public function rules()
     {
         return [
-            'verification' => [ new VerificationAble],
+            'verification' => [new VerificationAble],
         ];
     }
 

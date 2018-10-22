@@ -22,7 +22,7 @@ class User extends Authenticatable
 
     public function verifiedMedias()
     {
-        return Media::verified()->get();
+        return Media::owner()->verified()->get();
     }
 
     public function isDefaultName()

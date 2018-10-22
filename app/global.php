@@ -32,12 +32,22 @@ if (!function_exists('template')) {
 
 
 if (!function_exists('transfer')) {
-
     /**
      * @return \App\Services\Wallet\Transfer
      */
     function transfer()
     {
         return app('service.wallet')->transfer();
+    }
+}
+
+
+if (!function_exists('wallet')) {
+    /**
+     * @return \App\Services\Wallet\WalletService
+     */
+    function wallet()
+    {
+        return app('service.wallet');
     }
 }

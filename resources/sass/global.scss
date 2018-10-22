@@ -21,6 +21,9 @@ $nav-black-color: #fff;
   .navbar-brand {
     color: $nav-black-color;
   }
+  .navbar-toggler-icon{
+    color: $nav-black-color !important;
+  }
 }
 
 .scroll-x {

@@ -20,13 +20,8 @@
         'label'=>__('template.html'),
         'name'=>'html',
         'default'=>$template->html,
-        'help'=>'<a href="#">help message</a>'
+        'help'=>'<a href="#">fake help message</a>'
     ])
-    @php
-        // FIXME fix help message
-    @endphp
-
-
 
     @include('components.form.textarea',[
         'label'=>__('description'),

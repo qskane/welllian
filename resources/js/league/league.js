@@ -1,16 +1,10 @@
 (function () {
-  console.log('thrid pard js loaded');
-
   const http = require('./http');
-
-  const config = {
-    root: 'http://malllian-dev.com'
-  };
-
+  const config = require('../config');
 
   const routes = {
     create: function (value) {
-      http.get(`${config.root}/api/media/${value}`, (response) => {
+      http.get(`${config.domain}/api/media/${value}`, (response) => {
         const schemes = JSON.parse(response).data;
         if (schemes.length === 0) {
           return;

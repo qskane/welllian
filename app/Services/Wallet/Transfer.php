@@ -292,5 +292,4 @@ class Transfer
         return $this;
     }
 
-
 }
