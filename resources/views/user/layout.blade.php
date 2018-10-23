@@ -17,9 +17,11 @@
 
                     {{$slot}}
 
-                    @slot('footer')
-                        {{$footer ?? ''}}
-                    @endslot
+                    @if($footer?? false)
+                        @slot('footer')
+                            {{$footer}}
+                        @endslot
+                    @endif
 
                 @endcomponent
             </div>

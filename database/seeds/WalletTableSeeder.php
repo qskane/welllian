@@ -8,7 +8,14 @@ class WalletTableSeeder extends Seeder
 
     public function run()
     {
-        $users = User::select('id')->get();
+        \App\Models\Wallet::create([
+            'user_id' => config('web.official_user_id'),
+            'coin' => 1000,
+            'unpaid' => 0,
+        ]);
+
+        $users = User::where('id', '<>', config('web.official_user_id'))->get();
+        
         foreach ($users as $user) {
             wallet()->initial($user);
         }

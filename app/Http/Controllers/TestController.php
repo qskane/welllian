@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Jobs\LeagueConsumeJob;
+use App\Models\Media;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -10,15 +11,22 @@ class TestController extends Controller
 
     public function index()
     {
+        //        $collection = collect(['product_id' => 1, 'name' => 'Desk', 'price' => 100, 'discount' => false]);
 
-        dd(env('PUSHER_APP_ID',10));
+        $collection = Media::all();
+        $a = $collection->pluck('name', 'id');
+        dd($a);
 
-        //        return view('test.index');
+        $filtered = $collection->each->only(['id', 'name']);
+
+        dd($collection, $filtered, $filtered->all());
     }
 
     public function view()
     {
-        return view('test.vue_template');
+        $consumers = Media::all();
+
+        return view('test.view', compact('consumers'));
     }
 
     public function league()

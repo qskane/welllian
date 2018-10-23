@@ -4,7 +4,7 @@
 
   const routes = {
     create: function (value) {
-      http.get(`${config.domain}/api/media/${value}`, (response) => {
+      http.get(`${config.api}/api/media/${value}`, (response) => {
         const schemes = JSON.parse(response).data;
         if (schemes.length === 0) {
           return;

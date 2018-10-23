@@ -3,6 +3,7 @@
 namespace App\Services\Wallet;
 
 
+use App\Models\User;
 use App\Models\Wallet;
 
 class WalletService
@@ -13,10 +14,18 @@ class WalletService
         return new Transfer;
     }
 
-    public function initial($user)
+    public function initial(User $user)
     {
-        // Any better way to initial user wallet coin ?
-        Wallet::where('id', config('web.official_user_id'))->increment('coin', config('web.wallet.initial_coin'));
+        /*
+         *  Any better way to initial user wallet coin ?
+         */
+
+        Wallet::where('user_id', config('web.official_user_id'))->increment('coin', config('web.wallet.initial_coin'));;
+        $wallet = Wallet::owner($user->id)->count();
+
+        if (!$wallet && !(new Wallet(['user_id' => $user->id]))->save()) {
+            return false;
+        }
 
         return $this->transfer()
             ->fromUser(config('web.official_user_id'))

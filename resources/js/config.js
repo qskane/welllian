@@ -1,8 +1,8 @@
 const development = {
-  domain: 'malllian-dev.com'
+  api: 'http://malllian-dev.com'
 };
 const production = {
-  domain: 'welllian.com'
+  api: 'https://welllian.com'
 };
 
 

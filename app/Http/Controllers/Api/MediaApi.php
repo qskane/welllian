@@ -17,7 +17,8 @@ class MediaApi extends Controller
         }
 
         $schemes = Scheme::with(['template'])->mediaId($media->id)->running()->get();
-        $response = [];
+        $parsedConsumers = [];
+        $originConsumers = [];
         foreach ($schemes as $scheme) {
             $consumers = media()->produce($key, $scheme->quantity, [$media->id]);
             $container = $scheme->container;
@@ -28,10 +29,13 @@ class MediaApi extends Controller
             );
             $template = viewer()->optimize($template);
 
-            $response[] = compact('template', 'container');
+            $parsedConsumers[] = compact('template', 'container');
+
+
+//            $originConsumers[] = ['name' =>];
         }
 
-        return response()->json(['data' => $response])->withHeaders(['Access-Control-Allow-Origin' => '*']);
+        return response()->json(['parsed_consumers' => $parsedConsumers, 'origin_consumers'])->withHeaders(['Access-Control-Allow-Origin' => '*']);
     }
 
 }

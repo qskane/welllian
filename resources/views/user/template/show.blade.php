@@ -8,12 +8,12 @@
         [__('name'),$template->name],
         [__('description'),$template->description],
         [__('user.user'),$template->user->name],
-        [__('template.html'),$template->html,'TEXTAREA'],
+        [__('template.source_code'),$template->html,'TEXTAREA'],
     ]])
 
     <div class="card mb-4">
         <div class="card-header">
-            <a href="{{route('user.template.preview',$template->id)}}">{{__('template.preview')}}</a>
+            <a href="{{route('user.template.preview',$template->id)}}" target="_blank">{{__('template.preview')}}</a>
         </div>
         <div class="card-body">
             <div class="scroll-x">

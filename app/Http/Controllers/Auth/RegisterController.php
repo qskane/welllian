@@ -35,7 +35,6 @@ class RegisterController extends Controller
                 'size:6',
                 Rule::exists('verification_codes', 'code')->where(function ($query) use ($mobile, $verificationCode) {
                     $seconds = config('web.verification_code.expires_seconds');
-
                     $query->where([
                         'verification' => $mobile,
                         'code' => $verificationCode,
@@ -53,8 +52,6 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, $user)
     {
-        Wallet::create(['user_id' => $user->id]);
-
         wallet()->initial($user);
 
         $this->alertSuccess();

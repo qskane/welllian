@@ -53,12 +53,12 @@ class Transfer
     {
         $status = false;
         if (!$this->isPermit()) {
-            //            Log::error('Required parameters include null value', ['location' => __METHOD__]);
+            // Log::error('Required parameters include null value', ['location' => __METHOD__]);
             return false;
         }
 
         if (!$this->out($this->coin)) {
-            //  余额不足
+            // 余额不足
             return false;
         }
 

@@ -3,6 +3,7 @@
 namespace App\Services\Media;
 
 use App\Models\Media;
+use Illuminate\Support\Collection;
 
 class MediaService
 {
@@ -16,6 +17,13 @@ class MediaService
         return $this->mixRedirect($consumers, config('web.official_media_key'));
     }
 
+    /**
+     * @param $producerKey
+     * @param $quantity
+     * @param array $excepts
+     * @param array $include
+     * @return Collection
+     */
     public function produce($producerKey, $quantity, array $excepts = [], array $include = [])
     {
         $consumers = $this->findMedias($quantity, $excepts, $include);

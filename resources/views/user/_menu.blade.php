@@ -6,7 +6,6 @@
 @endphp
 @include('components.lists.list_link',['items'=>$profiles,'active'=>$active])
 
-
 @php
     $leagues = [
         ['link'=>route('user.media.index'),'name'=>__('user.media_info'),'key'=>'media'],

@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'name' => 'official user',
+                'name' => 'System',
                 'mobile' => '15811111111',
                 'password' => \Illuminate\Support\Facades\Hash::make('123456'),
             ],

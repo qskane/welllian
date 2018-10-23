@@ -17,7 +17,7 @@
     ])
 
     @include('components.form.textarea',[
-        'label'=>__('template.html'),
+        'label'=>__('template.source_code'),
         'name'=>'html',
         'default'=>$template->html,
         'help'=>'<a href="#">fake help message</a>'
