@@ -1,6 +1,6 @@
-<nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-black fixed-top bg-black-75">
+<nav id="nav" class="navbar fixed-top navbar-expand-lg navbar-black fixed-top bg-black">
     <div class="container">
-        <a class="navbar-brand" href="/">{{config('app.name')}}</a>
+        <a class="navbar-brand" href="/"><b>{{config('app.name')}}</b></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
