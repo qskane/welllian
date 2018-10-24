@@ -22,4 +22,6 @@ return [
     'email_address' => '邮件地址',
     'mobile_verification_code' => '手机验证码',
     'user_not_registered' => '用户未注册',
+    'contact_method' => '联系方式',
+    'first_name' => '姓',
 ];

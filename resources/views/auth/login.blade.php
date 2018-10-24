@@ -33,7 +33,6 @@
                             </div>
                         </div>
 
-
                         @component('components.form.submit',['text'=>__('login')])
                             @slot('extra')
                                 <a class="btn btn-link" href="{{ route('password.mobile_reset') }}">

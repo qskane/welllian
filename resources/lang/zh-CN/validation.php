@@ -169,5 +169,6 @@ return [
         'quantity' => '数量',
         'media_id' => '媒体',
         'template_id' => '模版',
+        'contact' => '联系方式',
     ],
 ];

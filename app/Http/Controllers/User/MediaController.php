@@ -61,6 +61,9 @@ class MediaController extends Controller
 
         $media->update($request->inputs());
         $media->verified = $request->get('domain') === $originDomain;
+        if (!$request->consuming()) {
+            $media->consumable = false;
+        }
         $status = $media->save();
 
         $route = $status ? 'user.media.show' : 'user.media.edit';

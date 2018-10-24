@@ -25,10 +25,15 @@ class UpdateMediaRequest extends StoreMediaRequest
             parent::inputs(),
             [
                 'providing' => (boolean)$this->get('providing'),
-                'consuming' => (boolean)$this->get('consuming'),
+                'consuming' => $this->consuming(),
                 'consume_bid' => (int)$this->get('consume_bid'),
             ]
         );
+    }
+
+    public function consuming()
+    {
+        return (boolean)$this->get('consuming');
     }
 
 }

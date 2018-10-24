@@ -13,9 +13,8 @@ class MediaApi extends Controller
     {
         $media = Media::select('id')->providable()->key($key)->first();
         if (!$media) {
-            abort(403);
+            return response('', 404, ['Access-Control-Allow-Origin' => '*']);
         }
-
         $schemes = Scheme::with(['template'])->mediaId($media->id)->running()->get();
         $parsedConsumers = [];
         $originConsumers = [];
@@ -31,11 +30,19 @@ class MediaApi extends Controller
 
             $parsedConsumers[] = compact('template', 'container');
 
+            $origin = $consumers->map(function ($consumer) {
+                return $consumer->only(['name', 'logo', 'url', 'description']);
+            })->toArray();
 
-//            $originConsumers[] = ['name' =>];
+            $originConsumers[] = ['name' => $scheme->name, 'container' => $container, 'data' => $origin];
         }
 
-        return response()->json(['parsed_consumers' => $parsedConsumers, 'origin_consumers'])->withHeaders(['Access-Control-Allow-Origin' => '*']);
+        return response()->json([
+            'parsed_consumers' => $parsedConsumers,
+            'origin_consumers' => $originConsumers,
+        ])->withHeaders([
+            'Access-Control-Allow-Origin' => '*',
+        ]);
     }
 
 }

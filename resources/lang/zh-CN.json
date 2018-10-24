@@ -32,5 +32,8 @@
   "setting": "设置",
   "help": "帮助",
   "document": "文档",
-  "category": "类型"
+  "category": "类型",
+  "feedback": "意见反馈",
+  "content": "内容",
+  "contact": "联系方式"
 }

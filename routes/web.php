@@ -1,7 +1,8 @@
 <?php
 
 Route::get('/', "WebController@home")->name('home');
-
+Route::get('/feedback', "WebController@feedback")->name('feedback');
+Route::post('/feedback', "WebController@storeFeedback");
 /*
  * Test
  */

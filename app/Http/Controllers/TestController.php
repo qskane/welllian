@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jobs\LeagueConsumeJob;
 use App\Models\Media;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -11,15 +12,21 @@ class TestController extends Controller
 
     public function index()
     {
-        //        $collection = collect(['product_id' => 1, 'name' => 'Desk', 'price' => 100, 'discount' => false]);
+        $consumers = [
+            [
+                'name' => 'consumer-1',
+                'logo' => 'consumer-1-logo-url',
+                'url' => 'consumer-1-url',
+                'description' => 'consumer-1-description',
+            ],
+            [
+                'name' => 'consumer-1',
+                'logo' => 'consumer-1-logo-url',
+                'url' => 'consumer-1-url',
+                'description' => 'consumer-1-description',
+            ],
+        ];
 
-        $collection = Media::all();
-        $a = $collection->pluck('name', 'id');
-        dd($a);
-
-        $filtered = $collection->each->only(['id', 'name']);
-
-        dd($collection, $filtered, $filtered->all());
     }
 
     public function view()
