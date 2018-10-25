@@ -15,7 +15,8 @@
     "guzzlehttp/guzzle": "~6.0",
     "laravel/framework": "5.7.*",
     "laravel/tinker": "^1.0",
-    "qskane/baum": "^1.1"
+    "qskane/baum": "^1.1",
+    "aliyuncs/aliyun-dysms-php-sdk": "*"
   },
   "require-dev": {
     "beyondcode/laravel-dump-server": "^1.0",
@@ -68,10 +69,14 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "repositories": {
-    "packagist": {
+  "repositories": [
+    {
       "type": "composer",
       "url": "https://packagist.org/"
+    },
+    {
+      "type": "path",
+      "url": "lib/aliyun-dysms-php-sdk/api_sdk"
     }
-  }
+  ]
 }

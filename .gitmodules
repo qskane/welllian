@@ -1,0 +1,6 @@
+[submodule "documents/docs"]
+	path = documents/docs
+	url = git@github.com:welllian/docs.git
+[submodule "documents/template"]
+	path = documents/template
+	url = git@github.com:welllian/template.git

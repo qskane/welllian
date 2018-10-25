@@ -23,7 +23,7 @@
         </ul>
         <div style="text-align: right">
             <small style="color: darkgray">
-                由<a href="http://welllian.com" style="color: darkgray">微联</a>提供
+                由<a href="https://welllian.com" style="color: darkgray">微联</a>提供
             </small>
         </div>
     </div>
@@ -44,7 +44,7 @@
         </div>
         <div style="text-align: right">
             <small style="color: darkgray">
-                由<a href="http://welllian.com" style="color: darkgray">微联</a>提供
+                由<a href="https://welllian.com" style="color: darkgray">微联</a>提供
             </small>
         </div>
     </div>

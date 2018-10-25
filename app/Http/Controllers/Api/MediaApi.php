@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\CreateMediaApiLog;
 use App\Models\Media;
 use App\Models\Scheme;
 
@@ -15,6 +16,7 @@ class MediaApi extends Controller
         if (!$media) {
             return response('', 404, ['Access-Control-Allow-Origin' => '*']);
         }
+
         $schemes = Scheme::with(['template'])->mediaId($media->id)->running()->get();
         $parsedConsumers = [];
         $originConsumers = [];
@@ -35,6 +37,8 @@ class MediaApi extends Controller
             })->toArray();
 
             $originConsumers[] = ['name' => $scheme->name, 'container' => $container, 'data' => $origin];
+
+            $this->dispatch(new CreateMediaApiLog($scheme->id, $media->id, $consumers->pluck('id')->toArray()));
         }
 
         return response()->json([

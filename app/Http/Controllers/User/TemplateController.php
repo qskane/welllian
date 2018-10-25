@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTemplateRequest;
-use App\Http\Requests\UpdateTemplateRequest;
 use App\Models\Template;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,6 +23,21 @@ class TemplateController extends Controller
 
         return view('user.template.show', compact('template'));
     }
+
+    public function preview($id)
+    {
+        $template = Template::findOrFail($id);
+
+        $this->authorize('view', $template);
+
+        return view('user.template.preview', compact('template'));
+    }
+
+    /*
+
+    // -----------------------------------------------------------------------------
+    // WARNING: To prevent users from executing malicious code, it is not open yet.
+    // -----------------------------------------------------------------------------
 
     public function create()
     {
@@ -78,14 +91,7 @@ class TemplateController extends Controller
         return $status ? redirect()->route('user.template.index') : back();
     }
 
-    public function preview($id)
-    {
-        $template = Template::findOrFail($id);
-
-        $this->authorize('view', $template);
-
-        return view('user.template.preview', compact('template'));
-    }
+    */
 
 
 }

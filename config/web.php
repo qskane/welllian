@@ -29,6 +29,8 @@ return [
     'article' => [
         // FIXME
         'document_category' => 1,
+        // FIXME
+        'custom_template' => 1,
     ],
 
     'view' => [
@@ -50,5 +52,6 @@ return [
     'wallet' => [
         'initial_coin' => 1000,
     ],
+
 
 ];

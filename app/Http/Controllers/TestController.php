@@ -2,31 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use Aliyun\Core\Config;
 use App\Jobs\LeagueConsumeJob;
 use App\Models\Media;
-use App\Models\Wallet;
-use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
 
     public function index()
     {
-        $consumers = [
-            [
-                'name' => 'consumer-1',
-                'logo' => 'consumer-1-logo-url',
-                'url' => 'consumer-1-url',
-                'description' => 'consumer-1-description',
-            ],
-            [
-                'name' => 'consumer-1',
-                'logo' => 'consumer-1-logo-url',
-                'url' => 'consumer-1-url',
-                'description' => 'consumer-1-description',
-            ],
-        ];
+        Config::load();
 
+        return view('test.index');
     }
 
     public function view()

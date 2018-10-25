@@ -50,9 +50,10 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
 
     Route::resource('scheme', 'SchemeController');
 
-    Route::resource('template', 'TemplateController');
+    Route::resource('template', 'TemplateController', ['only' => ['index', 'show']]);
     Route::get('/template/preview/{id}', 'TemplateController@preview')->name('template.preview');
 });
+
 
 /*
  * Link

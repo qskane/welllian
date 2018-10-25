@@ -23,9 +23,10 @@
     </div>
 
 
-    @if($template->isOwner())
-        <div class="text-center">
-            @include('user.template._operation',['show'=>false])
-        </div>
-    @endif
+    {{--@if($template->isOwner())--}}
+        {{--<div class="text-center">--}}
+            {{--@include('user.template._operation',['show'=>false])--}}
+        {{--</div>--}}
+    {{--@endif--}}
+
 @endcomponent
