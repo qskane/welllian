@@ -7,8 +7,7 @@ return [
     'quantity' => '数量',
     'preview_media_quantity' => '预览媒体数量',
     'quantity_explain' => '预览时使用的媒体数量',
-    'preview' => '预览',
+    'preview_in_new_window' => '新窗口预览',
     'source_code' => '源代码',
     'custom_template'=>'自定义模板'
-
 ];

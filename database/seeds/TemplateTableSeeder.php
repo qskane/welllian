@@ -11,49 +11,64 @@ class TemplateTableSeeder extends Seeder
 
         \App\Models\Template::insert([
             [
-                'name' => 'fake',
                 'html' => '
-<style>#{{$container}}-container{
-color:red;
-}</style>
-@for($i=0;$i<5;$i++)
-    <p id=\'{{$container}}-container\'>example {{$i}}</p>
-@endfor
-<script>
-  (function(){
-    var container = document.getElementById(\'{{$container}}-container\');
-    console.log(container);
-    console.log(111);
-  })();
-</script>
+<div style=" border: 1px solid #d2d2d2;background-color: #ffffff;padding: 0.5em;border-radius: 4px;">
+    <div style="display: flex;flex-wrap: wrap;">
+        @foreach($consumers as $consumer)
+            <a href="{{$consumer->url}}">
+                <div class="item" style="padding: 0 0.5em;width: 10em;overflow: hidden;">
+                    <img src="{{$consumer->logo}}" style="display: inline;max-width: 2rem;max-height: 1em"
+                         onerror="this.src=\'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png\'"
+                    />
+                    {{$consumer->name}}
+                </div>
+            </a>
+        @endforeach
+    </div>
+    <div style="text-align: right">
+        <small style="color: darkgray">
+            由<a href="https://welllian.com" style="color: darkgray">微联</a>提供
+        </small>
+    </div>
+</div>
+
 ',
+                'name' => '横向列表-小LOGO',
                 'user_id' => $userId,
-                'description' => '',
-                'quantity' => 0,
+                'description' => '横向列表-小LOGO',
+                'quantity' => 10,
             ],
             [
-                'name' => 'fake 222',
                 'html' => '
-<style>#{{$container}}-container{
-color:blue;
-}</style>
-@for($i=0;$i<5;$i++)
-    <p id=\'{{$container}}-container\'>example {{$i}}</p>
-@endfor
-<script>
-  (function(){
-    var container = document.getElementById(\'{{$container}}-container\');
-    console.log(container);
-    console.log(222);
-  })();
-</script>
+<div style="width: 10rem;border: 1px solid #d2d2d2;background-color: #ffffff;padding: 1em;border-radius: 4px;">
+    <ul style="list-style: none;padding: 0;margin-bottom: 4px;">
+        @foreach($consumers as $consumer)
+            <li>
+                <a href="{{$consumer->url}}">
+                    <div style="width:2rem;display: inline-block;text-align: left">
+                        <img src="{{$consumer->logo}}" style="max-width: 100%;max-height: 1em"
+                             onerror="this.src=\'https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo_top_86d58ae1.png\'"
+                        />
+                    </div>
+                    <span>{{$consumer->name}}</span>
+                </a>
+            </li>
+        @endforeach
+    </ul>
+    <div style="text-align: right">
+        <small style="color: darkgray">
+            由<a href="https://welllian.com" style="color: darkgray">微联</a>提供
+        </small>
+    </div>
+</div>
+
 ',
+                'name' => '纵向列表-小LOGO',
                 'user_id' => $userId,
-                'description' => 'Fancy larger or smaller buttons?Fancy larger or smaller buttons? Add .btn-lg or .btn-sm for additional sizes.',
-                'quantity' => 0,
+                'description' => '纵向列表-小LOGO',
+                'quantity' => 10,
             ],
             [
-                'name' => 'items',
                 'html' => '
             @php
                 $container = \'#\'.$container;
@@ -133,8 +148,9 @@ color:blue;
                 @endforeach
             </ul>
             ',
+                'name' => '5列格子-大LOGO-灰',
+                'description' => '5列格子-大LOGO-灰',
                 'user_id' => $userId,
-                'description' => 'Fancy larger or smaller buttons? Add .btn-lg or .btn-sm for additional sizes.',
                 'quantity' => 10,
             ],
         ]);
