@@ -1,15 +1,15 @@
 <?php
 
-Route::get('/', "WebController@home")->name('home');
-Route::get('/feedback', "WebController@feedback")->name('feedback');
-Route::post('/feedback', "WebController@storeFeedback");
+Route::get('/', 'WebController@home')->name('home');
+Route::get('/feedback', 'WebController@feedback')->name('feedback');
+Route::post('/feedback', 'WebController@storeFeedback');
 /*
  * Test
  */
 Route::group(['prefix' => 'test', 'as' => 'test.'], function () {
-    Route::get('/', "TestController@index")->name('index');
-    Route::get('/view', "TestController@view")->name('view');
-    Route::get('/league', "TestController@league")->name('league');
+    Route::get('/', 'TestController@index')->name('index');
+    Route::get('/view', 'TestController@view')->name('view');
+    Route::get('/league', 'TestController@league')->name('league');
 });
 
 /*
@@ -30,19 +30,19 @@ Route::group(['namespace' => 'Auth'], function () {
  * Support
  */
 Route::group(['prefix' => 'support', 'as' => 'support.'], function () {
-    Route::post('/verification', "SupportController@verificationCode")->name('verification');
+    Route::post('/verification', 'SupportController@verificationCode')->name('verification');
 });
 
 /*
  * User
  */
 Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
-    Route::get('/', "ProfileController@edit")->name('index');
-    Route::get('/profile', "ProfileController@edit")->name('profile.edit');
-    Route::post('/profile', "ProfileController@update");
+    Route::get('/', 'ProfileController@edit')->name('index');
+    Route::get('/profile', 'ProfileController@edit')->name('profile.edit');
+    Route::post('/profile', 'ProfileController@update');
 
-    Route::get('/wallet', "WalletController@show")->name('wallet.show');
-    Route::get('/wallet/log', "WalletController@log")->name('wallet.log');
+    Route::get('/wallet', 'WalletController@show')->name('wallet.show');
+    Route::get('/wallet/log', 'WalletController@log')->name('wallet.log');
 
     Route::resource('media', 'MediaController');
     Route::get('/media/verification/{id}', 'MediaController@showVerificationForm')->name('media.verification');
@@ -58,15 +58,17 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
 /*
  * Link
  */
-Route::get('/link/league', "LinkController@league")->name('link.league');
+Route::get('/link/league', 'LinkController@league')->name('link.league');
+Route::get('/link/outward', 'LinkController@outward')->name('link.outward');
+
 
 /*
  * article
  */
 
 Route::group(['prefix' => 'article', 'as' => 'article.'], function () {
-    Route::get('/', "ArticleController@index")->name('index');
-    Route::get('/category/{id}', "ArticleController@articleCategoryShow")->name('category.show');
-    Route::get('/{id}', "ArticleController@show")->name('show');
+    Route::get('/', 'ArticleController@index')->name('index');
+    Route::get('/category/{id}', 'ArticleController@articleCategoryShow')->name('category.show');
+    Route::get('/{id}', 'ArticleController@show')->name('show');
 
 });

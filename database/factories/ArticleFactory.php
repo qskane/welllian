@@ -12,7 +12,7 @@ $factory->define(\App\Models\Article::class, function (Faker $faker) {
         'title' => substr($faker->text(100), 0, mt_rand(20, 60)),
         'html' => $faker->text(),
         'markdown' => '',
-        'article_category_id' => mt_rand(2, $categoryMax),
+        'article_category_id' => mt_rand(1, $categoryMax),
         'published' => true,
     ];
 });

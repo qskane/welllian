@@ -51,8 +51,17 @@ class LeagueLog extends Model
                 ->where('created_at', '>', Carbon::make("-{$days} days")->toDateString())
                 ->get()
                 ->count() >= $exhausted;
+    }
 
 
+    public function produceMedia()
+    {
+        return $this->belongsTo(Media::class, 'produce_media_id', 'id');
+    }
+
+    public function consumeMedia()
+    {
+        return $this->belongsTo(Media::class, 'consume_media_id', 'id');
     }
 
 }

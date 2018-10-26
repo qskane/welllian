@@ -18,6 +18,20 @@
  *
  */
 
+use Encore\Admin\Grid\Column;
+
 Encore\Admin\Form::forget(['map', 'editor']);
 
-require 'global.php';
+Column::extend('outward', function ($value) {
+    $url = outward($value);
+
+    return "<a href='$url' target='_blank'>$value</a>";
+});
+
+Column::extend('status', function ($value) {
+    return $value
+        ? '<i class="fa fa-check text-success" aria-hidden="true"></i>'
+        : '<i class="fa fa-times text-danger" aria-hidden="true"></i>';
+});
+
+

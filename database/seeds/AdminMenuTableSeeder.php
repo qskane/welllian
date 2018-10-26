@@ -28,8 +28,8 @@ class AdminMenuTableSeeder extends Seeder
                 'parent_id' => 0,
                 'order' => 0,
                 'title' => 'Resource',
-                'icon' => '',
-                'uri' => '',
+                'icon' => 'fa-bars',
+                'uri' => '/',
             ],
             [
                 'id' => 10,
@@ -108,12 +108,13 @@ class AdminMenuTableSeeder extends Seeder
                 'icon' => 'fa-bars',
                 'uri' => 'resource/wallet-log-category',
             ],
+            // logs
             [
                 'id' => 19,
                 'parent_id' => 0,
                 'order' => 0,
                 'title' => 'Log',
-                'icon' => 'fa-bars',
+                'icon' => 'fa-clone',
                 'uri' => 'log',
             ],
 

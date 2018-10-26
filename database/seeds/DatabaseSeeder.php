@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
             ArticlesTableSeeder::class,
             \Encore\Admin\Auth\Database\AdminTablesSeeder::class,
             AdminMenuTableSeeder::class,
+
+            WalletLogCategoryTableSeeder::class,
         ]);
 
 

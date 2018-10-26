@@ -17,8 +17,6 @@ Route::group([
         Route::resource('article-category', 'ArticleCategoryController');
         Route::resource('article', 'ArticleController');
         Route::resource('feedback', 'FeedbackController');
-        Route::resource('league-api-log', 'LeagueApiLogController');
-        Route::resource('league-log', 'LeagueLogController');
         Route::resource('media', 'MediaController');
         Route::resource('scheme', 'SchemeController');
         Route::resource('template', 'TemplateController');
@@ -26,7 +24,13 @@ Route::group([
         Route::resource('verification-code', 'VerificationCodeController');
         Route::resource('wallet', 'WalletController');
         Route::resource('wallet-log-category', 'WalletLogCategoryController');
-        Route::resource('wallet-log', 'WalletLogController');
     });
+
+    $router->group(['prefix' => 'log'], function () {
+        Route::resource('wallet-log', 'WalletLogController');
+        Route::resource('league-log', 'LeagueLogController');
+        Route::resource('league-api-log', 'LeagueApiLogController');
+    });
+
 
 });

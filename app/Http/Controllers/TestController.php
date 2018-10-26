@@ -6,19 +6,16 @@ use Aliyun\Core\Config;
 use App\Jobs\LeagueConsumeJob;
 use App\Models\Media;
 use Parsedown;
+use Storage;
 
 class TestController extends Controller
 {
 
     public function index()
     {
-        $now = "111";
-        $insert = [['a' => 'a'], ['b' => 'b']];
 
-        $a =
 
-        dd($insert,$a);
-
+        dd(strpos('data:image/png/dadasdfs','data:image') === 0);
 
         //        return view('test.index');
     }
@@ -35,9 +32,8 @@ class TestController extends Controller
         $producer = '8wz0u8ekgoi21111';
         $consumer = '8wz0u8ekgoi23333';
         dispatch_now(new LeagueConsumeJob($producer, $consumer));
-        dd(11);
 
-        return view('test.league');
+        //        return view('test.league');
     }
 
 }

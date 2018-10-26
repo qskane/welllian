@@ -20,4 +20,9 @@ class LinkController extends Controller
         return redirect($redirect);
     }
 
+    public function outward(Request $request)
+    {
+        return redirect($request->get('target'));
+    }
+
 }

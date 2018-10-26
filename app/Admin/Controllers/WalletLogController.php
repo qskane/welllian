@@ -83,12 +83,10 @@ class WalletLogController extends Controller
 
         $grid->id('Id');
         $grid->serial_number('Serial number');
-        $grid->from_wallet_id('From wallet id');
-        $grid->from_user_id('From user id');
-        $grid->to_wallet_id('To wallet id');
-        $grid->to_user_id('To user id');
+        $grid->fromUser()->name('From user');
+        $grid->toUser()->name('To user');
         $grid->coin('Coin');
-        $grid->wallet_log_category_id('Wallet log category id');
+        $grid->walletLogCategory()->name('Wallet log category');
         $grid->unpaid('Unpaid');
         $grid->text('Text');
         $grid->remark('Remark');

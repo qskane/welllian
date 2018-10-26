@@ -82,15 +82,16 @@ class LeagueLogController extends Controller
         $grid = new Grid(new LeagueLog);
 
         $grid->id('Id');
-        $grid->produce_media_id('Produce media id');
-        $grid->consume_media_id('Consume media id');
-        $grid->produce_domain('Produce domain');
+        $grid->produceMedia()->name('Produce media');
+        $grid->consumeMedia()->name('Consume media');
+
+        $grid->produceDomain('Produce domain')->display(link_render());
+
         $grid->consume_domain('Consume domain');
         $grid->consume_url('Consume url');
         $grid->consume_bid('Consume bid');
         $grid->ip('Ip');
         $grid->user_agent('User agent');
-        $grid->created_time('Created time');
         $grid->created_at('Created at');
 
         return $grid;

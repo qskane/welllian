@@ -84,7 +84,7 @@ class TemplateController extends Controller
         $grid->id('Id');
         $grid->name('Name');
         $grid->description('Description');
-        $grid->user_id('User id');
+        $grid->user()->name('User');
         $grid->quantity('Quantity');
         $grid->created_at('Created at');
         $grid->updated_at('Updated at');

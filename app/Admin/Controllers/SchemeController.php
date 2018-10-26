@@ -82,13 +82,13 @@ class SchemeController extends Controller
         $grid = new Grid(new Scheme);
 
         $grid->id('Id');
-        $grid->user_id('User id');
-        $grid->media_id('Media id');
+        $grid->user()->name('User');
+        $grid->media()->name('Media');
         $grid->name('Name');
         $grid->container('Container');
         $grid->quantity('Quantity');
-        $grid->template_id('Template id');
-        $grid->running('Running');
+        $grid->template()->name('Template');
+        $grid->running('Running')->status();
         $grid->created_at('Created at');
         $grid->updated_at('Updated at');
         $grid->deleted_at('Deleted at');

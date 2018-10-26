@@ -51,3 +51,18 @@ if (!function_exists('wallet')) {
         return app('service.wallet');
     }
 }
+
+
+if (!function_exists('outward')) {
+    /**
+     * @param $target
+     * @return string
+     */
+    function outward($target)
+    {
+        if (!preg_match("/^http(s):\/\/.*$/i", $target)) {
+            $target = 'http://' . $target;
+        }
+        return url()->route('link.outward', compact('target'));
+    }
+}

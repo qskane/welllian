@@ -82,22 +82,21 @@ class MediaController extends Controller
         $grid = new Grid(new Media);
 
         $grid->id('Id');
-        $grid->user_id('User id');
+        $grid->user()->name('User');
         $grid->name('Name');
-        $grid->domain('Domain');
-        $grid->consume_url('Consume url');
-        $grid->logo('Logo');
+        $grid->domain()->outward();
+        $grid->consume_url('Consume url')->outward();
+
+        $grid->logo()->image('');
+
         $grid->description('Description');
         $grid->key('Key');
-        $grid->secret('Secret');
-        $grid->verification_key('Verification key');
-        $grid->verified('Verified');
-        $grid->providing('Providing');
-        $grid->consuming('Consuming');
-        $grid->consumable('Consumable');
+        $grid->verified('Verified')->status();
+        $grid->providing('Providing')->status();
+        $grid->consuming('Consuming')->status();
+        $grid->consumable('Consumable')->switch();
         $grid->consume_bid('Consume bid');
         $grid->created_at('Created at');
-        $grid->updated_at('Updated at');
         $grid->deleted_at('Deleted at');
 
         return $grid;

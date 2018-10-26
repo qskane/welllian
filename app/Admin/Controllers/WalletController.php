@@ -82,7 +82,7 @@ class WalletController extends Controller
         $grid = new Grid(new Wallet);
 
         $grid->id('Id');
-        $grid->user_id('User id');
+        $grid->user()->name('User');
         $grid->coin('Coin');
         $grid->unpaid('Unpaid');
         $grid->wealth('Wealth');
