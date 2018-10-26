@@ -2,16 +2,15 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\Scheme;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-use Parsedown;
 
-class ArticleController extends Controller
+class SchemeController extends Controller
 {
     use HasResourceActions;
 
@@ -80,18 +79,19 @@ class ArticleController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Article);
+        $grid = new Grid(new Scheme);
 
-        $grid->id()->sortable();
-
-        $grid->title()->editable();
-
-        $grid->markdown()->display(function ($markdown) {
-            return str_limit($markdown, 40);
-        });
-        $grid->published()->switch();
-        $grid->category()->name('Category name');
-        $grid->created_at();
+        $grid->id('Id');
+        $grid->user_id('User id');
+        $grid->media_id('Media id');
+        $grid->name('Name');
+        $grid->container('Container');
+        $grid->quantity('Quantity');
+        $grid->template_id('Template id');
+        $grid->running('Running');
+        $grid->created_at('Created at');
+        $grid->updated_at('Updated at');
+        $grid->deleted_at('Deleted at');
 
         return $grid;
     }
@@ -104,7 +104,21 @@ class ArticleController extends Controller
      */
     protected function detail($id)
     {
-        return new Show(Article::findOrFail($id));
+        $show = new Show(Scheme::findOrFail($id));
+
+        $show->id('Id');
+        $show->user_id('User id');
+        $show->media_id('Media id');
+        $show->name('Name');
+        $show->container('Container');
+        $show->quantity('Quantity');
+        $show->template_id('Template id');
+        $show->running('Running');
+        $show->created_at('Created at');
+        $show->updated_at('Updated at');
+        $show->deleted_at('Deleted at');
+
+        return $show;
     }
 
     /**
@@ -114,19 +128,15 @@ class ArticleController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Article);
+        $form = new Form(new Scheme);
 
-        $form->display('id');
-        $form->text('title');
-        $form->textarea('markdown');
-        $form->display('html');
-        $form->switch('published');
-        $form->display('created_at');
-        $form->display('updated_at');
-
-        $form->saving(function (Form $form) {
-            $form->html = app(Parsedown::class)->text($form->markdown);
-        });
+        $form->number('user_id', 'User id');
+        $form->number('media_id', 'Media id');
+        $form->text('name', 'Name');
+        $form->text('container', 'Container');
+        $form->number('quantity', 'Quantity');
+        $form->number('template_id', 'Template id');
+        $form->switch('running', 'Running');
 
         return $form;
     }

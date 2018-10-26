@@ -2,16 +2,15 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\LeagueApiLog;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-use Parsedown;
 
-class ArticleController extends Controller
+class LeagueApiLogkController extends Controller
 {
     use HasResourceActions;
 
@@ -80,18 +79,16 @@ class ArticleController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Article);
+        $grid = new Grid(new LeagueApiLog);
 
-        $grid->id()->sortable();
-
-        $grid->title()->editable();
-
-        $grid->markdown()->display(function ($markdown) {
-            return str_limit($markdown, 40);
-        });
-        $grid->published()->switch();
-        $grid->category()->name('Category name');
-        $grid->created_at();
+        $grid->id('Id');
+        $grid->provider_media_id('Provider media id');
+        $grid->consumer_media_id('Consumer media id');
+        $grid->scheme_id('Scheme id');
+        $grid->batch('Batch');
+        $grid->ip('Ip');
+        $grid->user_agent('User agent');
+        $grid->created_at('Created at');
 
         return $grid;
     }
@@ -104,7 +101,18 @@ class ArticleController extends Controller
      */
     protected function detail($id)
     {
-        return new Show(Article::findOrFail($id));
+        $show = new Show(LeagueApiLog::findOrFail($id));
+
+        $show->id('Id');
+        $show->provider_media_id('Provider media id');
+        $show->consumer_media_id('Consumer media id');
+        $show->scheme_id('Scheme id');
+        $show->batch('Batch');
+        $show->ip('Ip');
+        $show->user_agent('User agent');
+        $show->created_at('Created at');
+
+        return $show;
     }
 
     /**
@@ -114,19 +122,14 @@ class ArticleController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Article);
+        $form = new Form(new LeagueApiLog);
 
-        $form->display('id');
-        $form->text('title');
-        $form->textarea('markdown');
-        $form->display('html');
-        $form->switch('published');
-        $form->display('created_at');
-        $form->display('updated_at');
-
-        $form->saving(function (Form $form) {
-            $form->html = app(Parsedown::class)->text($form->markdown);
-        });
+        $form->number('provider_media_id', 'Provider media id');
+        $form->number('consumer_media_id', 'Consumer media id');
+        $form->number('scheme_id', 'Scheme id');
+        $form->text('batch', 'Batch');
+        $form->ip('ip', 'Ip');
+        $form->text('user_agent', 'User agent');
 
         return $form;
     }

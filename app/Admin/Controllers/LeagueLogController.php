@@ -2,16 +2,15 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\LeagueLog;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-use Parsedown;
 
-class ArticleController extends Controller
+class LeagueLogController extends Controller
 {
     use HasResourceActions;
 
@@ -80,18 +79,19 @@ class ArticleController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Article);
+        $grid = new Grid(new LeagueLog);
 
-        $grid->id()->sortable();
-
-        $grid->title()->editable();
-
-        $grid->markdown()->display(function ($markdown) {
-            return str_limit($markdown, 40);
-        });
-        $grid->published()->switch();
-        $grid->category()->name('Category name');
-        $grid->created_at();
+        $grid->id('Id');
+        $grid->produce_media_id('Produce media id');
+        $grid->consume_media_id('Consume media id');
+        $grid->produce_domain('Produce domain');
+        $grid->consume_domain('Consume domain');
+        $grid->consume_url('Consume url');
+        $grid->consume_bid('Consume bid');
+        $grid->ip('Ip');
+        $grid->user_agent('User agent');
+        $grid->created_time('Created time');
+        $grid->created_at('Created at');
 
         return $grid;
     }
@@ -104,7 +104,21 @@ class ArticleController extends Controller
      */
     protected function detail($id)
     {
-        return new Show(Article::findOrFail($id));
+        $show = new Show(LeagueLog::findOrFail($id));
+
+        $show->id('Id');
+        $show->produce_media_id('Produce media id');
+        $show->consume_media_id('Consume media id');
+        $show->produce_domain('Produce domain');
+        $show->consume_domain('Consume domain');
+        $show->consume_url('Consume url');
+        $show->consume_bid('Consume bid');
+        $show->ip('Ip');
+        $show->user_agent('User agent');
+        $show->created_time('Created time');
+        $show->created_at('Created at');
+
+        return $show;
     }
 
     /**
@@ -114,19 +128,17 @@ class ArticleController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Article);
+        $form = new Form(new LeagueLog);
 
-        $form->display('id');
-        $form->text('title');
-        $form->textarea('markdown');
-        $form->display('html');
-        $form->switch('published');
-        $form->display('created_at');
-        $form->display('updated_at');
-
-        $form->saving(function (Form $form) {
-            $form->html = app(Parsedown::class)->text($form->markdown);
-        });
+        $form->number('produce_media_id', 'Produce media id');
+        $form->number('consume_media_id', 'Consume media id');
+        $form->text('produce_domain', 'Produce domain');
+        $form->text('consume_domain', 'Consume domain');
+        $form->text('consume_url', 'Consume url');
+        $form->number('consume_bid', 'Consume bid');
+        $form->ip('ip', 'Ip');
+        $form->text('user_agent', 'User agent');
+        $form->number('created_time', 'Created time');
 
         return $form;
     }

@@ -2,16 +2,15 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\Wallet;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-use Parsedown;
 
-class ArticleController extends Controller
+class WalletController extends Controller
 {
     use HasResourceActions;
 
@@ -80,18 +79,16 @@ class ArticleController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Article);
+        $grid = new Grid(new Wallet);
 
-        $grid->id()->sortable();
-
-        $grid->title()->editable();
-
-        $grid->markdown()->display(function ($markdown) {
-            return str_limit($markdown, 40);
-        });
-        $grid->published()->switch();
-        $grid->category()->name('Category name');
-        $grid->created_at();
+        $grid->id('Id');
+        $grid->user_id('User id');
+        $grid->coin('Coin');
+        $grid->unpaid('Unpaid');
+        $grid->wealth('Wealth');
+        $grid->created_at('Created at');
+        $grid->updated_at('Updated at');
+        $grid->deleted_at('Deleted at');
 
         return $grid;
     }
@@ -104,7 +101,18 @@ class ArticleController extends Controller
      */
     protected function detail($id)
     {
-        return new Show(Article::findOrFail($id));
+        $show = new Show(Wallet::findOrFail($id));
+
+        $show->id('Id');
+        $show->user_id('User id');
+        $show->coin('Coin');
+        $show->unpaid('Unpaid');
+        $show->wealth('Wealth');
+        $show->created_at('Created at');
+        $show->updated_at('Updated at');
+        $show->deleted_at('Deleted at');
+
+        return $show;
     }
 
     /**
@@ -114,19 +122,12 @@ class ArticleController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Article);
+        $form = new Form(new Wallet);
 
-        $form->display('id');
-        $form->text('title');
-        $form->textarea('markdown');
-        $form->display('html');
-        $form->switch('published');
-        $form->display('created_at');
-        $form->display('updated_at');
-
-        $form->saving(function (Form $form) {
-            $form->html = app(Parsedown::class)->text($form->markdown);
-        });
+        $form->number('user_id', 'User id');
+        $form->number('coin', 'Coin');
+        $form->number('unpaid', 'Unpaid');
+        $form->decimal('wealth', 'Wealth')->default(0.00);
 
         return $form;
     }

@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use Aliyun\Core\Config;
 use App\Jobs\LeagueConsumeJob;
 use App\Models\Media;
+use Parsedown;
 
 class TestController extends Controller
 {
 
     public function index()
     {
-        Config::load();
+        $now = "111";
+        $insert = [['a' => 'a'], ['b' => 'b']];
 
-        return view('test.index');
+        $a =
+
+        dd($insert,$a);
+
+
+        //        return view('test.index');
     }
 
     public function view()

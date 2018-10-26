@@ -2,16 +2,15 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\VerificationCode;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-use Parsedown;
 
-class ArticleController extends Controller
+class VerificationCodeController extends Controller
 {
     use HasResourceActions;
 
@@ -80,18 +79,14 @@ class ArticleController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Article);
+        $grid = new Grid(new VerificationCode);
 
-        $grid->id()->sortable();
-
-        $grid->title()->editable();
-
-        $grid->markdown()->display(function ($markdown) {
-            return str_limit($markdown, 40);
-        });
-        $grid->published()->switch();
-        $grid->category()->name('Category name');
-        $grid->created_at();
+        $grid->id('Id');
+        $grid->verification('Verification');
+        $grid->code('Code');
+        $grid->ip('Ip');
+        $grid->created_at('Created at');
+        $grid->updated_at('Updated at');
 
         return $grid;
     }
@@ -104,7 +99,16 @@ class ArticleController extends Controller
      */
     protected function detail($id)
     {
-        return new Show(Article::findOrFail($id));
+        $show = new Show(VerificationCode::findOrFail($id));
+
+        $show->id('Id');
+        $show->verification('Verification');
+        $show->code('Code');
+        $show->ip('Ip');
+        $show->created_at('Created at');
+        $show->updated_at('Updated at');
+
+        return $show;
     }
 
     /**
@@ -114,19 +118,11 @@ class ArticleController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Article);
+        $form = new Form(new VerificationCode);
 
-        $form->display('id');
-        $form->text('title');
-        $form->textarea('markdown');
-        $form->display('html');
-        $form->switch('published');
-        $form->display('created_at');
-        $form->display('updated_at');
-
-        $form->saving(function (Form $form) {
-            $form->html = app(Parsedown::class)->text($form->markdown);
-        });
+        $form->text('verification', 'Verification');
+        $form->text('code', 'Code');
+        $form->ip('ip', 'Ip');
 
         return $form;
     }

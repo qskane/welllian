@@ -2,16 +2,15 @@
 
 namespace App\Admin\Controllers;
 
+use App\Models\WalletLog;
 use App\Http\Controllers\Controller;
-use App\Models\Article;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
-use Parsedown;
 
-class ArticleController extends Controller
+class WalletLogController extends Controller
 {
     use HasResourceActions;
 
@@ -80,18 +79,20 @@ class ArticleController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new Article);
+        $grid = new Grid(new WalletLog);
 
-        $grid->id()->sortable();
-
-        $grid->title()->editable();
-
-        $grid->markdown()->display(function ($markdown) {
-            return str_limit($markdown, 40);
-        });
-        $grid->published()->switch();
-        $grid->category()->name('Category name');
-        $grid->created_at();
+        $grid->id('Id');
+        $grid->serial_number('Serial number');
+        $grid->from_wallet_id('From wallet id');
+        $grid->from_user_id('From user id');
+        $grid->to_wallet_id('To wallet id');
+        $grid->to_user_id('To user id');
+        $grid->coin('Coin');
+        $grid->wallet_log_category_id('Wallet log category id');
+        $grid->unpaid('Unpaid');
+        $grid->text('Text');
+        $grid->remark('Remark');
+        $grid->created_at('Created at');
 
         return $grid;
     }
@@ -104,7 +105,22 @@ class ArticleController extends Controller
      */
     protected function detail($id)
     {
-        return new Show(Article::findOrFail($id));
+        $show = new Show(WalletLog::findOrFail($id));
+
+        $show->id('Id');
+        $show->serial_number('Serial number');
+        $show->from_wallet_id('From wallet id');
+        $show->from_user_id('From user id');
+        $show->to_wallet_id('To wallet id');
+        $show->to_user_id('To user id');
+        $show->coin('Coin');
+        $show->wallet_log_category_id('Wallet log category id');
+        $show->unpaid('Unpaid');
+        $show->text('Text');
+        $show->remark('Remark');
+        $show->created_at('Created at');
+
+        return $show;
     }
 
     /**
@@ -114,19 +130,18 @@ class ArticleController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new Article);
+        $form = new Form(new WalletLog);
 
-        $form->display('id');
-        $form->text('title');
-        $form->textarea('markdown');
-        $form->display('html');
-        $form->switch('published');
-        $form->display('created_at');
-        $form->display('updated_at');
-
-        $form->saving(function (Form $form) {
-            $form->html = app(Parsedown::class)->text($form->markdown);
-        });
+        $form->text('serial_number', 'Serial number');
+        $form->number('from_wallet_id', 'From wallet id');
+        $form->number('from_user_id', 'From user id');
+        $form->number('to_wallet_id', 'To wallet id');
+        $form->number('to_user_id', 'To user id');
+        $form->number('coin', 'Coin');
+        $form->number('wallet_log_category_id', 'Wallet log category id');
+        $form->number('unpaid', 'Unpaid');
+        $form->text('text', 'Text');
+        $form->text('remark', 'Remark');
 
         return $form;
     }

@@ -12,16 +12,11 @@ class DatabaseSeeder extends Seeder
             TemplateTableSeeder::class,
             MediaTableSeeder::class,
             ArticleCategoriesTableSeeder::class,
-            ArticlesTableSeeder::class
-
-            /*
-             * version product
-            TagsTableSeeder::class,
-            MallsTableSeeder::class,
-            StoresTableSeeder::class,
-            ProductsTableSeeder::class,
-             */
+            ArticlesTableSeeder::class,
+            \Encore\Admin\Auth\Database\AdminTablesSeeder::class,
+            AdminMenuTableSeeder::class,
         ]);
+
 
         cache()->clear();
     }
