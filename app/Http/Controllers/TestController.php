@@ -15,7 +15,8 @@ class TestController extends Controller
     {
 
 
-        dd(strpos('data:image/png/dadasdfs','data:image') === 0);
+
+//        dd(strpos('data:image/png/dadasdfs','data:image') === 0);
 
         //        return view('test.index');
     }

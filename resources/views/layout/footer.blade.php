@@ -4,7 +4,7 @@
             <a href="{{route('feedback')}}" class="text-secondary">{{__('feedback')}}</a>
         </p>
         <p class="m-0">
-            Copyright &copy; {{config('app.name')}} {{config('app.domain')}} {{date('Y')}}
+            Copyright {{date('Y')}} {{config('app.domain')}} , All Rights Reserved
         </p>
     </div>
 </footer>

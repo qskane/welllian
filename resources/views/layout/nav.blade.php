@@ -14,6 +14,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('article.index')}}">@lang('document')</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('feedback')}}">@lang('feedback')</a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
                 @guest
@@ -24,6 +27,9 @@
                         <a class="nav-link" href="{{ route('register') }}">{{ __('register') }}</a>
                     </li>
                 @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('user.profile.edit',Auth::id()) }}">@lang('user.home')</a>
+                    </li>
                     <li class="nav-item dropdown">
                         <a style="text-transform:none;" id="navbarDropdown" class="nav-link dropdown-toggle"
                            href="#"
@@ -33,9 +39,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('user.profile.edit',Auth::id()) }}">
-                                @lang('user.home')
-                            </a>
+                            {{--<a class="dropdown-item" href="{{ route('user.profile.edit',Auth::id()) }}">--}}
+                                {{--@lang('user.home')--}}
+                            {{--</a>--}}
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

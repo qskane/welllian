@@ -12,13 +12,9 @@ class VerificationCodeRequest extends FormRequest
     public function authorize()
     {
         $verificationCode = new VerificationCode;
-        if ($verificationCode->verificationOverloaded($this->get('verification'))
-            || $verificationCode->ipOverloaded($this->ip())
-        ) {
-            return false;
-        }
 
-        return true;
+        return !($verificationCode->verificationOverloaded($this->get('verification'))
+            || $verificationCode->ipOverloaded($this->ip()));
     }
 
     /**

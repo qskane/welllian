@@ -2,7 +2,7 @@
 
 return [
     'user' => '用户',
-    'home' => '主页',
+    'home' => '个人主页',
     'profile_info' => '个人信息',
     'wallet_info' => '钱包信息',
     'media_info' => '媒体信息',

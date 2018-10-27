@@ -4,9 +4,9 @@ return [
     'bonus_rate' => 0.1,
 
     // FIXME config
-    'official_user_id' => env('OFFICIAL_USER_ID', 2),
+    'official_user_id' => env('OFFICIAL_USER_ID'),
     // FIXME config
-    'official_media_key' => env('OFFICIAL_MEDIA_KEY', '8wz0u8ekgoi23333'),
+    'official_media_key' => env('OFFICIAL_MEDIA_KEY'),
 
     'scheme' => [
         'max_quantity' => 16,
@@ -27,6 +27,7 @@ return [
     ],
 
     'article' => [
+        'document_getting_start' => 1,
         // FIXME
         'document_category' => 1,
         // FIXME

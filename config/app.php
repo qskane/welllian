@@ -2,17 +2,20 @@
 
 return [
 
-    'name' => env('APP_NAME', 'malllian'),
+    'name' => '微联',
 
     'env' => env('APP_ENV', 'production'),
 
     'debug' => env('APP_DEBUG', false),
 
-    'url' => env('APP_URL', 'http://malllian-dev.com'),
+    'url' => env('APP_URL', 'http://welllian.com'),
 
-    'domain' => env('DOMAIN', 'malllian-dev.com'),
+    'domain' => env('DOMAIN', 'welllian.com'),
 
-    'cdn' => env('CDN', 'malllian-dev.com'),
+    'cdn' => env('CDN', 'https://s.welllian.com'),
+
+    // FIXME
+    'ipc' => '粤ICP备0921349号',
 
     'timezone' => 'PRC',
 
