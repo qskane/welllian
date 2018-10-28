@@ -13,6 +13,7 @@
 
 - send mobile verification code
 - template:  form help 信息
+- 添加名词解释链接
 
 ## CONFIG
 

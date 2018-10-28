@@ -9,11 +9,11 @@ services:
       - "3306:3306"
     command: "--innodb_use_native_aio=0"
     volumes:
-      - /var/lib/mysql/malllian-db:/var/lib/mysql
+      - /var/lib/mysql/welllian-db:/var/lib/mysql
     privileged: true
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: malllian.com-dev
+      MYSQL_DATABASE: welllian-local
   adminer:
     image: adminer
     ports:
