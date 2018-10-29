@@ -20,7 +20,7 @@ return [
     ],
 
     'verification_code' => [
-        'expires_seconds' => 1800,
+        'expires_seconds' => 600,
         'refresh_seconds' => env('VERIFICATION_CODE_REFRESH_SECONDS', 60),
         'ip_overload_seconds' => env('VERIFICATION_CODE_IP_OVERLOAD_SECONDS', 86400),
         'ip_overload_limit' => env('VERIFICATION_CODE_IP_OVERLOAD_LIMIT', 20),
