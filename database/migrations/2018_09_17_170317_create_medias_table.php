@@ -30,7 +30,6 @@ class CreateMediasTable extends Migration
             $table->boolean('consumable')->default(false);
             $table->unsignedInteger('consume_bid')->default(1);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

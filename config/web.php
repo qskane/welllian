@@ -32,6 +32,7 @@ return [
         'document_category' => 1,
         // FIXME
         'custom_template' => 1,
+        'key_length' => 32,
     ],
 
     'view' => [

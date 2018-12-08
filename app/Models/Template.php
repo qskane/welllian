@@ -3,13 +3,11 @@
 namespace App\Models;
 
 use App\Models\Concerns\HasOwner;
-use App\Services\Template\TemplateCompiler;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Template extends Model
 {
-    use SoftDeletes, HasOwner;
+    use  HasOwner;
 
     protected $fillable = ['name', 'html', 'description', 'user_id', 'quantity'];
 

@@ -11,12 +11,15 @@ class DatabaseSeeder extends Seeder
             WalletTableSeeder::class,
             TemplateTableSeeder::class,
             MediaTableSeeder::class,
+            LanguageTableSeeder::class,
             ArticleCategoriesTableSeeder::class,
             ArticlesTableSeeder::class,
             \Encore\Admin\Auth\Database\AdminTablesSeeder::class,
             AdminMenuTableSeeder::class,
 
+
             WalletLogCategoryTableSeeder::class,
+
         ]);
 
 

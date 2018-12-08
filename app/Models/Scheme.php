@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class Scheme extends Model
 {
-    use SoftDeletes, HasOwner;
+    use  HasOwner;
 
     protected $fillable = ['user_id', 'name', 'container', 'quantity', 'media_id', 'template_id', 'running'];
 

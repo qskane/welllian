@@ -10,7 +10,9 @@ class ArticleController extends Controller
 
     public function index()
     {
-        return redirect()->route('article.category.show', config('web.article.document_category'));
+        $articles = Article::latest()->paginate();
+
+        return view('article.index', compact('articles'));
     }
 
     public function articleCategoryShow($id)
@@ -27,17 +29,16 @@ class ArticleController extends Controller
         return view('article.category_show', compact('categories', 'ancestors'));
     }
 
-    public function show($id)
+    public function show($key, $lang = 'zh_cn')
     {
-        $article = Article::published()->findOrFail($id);
+        $article = Article::published()->key($key)->language($lang)->firstOrFail();
 
-        $ancestors = $article->category->ancestorsAndSelf()->get();
-
-        $ancestors->push(new ArticleCategory(['name' => $article->title]));
+//        $ancestors = $article->category->ancestorsAndSelf()->get();
+//        $ancestors->push(new ArticleCategory(['name' => $article->title]));
 
         return view('article.show', [
             'article' => $article,
-            'ancestors' => $ancestors,
+//            'ancestors' => $ancestors,
         ]);
     }
 

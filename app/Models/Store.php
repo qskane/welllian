@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Store extends Model
 {
-    use SoftDeletes;
 
     public function mall()
     {

@@ -69,6 +69,6 @@ Route::get('/link/outward', 'LinkController@outward')->name('link.outward');
 Route::group(['prefix' => 'article', 'as' => 'article.'], function () {
     Route::get('/', 'ArticleController@index')->name('index');
     Route::get('/category/{id}', 'ArticleController@articleCategoryShow')->name('category.show');
-    Route::get('/{id}', 'ArticleController@show')->name('show');
+    Route::get('/{key}/{lang?}', 'ArticleController@show')->name('show');
 
 });

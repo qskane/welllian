@@ -10,7 +10,4 @@ class WalletLogCategory extends Model
     protected $fillable = ['name'];
 
 
-
-
-
 }

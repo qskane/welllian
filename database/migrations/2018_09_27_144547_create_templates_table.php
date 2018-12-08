@@ -21,7 +21,6 @@ class CreateTemplatesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('quantity')->default(0);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

@@ -5,13 +5,12 @@ namespace App\Models;
 use App\Events\MediaSaved;
 use App\Models\Concerns\HasOwner;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class Media extends Model
 {
-    use SoftDeletes, HasOwner;
+    use  HasOwner;
 
     protected $table = 'medias';
 

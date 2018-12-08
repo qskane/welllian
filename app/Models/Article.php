@@ -3,12 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Article extends Model
 {
-    use SoftDeletes;
-
     protected $guarded = [];
 
     public function scopeDocument($query)
@@ -38,6 +35,21 @@ class Article extends Model
     public function category()
     {
         return $this->belongsTo(ArticleCategory::class, 'article_category_id', 'id');
+    }
+
+    public function scopeLatest($query)
+    {
+        return $query->orderBy('id', 'desc');
+    }
+
+    public function scopeKey($query, $key)
+    {
+        return $query->where('key', $key);
+    }
+
+    public function scopeLanguage($query, $languageCode)
+    {
+        return $query->where('language_code', $languageCode);
     }
 
 }
